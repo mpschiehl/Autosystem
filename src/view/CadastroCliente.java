@@ -358,7 +358,19 @@ public class CadastroCliente extends javax.swing.JFrame {
         //Numero
         if(jTextFieldNumero.getText().isEmpty()){
              JOptionPane.showMessageDialog(null,
-                    "A cidade deve conter no minimo 5 caracteres", "Cadastro Cliente",
+                    "O número deve ser preenchido", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
+        }else if(Integer.parseInt(jTextFieldNumero.getText())==0){
+             JOptionPane.showMessageDialog(null,
+                    "O numero não pode ser zero", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
+        }else if (Integer.parseInt(jTextFieldNumero.getText())<= -1) {
+              JOptionPane.showMessageDialog(null,
+                    "O numero não pode ser negativo", "Cadastro Cliente",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldEndereco.requestFocus();
             return;

@@ -555,7 +555,7 @@ public class Cadastro implements BaseInterfaceJava {
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
             return;
-        } else if (Float.parseFloat(jTextFieldValor.getText()) <=1) {
+        } else if (Float.parseFloat(jTextFieldValor.getText()) <=-1) {
              JOptionPane.showMessageDialog(null,
                     "Valor não podera ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);

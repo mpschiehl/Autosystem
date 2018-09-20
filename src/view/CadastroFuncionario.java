@@ -347,24 +347,32 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     public void validacao() {
         //VALIDACAO DE NOME
-        if (jTextFieldNome.getText().trim().length() < 3) {
+        if (jTextFieldNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O nome deve conter no minimo 3 letras", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
+                    "O nome deve ser preenchido", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
+            jTextFieldNome.requestFocus();
+            return;
+        }else if(jTextFieldNome.getText().length()<2){
+             JOptionPane.showMessageDialog(null,
+                    "O nome deve ter no minimo tres caracteres", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
             jTextFieldNome.requestFocus();
             return;
         }
+        
         //VALIDACAO CPF
         String cpf = jFormattedTextFieldCpf.getText();
-        if (cpf.isEmpty()) {
+        if (jFormattedTextFieldCpf.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o campo CPF", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
             jFormattedTextFieldCpf.requestFocus();
             return;
-        }
-        if (cpf.length() < 11) {
+        } else if (cpf.length() < 11) {
             JOptionPane.showMessageDialog(null,
                     "O CPF deve conter 11 Digitos");
             return;
         }
+        
+        
+        
         //VALIDACAO E-MAIL
         String email = jTextFieldEmail.getText().trim().toLowerCase();
         if (email.isEmpty()) {
@@ -424,7 +432,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }
 
     public void salvarBanco() {
-
+    
     }
 
     public void limparCampos() {

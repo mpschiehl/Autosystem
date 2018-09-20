@@ -29,7 +29,8 @@ CREATE TABLE clientes(
 
 nome VARCHAR(100),
 telefone VARCHAR(15),
-cpf_cnpj VARCHAR(25),
+cpf VARCHAR(25),
+cnpj VARCHAR(25),
 cep      varchar(25),
 bairro   varchar(25),
 endereco varchar(50),

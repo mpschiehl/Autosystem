@@ -304,24 +304,55 @@ public class CadastroCliente extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldEmail.requestFocus();
             return;
+        } else if (jTextFieldEmail.getText().length() < 4) {
+            JOptionPane.showMessageDialog(null,
+                    "O e-mail deve conter no minimo 5 caracteres ", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEmail.requestFocus();
+            return;
         }
 
-        if (jTextFieldBairro.getText().length() < 3) {
+        //Bairro
+        if (jTextFieldBairro.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O bairro deve conter no mínimo três caracteres", "Cadastro Cliente",
+                    "O bairro deve ser preenchido", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldBairro.requestFocus();
+            return;
+        } else if (jTextFieldBairro.getText().length() <= 4) {
+            JOptionPane.showMessageDialog(null,
+                    "O bairro deve conter no minimo tres caracteres", "Cadastro Cliente",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldBairro.requestFocus();
             return;
         }
 
-        if (jTextFieldEndereco.getText().length() < 3) {
+        //Enderço
+        if (jTextFieldEndereco.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O e-mail deve conter no mínimo três caracteres", "Cadastro Cliente",
+                    "O e-mail deve ser preenchido", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
+        } else if (jTextFieldEndereco.getText().length() <= 4) {
+            JOptionPane.showMessageDialog(null,
+                    "O e-mail deve conter no minimo cinco caracteres", "Cadastro Cliente",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldEndereco.requestFocus();
             return;
         }
-
+        //Cidade
+        if (jTextFieldCidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "A cidade deve ser preenchida", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
+        } else if (jTextFieldCidade) {
+            
+        }
+        
+        
     }
 
     public void mascaraCpf() {

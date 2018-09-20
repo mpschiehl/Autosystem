@@ -541,8 +541,9 @@ public class Vendas implements BaseInterfaceJava {
             pedido = jTablePedido.getModel().getValueAt(i, 1).toString();
             quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 2).toString());
             new ProdutoDao().vender(quantidade, pedido);
-
+            
         }
+        contador = 0;
         pedido = "";
         acaoPopularTabelaCampoVazio();
     }

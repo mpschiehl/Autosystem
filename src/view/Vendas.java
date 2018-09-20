@@ -366,11 +366,13 @@ public class Vendas implements BaseInterfaceJava {
         jButtonFinalizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                                  
-                
+               if(contador == 0){
+                JOptionPane.showMessageDialog(null, "Sem Items para realizar a Venda. ");   
+               }else{
                 acaoVender();
                 JOptionPane.showMessageDialog(null, "venda realizada com sucesso. ");
                 limparTabela();
+               }
             }
         });
     }

@@ -20,7 +20,12 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -44,16 +49,16 @@ import javax.swing.table.DefaultTableModel;
 public class Vendas implements BaseInterfaceJava {
 
     private JFrame jFrameVendas;
-    private JLabel jLabelID, jLabelStatus, jLabelCategoria, jLabelNovo, jLabelSemiNovo, jLabelDescricao,jLabelCliente;
+    private JLabel jLabelID, jLabelStatus, jLabelCategoria, jLabelNovo, jLabelSemiNovo, jLabelDescricao, jLabelCliente;
     private JTextField jTextFieldId, jTextFieldDescricao;//jTextFieldQuantidade;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private ButtonGroup jradioButtonGroup;
-    private JButton  jButtonIncuir, jButtonFinalizar,jButtonCancelarItem, jButtonLimpar,jButtonCancelar;
+    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar;
     private DefaultTableModel dtm, dtmp;
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
     private JComboBox jComboBoxCategoriaC, jComboBoxCliente;
-    String pedido = "", busca = "";
+    String pedido = "", busca = "", impressora = "";
     int contador = 0;
     int quantidade = 0;
 
@@ -81,7 +86,9 @@ public class Vendas implements BaseInterfaceJava {
         acaoComboBoxCategoria();
         acaoCancelar();
         cancelarItem();
+        acaoAddCliente();
         acaoBotaoLimpar();
+        acaoImprimir();
         jFrameVendas.setVisible(true);
 
     }
@@ -121,6 +128,7 @@ public class Vendas implements BaseInterfaceJava {
         jFrameVendas.add(jButtonLimpar);
         jFrameVendas.add(jButtonCancelar);
         jFrameVendas.add(jButtonCancelarItem);
+        jFrameVendas.add(jButtonAddCliente);
         //adiciona a JTable's
         jFrameVendas.add(jScrollPaneBuscador);
         jFrameVendas.add(jScrollPanePedido);
@@ -148,11 +156,12 @@ public class Vendas implements BaseInterfaceJava {
         jRadioButtonNovo.setLocation(160, 40);
         //JButton's
         //jButtonSair.setLocation(680, 530);
-        jButtonCancelar.setLocation(372,207);
-        jButtonIncuir.setLocation(372,137);
+        jButtonCancelar.setLocation(372, 207);
+        jButtonIncuir.setLocation(372, 137);
         jButtonFinalizar.setLocation(680, 530);
         jButtonLimpar.setLocation(680, 32);
-        jButtonCancelarItem.setLocation(372,172);
+        jButtonCancelarItem.setLocation(372, 172);
+        jButtonAddCliente.setLocation(745, 80);
 
         //Jtable's
         jScrollPaneBuscador.setLocation(10, 110);
@@ -170,7 +179,7 @@ public class Vendas implements BaseInterfaceJava {
         jLabelNovo.setSize(100, 20);
         jLabelSemiNovo.setSize(100, 20);
         jLabelDescricao.setSize(45, 20);
-        jLabelCliente.setSize(70,20);
+        jLabelCliente.setSize(70, 20);
         //    jLabelQuantidade.setSize(70, 20);
 
         jTextFieldId.setSize(50, 20);
@@ -186,12 +195,13 @@ public class Vendas implements BaseInterfaceJava {
         jButtonLimpar.setSize(100, 35);
         jButtonCancelar.setSize(45, 35);
         jButtonCancelarItem.setSize(45, 35);
+        jButtonAddCliente.setSize(35, 20);
 
         jScrollPaneBuscador.setSize(360, 360);
         jScrollPanePedido.setSize(360, 360);
 
         jComboBoxCategoriaC.setSize(192, 20);
-        jComboBoxCliente.setSize(230, 20);
+        jComboBoxCliente.setSize(185, 20);
 
     }
 
@@ -224,6 +234,7 @@ public class Vendas implements BaseInterfaceJava {
         jButtonCancelarItem = new JButton();
         jButtonCancelarItem.setToolTipText("Cancelar item");
         jButtonLimpar.setToolTipText("Clique para Limpar os filtros de Busca");
+        jButtonAddCliente = new JButton();
 
         jTableBusca = new JTable();
         jTablePedido = new JTable();
@@ -234,20 +245,32 @@ public class Vendas implements BaseInterfaceJava {
         jComboBoxCategoriaC = new JComboBox();
         jComboBoxCliente = new JComboBox();
     }
-    private void cancelarItem(){
-      jButtonCancelarItem.addActionListener(new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-              if (jTablePedido.getSelectedRow() >= 0){
-            dtmp.removeRow(jTablePedido.getSelectedRow());
-            jTablePedido.setModel(dtmp);
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
-        }
-          }
-      });
-       /* int linnhaSeleciona = jTablePedido.getSelectedRow();
+
+    private void cancelarItem() {
+        jButtonCancelarItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jTablePedido.getSelectedRow() >= 0) {
+                    dtmp.removeRow(jTablePedido.getSelectedRow());
+                    jTablePedido.setModel(dtmp);
+                    contador = contador - 1;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
+                }
+            }
+        });
+        /* int linnhaSeleciona = jTablePedido.getSelectedRow();
        jTablePedido.remove(linnhaSeleciona);*/
+    }
+
+    private void acaoAddCliente() {
+        jButtonAddCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //new CadastroCliente().setVisible(true);
+                JOptionPane.showMessageDialog(null, impressora);
+            }
+        });
     }
 
     private void radionGroup() {
@@ -308,7 +331,6 @@ public class Vendas implements BaseInterfaceJava {
             }
         });
     }*/
-
     private void acaoJtextFieldDescricao() {
         jTextFieldDescricao.addKeyListener(new KeyListener() {
             @Override
@@ -366,17 +388,19 @@ public class Vendas implements BaseInterfaceJava {
         jButtonFinalizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               if(contador == 0){
-                JOptionPane.showMessageDialog(null, "Sem Items para realizar a Venda. ");   
-               }else{
-                acaoVender();
-                JOptionPane.showMessageDialog(null, "venda realizada com sucesso. ");
-                limparTabela();
-               }
+                if (contador == 0) {
+                    JOptionPane.showMessageDialog(null, "Sem Items para realizar a Venda. ");
+                } else {
+
+                    acaoVender();
+                    JOptionPane.showMessageDialog(null, "venda realizada com sucesso. ");
+                    limparTabela();
+                }
             }
         });
     }
-    private void limparTabela(){
+
+    private void limparTabela() {
         dtmp.setRowCount(0);
     }
 
@@ -392,13 +416,12 @@ public class Vendas implements BaseInterfaceJava {
         List<ProdutoBean> produtos = new ProdutoDao().obterProdutoBusca(dtm.getValueAt(jTableBusca.getSelectedRow(), 0).toString());
         DefaultTableModel dtmp = (DefaultTableModel) jTablePedido.getModel();
 
-        
         quantidade = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a quantidade que o cliente deseja levar", "informe a quantidade", JOptionPane.QUESTION_MESSAGE));
-        int quantidadeTabela=  Integer.parseInt(jTableBusca.getValueAt(jTableBusca.getSelectedRow(), 1).toString());
-        if (quantidadeTabela <quantidade || quantidade == 0){
-           JOptionPane.showMessageDialog(null, "O Estoque não possui a quantidade solicitada","Erro",JOptionPane.ERROR_MESSAGE);
-           jTextFieldId.requestFocus();
-           return;
+        int quantidadeTabela = Integer.parseInt(jTableBusca.getValueAt(jTableBusca.getSelectedRow(), 1).toString());
+        if (quantidadeTabela < quantidade || quantidade == 0) {
+            JOptionPane.showMessageDialog(null, "O Estoque não possui a quantidade solicitada", "Erro", JOptionPane.ERROR_MESSAGE);
+            jTextFieldId.requestFocus();
+            return;
         }
         for (ProdutoBean produto : produtos) {
             dtmp.addRow(new Object[]{contador,
@@ -407,7 +430,7 @@ public class Vendas implements BaseInterfaceJava {
                 produto.getValorUnitario(),
                 quantidade * produto.getValorUnitario()
             });
-        
+
         }
         quantidade = 0;
         contador++;
@@ -459,13 +482,12 @@ public class Vendas implements BaseInterfaceJava {
 
         jComboBoxCliente.setToolTipText("Escolha uma Opção");
         List<ClienteBean> cliente = new ClienteDao().obterNome();
-        DefaultComboBoxModel<ClienteBean> defaultComboBox = (DefaultComboBoxModel<ClienteBean>) 
-                jComboBoxCliente.getModel();
-        
+        DefaultComboBoxModel<ClienteBean> defaultComboBox = (DefaultComboBoxModel<ClienteBean>) jComboBoxCliente.getModel();
+
         for (ClienteBean clienteBean : cliente) {
             defaultComboBox.addElement(clienteBean);
         }
-        
+
     }
 
     private void acaoBotaoIncluir() {
@@ -504,10 +526,13 @@ public class Vendas implements BaseInterfaceJava {
         URL url = this.getClass().getResource("/icones/shopping_cart.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         jFrameVendas.setIconImage(imagemTitulo);
-        
+
         jButtonIncuir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/arrow_right.png")));
         jButtonCancelarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/arrow_left.png")));
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cross.png")));
+        jButtonAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png")));
+        jButtonFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/basket.png")));
+
     }
 
     private void acaoVender() {
@@ -575,14 +600,27 @@ public class Vendas implements BaseInterfaceJava {
             }
         });
     }
-    private void acaoCancelar(){
+
+    private void acaoCancelar() {
         jButtonCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 limparTabela();
                 dtm.setRowCount(0);
+                contador = 0;
             }
         });
+
+    }
+
+    private void acaoImprimir() {
+
+        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
         
+        impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
+                + "                                                                                               " + data 
+                +"\n AutoSystem"
+                +"\n------------------------------------------------------------------------------------------------------------------------------"
+                +"\nCliente : " + jComboBoxCliente.getSelectedItem().toString();
     }
 }

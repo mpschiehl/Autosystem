@@ -622,6 +622,6 @@ public class Vendas implements BaseInterfaceJava {
                 + "                                                                                               " + data 
                 +"\n AutoSystem"
                 +"\n------------------------------------------------------------------------------------------------------------------------------"
-                +"\nCliente : " + jComboBoxCliente.getSelectedItem().toString();
+                +"\nCliente : " ;
     }
 }

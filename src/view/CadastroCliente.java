@@ -348,11 +348,22 @@ public class CadastroCliente extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldEndereco.requestFocus();
             return;
-        } else if (jTextFieldCidade) {
-            
+        } else if (jTextFieldCidade.getText().length() <= 4) {
+             JOptionPane.showMessageDialog(null,
+                    "A cidade deve conter no minimo 5 caracteres", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
         }
-        
-        
+        //Numero
+        if(jTextFieldNumero.getText().isEmpty()){
+             JOptionPane.showMessageDialog(null,
+                    "A cidade deve conter no minimo 5 caracteres", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+            return;
+        }
+
     }
 
     public void mascaraCpf() {

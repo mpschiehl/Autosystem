@@ -27,16 +27,16 @@ insert into produtos(categoria, quantidade, valor, descricao, aplicacao, unidade
 
 CREATE TABLE clientes(
 
-nome VARCHAR(100),
+nome     VARCHAR(100),
 telefone VARCHAR(15),
-cpf VARCHAR(25),
-cnpj VARCHAR(25),
+cpf      VARCHAR(25),
+cnpj     VARCHAR(25),
 cep      varchar(25),
 bairro   varchar(25),
 endereco varchar(50),
 cidade   Varchar(50),
 numero   INT,
-email varchar(50)
+email    varchar(50)
 );
   insert into clientes(nome,telefone,cpf_cnpj,cep,bairro,endereco,cidade,numero,email)values
 ('Consumidor','','','','','','',0,''),

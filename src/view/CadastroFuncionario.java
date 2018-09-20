@@ -164,7 +164,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                         .addGap(33, 33, 33)
                                         .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabelCpf)
                                         .addGap(40, 40, 40))
                                     .addGroup(layout.createSequentialGroup()
@@ -191,7 +190,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                     .addComponent(jTextFieldNumero))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAdicionar)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,10 +232,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPis)
-                    .addComponent(jLabelCargo)
-                    .addComponent(jLabelEndereco))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEndereco, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelPis)
+                        .addComponent(jLabelCargo)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -374,15 +373,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             jTextFieldEmail.requestFocus();
             return;
         }
-        //VALIDACAO TELEFONE
-       /*
-         String tel = jTextFieldNumero.getText();
-         if (tel.isEmpty()) {
-         JOptionPane.showMessageDialog(null,
-         "Informe o telefone", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
-         jTextFieldTelefone.requestFocus();
-         return;
-         }*/
+
     }
 
     // mask cpf      
@@ -433,15 +424,24 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }
 
     public void salvarBanco() {
-        
-    }
-    
-    public void limparCampos(){
-    jFormattedTextFieldTelefone.setText("");
-    jFormattedTextFieldPis.setText("");
-    jFormattedTextFieldDataAdimissao.setText("");
-    jFormattedTextFieldCep.setText("");
+
     }
 
+    public void limparCampos() {
+        jFormattedTextFieldTelefone.setText("");
+        jFormattedTextFieldPis.setText("");
+        jFormattedTextFieldDataAdimissao.setText("");
+        jFormattedTextFieldCep.setText("");
+        jTextFieldCargo.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldNome.setText("");
+        jTextFieldNumero.setText("");
+        jFormattedTextFieldCpf.setText("");
+        jFormattedTextFieldSalario.setText("");
+        jFormattedTextFieldTelefone.setText("");
+    }
 
 }
+

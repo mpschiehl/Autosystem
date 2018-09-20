@@ -462,6 +462,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
+        //Descrição
         if (jTextFieldDescricao.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "A descricao deve conter no mínimo três caracteres", "Cadastro",
@@ -476,7 +477,7 @@ public class Cadastro implements BaseInterfaceJava {
             return;
 
         }
-
+         //Qantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade deve ser informada", "Cadastro",
@@ -499,6 +500,8 @@ public class Cadastro implements BaseInterfaceJava {
             jComboBoxUnidadeDeMedida.requestFocus();
             return;
         }
+        
+        //Peso
         if (jTextFieldPeso.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "O Peso deve ser Informado", "Cadastro",
@@ -513,6 +516,9 @@ public class Cadastro implements BaseInterfaceJava {
             jComboBoxLocalizacao.requestFocus();
             return;
         }
+        
+        
+        //Valor
         if (jTextFieldValor.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "Valor deve ser informado.", "Cadastro",
@@ -536,6 +542,8 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
+        
+        //Aplicação
         if (jTextAreaAplicacao.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "A Aplicacao deve ser preenchida", "Cadastro",

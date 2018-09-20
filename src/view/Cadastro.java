@@ -462,7 +462,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
-        //Descrição
+        //Descriçãom
         if (jTextFieldDescricao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "A descricao deve ser prrenchida", "Cadastro",

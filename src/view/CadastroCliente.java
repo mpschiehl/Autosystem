@@ -283,20 +283,29 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     public void validacao() {
-        if (jTextFieldNome.getText().length() < 3) {
+        //Nome
+        if (jTextFieldNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O nome deve conter no mínimo três caracteres", "Cadastro Cliente",
+                    "O nome deve ser preenchido", "Cadastro Cliente",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldNome.requestFocus();
+            return;
+        } else if (jTextFieldNome.getText().length() <= 2) {
+            JOptionPane.showMessageDialog(null,
+                    "O nome deve conter no minimo tres caracteres", "Cadastro Cliente",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldNome.requestFocus();
             return;
         }
-        if (jTextFieldEmail.getText().length() < 3) {
+        //Email
+        if (jTextFieldEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "O e-mail deve conter no mínimo três caracteres", "Cadastro Cliente",
+                    "O e-mail deve cser preenchido", "Cadastro Cliente",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldEmail.requestFocus();
             return;
         }
+
         if (jTextFieldBairro.getText().length() < 3) {
             JOptionPane.showMessageDialog(null,
                     "O bairro deve conter no mínimo três caracteres", "Cadastro Cliente",
@@ -304,6 +313,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             jTextFieldBairro.requestFocus();
             return;
         }
+
         if (jTextFieldEndereco.getText().length() < 3) {
             JOptionPane.showMessageDialog(null,
                     "O e-mail deve conter no mínimo três caracteres", "Cadastro Cliente",
@@ -393,7 +403,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cliente.setBairro(jTextFieldBairro.getText());
         cliente.setCidade(jTextFieldCidade.getText());
         cliente.setEmail(jTextFieldEmail.getText());
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

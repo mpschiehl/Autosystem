@@ -56,7 +56,7 @@ public class Vendas implements BaseInterfaceJava {
     private JTextField jTextFieldId, jTextFieldDescricao;//jTextFieldQuantidade;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private ButtonGroup jradioButtonGroup;
-    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar,jButtonSair;
+    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar, jButtonSair;
     private DefaultTableModel dtm, dtmp;
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
@@ -336,6 +336,7 @@ public class Vendas implements BaseInterfaceJava {
             }
         });
     }
+
     private void acaoJtextFieldDescricao() {
         jTextFieldDescricao.addKeyListener(new KeyListener() {
             @Override
@@ -384,11 +385,10 @@ public class Vendas implements BaseInterfaceJava {
                         produto.getValorUnitario()
                     });
                 }
-                
 
             }
         });
-        
+
     }
 
     private void acaoBotaoFinaly() {
@@ -452,9 +452,10 @@ public class Vendas implements BaseInterfaceJava {
         dtmp.addColumn("Valor Total");
         jTablePedido.setModel(dtmp);
     }
-    private void trocaTabEnter(){
-        HashSet conj = new HashSet(jFrameVendas.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
-        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+
+    private void trocaTabEnter() {
+        HashSet conj = new HashSet(jFrameVendas.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         jFrameVendas.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
@@ -499,7 +500,6 @@ public class Vendas implements BaseInterfaceJava {
         for (ClienteBean clienteBean : cliente) {
             defaultComboBox.addElement(clienteBean);
         }
-                
 
     }
 
@@ -554,7 +554,7 @@ public class Vendas implements BaseInterfaceJava {
             clienteNome = jTablePedido.getModel().getValueAt(i, 1).toString();
             quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 2).toString());
             new ProdutoDao().vender(quantidade, clienteNome);
-            
+
         }
         contador = 0;
         clienteNome = "";
@@ -628,30 +628,33 @@ public class Vendas implements BaseInterfaceJava {
     }
 
     private void acaoImprimir() {
-        
+
         impressora = "";
-         nomeDeBusca = jComboBoxCliente.getSelectedItem().toString();
-        
+        nomeDeBusca = jComboBoxCliente.getSelectedItem().toString();
+
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
-        List<ClienteBean> clientes = new ClienteDao().obterClienteNome(nomeDeBusca);
-        for (ClienteBean cliente : clientes) {
-                       cliente.getNome();
+    /*   // new ClienteDao().obterClienteNome(nomeDeBusca);
+        String cpf = ClienteDao().obterClienteNome(nomeDeBusca).get;
+        /*for (ClienteBean clienteBean : cliente) {
+            String cpf = clienteBean.getCpf();
+        }*/
+
+        /*cliente.getNome();
                        cliente.getCep();
                        cliente.getCnpj();
                        cliente.getCpf();
                        cliente.getEndereco();
-         }               
-        
+            clientes.add(cliente);*/
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
-                + "                                                                                               " + data 
-                +"\n AutoSystem"
-                +"\n------------------------------------------------------------------------------------------------------------------------------"
-                +"\nCliente : " + nomeDeBusca 
-                +"\nCPF: "
-                +"\nCNPJ"
-                +"\nEndereço:"
-                +"\n------------------------------------------------------------------------------------------------------------------------------";
-        
-        nomeDeBusca ="";
+                + "                                                                                               " + data
+                + "\n AutoSystem"
+                + "\n------------------------------------------------------------------------------------------------------------------------------"
+                + "\nCliente : " + nomeDeBusca
+                + "\nCPF: "
+                + "\nCNPJ"
+                + "\nEndereço:"
+                + "\n------------------------------------------------------------------------------------------------------------------------------";
+
+        nomeDeBusca = "";
     }
 }

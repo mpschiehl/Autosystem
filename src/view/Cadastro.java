@@ -619,12 +619,12 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JLabel  jLabelDescricao) {
+    private void gerarJLabel(String texto, JLabel  jLabel ) {
         JLabel jLabelE = new JLabel();
         jLabelE.setText(texto);
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jLabelDescricao.getX() + 5, jLabelDescricao.getY() + jLabelDescricao.getHeight() + 10);
-        jLabelE.setSize(jLabelDescricao.getWidth(), 10);
+        jLabelE.setLocation(jLabel.getX() + 5, jLabel.getY() + jLabel.getHeight() + 10);
+        jLabelE.setSize(jLabel.getWidth(), 10);
         jFrameCadastro.add(jLabelE);
         jLabels.add(jLabelE);
 

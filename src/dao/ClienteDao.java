@@ -51,7 +51,8 @@ public class ClienteDao {
     }
     public void obterClientes(){
         List<ClienteBean>clietes = new ArrayList<>();
-        //Connection conexao
+        Connection conexao = Conexao.obterConexao();
+        
    }
      /*                 
     public int inserir(ProdutoBean cliente){

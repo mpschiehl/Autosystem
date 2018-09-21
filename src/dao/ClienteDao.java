@@ -48,17 +48,20 @@ public class ClienteDao {
      return clientes;
             
        
-    }/*
-                      
+    }
+    public void obterClientes(){
+        List<ClienteBean>clietes = new ArrayList<>();
+        //Connection conexao
+   }
+     /*                 
     public int inserir(ProdutoBean cliente){
         
     }
     public int apagar(ProdutoBean cliente){
         
     }
-    public void obterClientes(){
-        
-    }
+*/
+        /*
     public void Alterar(ProdutoBean cliente){
         
     }*/

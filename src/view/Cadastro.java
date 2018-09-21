@@ -323,20 +323,22 @@ public class Cadastro implements BaseInterfaceJava {
     private void salvarBanco() {
 
         ProdutoBean produto = new ProdutoBean();
-        produto.setDescricao(jTextFieldDescricao.getText());
+        produto.setDescricao(jTextFieldDescricao.getText().trim());
         if (jRadioButtonNovo.isSelected()) {
             produto.setStatusPecas("novo");
         } else if (jRadioButtonSemiNovo.isSelected()) {
             produto.setStatusPecas("semi Novo");
         }
+        
         produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim()));
+        
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 0) {
             produto.setUnidadeDeMedida("Kit");
         } else if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 1) {
             produto.setUnidadeDeMedida("Peça");
         }
-        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText()));
-        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText()));
+        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim()));
+        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim()));
 
         switch (jComboBoxCategoria.getSelectedIndex()) {
             case 1:
@@ -414,7 +416,7 @@ public class Cadastro implements BaseInterfaceJava {
                 break;
 
         }
-        produto.setAplicacao(jTextAreaAplicacao.getText());
+        produto.setAplicacao(jTextAreaAplicacao.getText().trim());
         new ProdutoDao().inserir(produto);
     }
 

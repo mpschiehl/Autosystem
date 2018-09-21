@@ -95,7 +95,7 @@ public class Sistema implements BaseInterfaceJava {
 
     //troca o icone padrao
 
-    private void trocaIcone() {
+      private void trocaIcone() {
         URL url = this.getClass().getResource("/icones/Air-filter.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         jFrameSistema.setIconImage(imagemTitulo);

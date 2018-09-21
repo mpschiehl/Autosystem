@@ -109,9 +109,7 @@ public class Sistema implements BaseInterfaceJava {
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 
         jFrameSistema.setIconImage(imagemTitulo);                
-        jFrameSistema.setIconImage(imagemTitulo);
-        //jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
-        // jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));        
+        jFrameSistema.setIconImage(imagemTitulo);       
     }
 
     private void acaoBotaoCadastro() {

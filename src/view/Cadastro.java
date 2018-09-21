@@ -8,6 +8,7 @@ package view;
 import Interface.BaseInterfaceJava;
 import bean.ProdutoBean;
 import dao.ProdutoDao;
+import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -473,12 +474,15 @@ public class Cadastro implements BaseInterfaceJava {
                     "A descricao deve ser prrenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
+            jLabelDescricao.setForeground(Color.decode("#a82c1e"));
             return;
+            
         } else if (jTextFieldDescricao.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "A descricao deve conter no mínimo três caracteres", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
+            jLabelDescricao.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -486,6 +490,7 @@ public class Cadastro implements BaseInterfaceJava {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
+            jLabelDescricao.setForeground(Color.decode("#a82c1e"));
             return;
 
         }
@@ -495,18 +500,21 @@ public class Cadastro implements BaseInterfaceJava {
                     "Quantidade deve ser informada", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
+            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Integer.parseInt(jTextFieldQuantidade.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade não podera ser zero", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
+            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Integer.parseInt(jTextFieldQuantidade.getText()) < -1) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade não podera ser negativa", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
+            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -515,6 +523,7 @@ public class Cadastro implements BaseInterfaceJava {
                     "Unidade de Medida deve ser Preenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxUnidadeDeMedida.requestFocus();
+            jLabelUnidadeDeMedida.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -524,18 +533,21 @@ public class Cadastro implements BaseInterfaceJava {
                     "O Peso deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
+             jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldPeso.getText()) < -1) {
             JOptionPane.showMessageDialog(null,
                     "O Peso não pode ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
+            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldPeso.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "O Peso não pode ser zero", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
+            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -544,6 +556,7 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Localização deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxLocalizacao.requestFocus();
+            jLabelLocalizacao.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -553,18 +566,21 @@ public class Cadastro implements BaseInterfaceJava {
                     "Valor deve ser informado.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
+            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldValor.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "Valor não podera ser zero.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
+             jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldValor.getText()) <=-1) {
              JOptionPane.showMessageDialog(null,
                     "Valor não podera ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
+             jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -576,6 +592,7 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Categoria deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxCategoria.requestFocus();
+             jLabelCategoria.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -585,12 +602,14 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Aplicacao deve ser preenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
+             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
         }else if (jTextAreaAplicacao.getText().length()<=2) {
              JOptionPane.showMessageDialog(null,
                     "A Aplicacao deve conter no minimo três ca", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
+             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
         } 
 

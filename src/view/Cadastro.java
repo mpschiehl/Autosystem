@@ -616,7 +616,7 @@ public class Cadastro implements BaseInterfaceJava {
   jLabelErro.setForeground(Color.red);
   jLabelErro.setLocation(jTextFieldDescricao.getX()+5, jTextFieldDescricao.getY()+jTextFieldDescricao.getHeight() + 10 );
   jLabelErro.setSize(jTextFieldDescricao.getWidth(),10);
-  
+ 
   
   
   
@@ -624,6 +624,6 @@ public class Cadastro implements BaseInterfaceJava {
    
    }
  private void apagarComponentes(){
- 
+  
  }
 }

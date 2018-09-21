@@ -70,7 +70,6 @@ public class Cadastro implements BaseInterfaceJava {
         configurarJScrollPane();
         adicionarComboBoxUnidadeDeMedida();
         trocaTabEnter();
-//        salvarBanco();
         jFrameCadastro.setVisible(true);
 
     }
@@ -318,7 +317,8 @@ public class Cadastro implements BaseInterfaceJava {
             public void actionPerformed(ActionEvent e) {
                 validacao();
                 salvarBanco();
-
+            limparCampos();
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
             }
         });
 

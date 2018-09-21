@@ -27,7 +27,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         adicionarMakPis();
         adicionarMaskDataAdimissao();
         adicionarMaskTelefone();
-        buscarCEP();
+        adicionarMaskSalario();
     }
 
     /**
@@ -112,7 +112,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         jLabel1.setText("Data de Admissão");
 
-        jFormattedTextFieldSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jFormattedTextFieldSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -394,12 +394,63 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         }
         String cep = jFormattedTextFieldCep.getText();
         if (cep.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Informe o cep","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Informe o cep", "Cadastro Funcionário", JOptionPane.ERROR_MESSAGE);
             jFormattedTextFieldCep.requestFocus();
             return;
-        }else{
-            JOptionPane.showMessageDialog(null," Acesse o link abaixo para encontrar o CEP:" + "\nhttp://www.buscacep.correios.com.br/sistemas/buscacep/","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
         }
+        if (jTextFieldCidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a cidade", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCidade.requestFocus();
+            return;
+        }
+        if (jTextFieldEndereco.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o endereço", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
+            jTextFieldEndereco.requestFocus();
+        } else if (jTextFieldEndereco.getText().length() < 3) {
+            JOptionPane.showMessageDialog(null, "Informe um endereço válido");
+            return;
+        }
+        if (jTextFieldBairro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Bairro?", "Cadastro Funcionários", JOptionPane.ERROR_MESSAGE);
+            jTextFieldBairro.requestFocus();
+            return;
+        } else if (jTextFieldBairro.getText().length() < 5) {
+            JOptionPane.showMessageDialog(null, "Bairro deve conter no minimo 5 caracteres", "Cadastro Funcionario", JOptionPane.ERROR_MESSAGE);
+            jTextFieldNumero.requestFocus();
+            return;
+        }
+        if (jTextFieldNumero.getText().length() >= 1) {
+            JOptionPane.showMessageDialog(null, "Informe o numero da residencia");
+            jTextFieldNumero.requestFocus();
+            return;
+        }
+        if (jFormattedTextFieldDataAdimissao.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe a data de admissão do mesmo", "Cadastro Funcionário", JOptionPane.ERROR_MESSAGE);
+            jFormattedTextFieldDataAdimissao.requestFocus();
+            return;
+        }
+        if (jTextFieldCargo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o Cargo do supoto funcionário", "Cadastro Funcionário", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCargo.requestFocus();
+            return;
+        }
+        String salario = jFormattedTextFieldSalario.getText();
+        if(salario.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Informe o salário, nem relógio trabalha de graça","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
+        jFormattedTextFieldSalario.requestFocus();
+        return;
+        }
+        String pis = jFormattedTextFieldPis.getText();
+        if(pis.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Informe o pis","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
+            jFormattedTextFieldSalario.requestFocus();
+            return;
+        }else if(jFormattedTextFieldPis.getText().length()<11){
+            JOptionPane.showMessageDialog(null,"o numero do PIS deve conter 11 digitos","Funcionário Cadastro",JOptionPane.ERROR_MESSAGE);
+            jFormattedTextFieldPis.requestFocus();
+            return;
+        }
+
     }
 
     // mask cpf      
@@ -467,11 +518,15 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jFormattedTextFieldCpf.setText("");
         jFormattedTextFieldSalario.setText("");
         jFormattedTextFieldTelefone.setText("");
-    }
-    private void buscarCEP(){
-        
-        
-        
+
     }
 
+    public void adicionarMaskSalario() {
+        try {
+            MaskFormatter maskFormatter = new MaskFormatter("R$#,###.##");
+            maskFormatter.install(jFormattedTextFieldSalario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

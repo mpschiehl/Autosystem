@@ -605,7 +605,7 @@ public class Vendas implements BaseInterfaceJava {
         });
 
     }
-
+/*************/
     private void acaoBotaoLimpar() {
         jButtonLimpar.addActionListener(new ActionListener() {
             @Override

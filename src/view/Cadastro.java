@@ -317,8 +317,8 @@ public class Cadastro implements BaseInterfaceJava {
             public void actionPerformed(ActionEvent e) {
                 validacao();
                 salvarBanco();
-            limparCampos();
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso ");
+                limparCampos();
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso ");
             }
         });
 

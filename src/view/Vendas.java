@@ -91,7 +91,6 @@ public class Vendas implements BaseInterfaceJava {
         cancelarItem();
         acaoAddCliente();
         acaoBotaoLimpar();
-        acaoImprimir();
         trocaTabEnter();
         jFrameVendas.setVisible(true);
 
@@ -272,6 +271,7 @@ public class Vendas implements BaseInterfaceJava {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //new CadastroCliente().setVisible(true);
+                acaoImprimir();
                 busca = jComboBoxCliente.getSelectedItem().toString();
                 JOptionPane.showMessageDialog(null, impressora);
             }
@@ -628,12 +628,19 @@ public class Vendas implements BaseInterfaceJava {
     }
 
     private void acaoImprimir() {
+        impressora = "";
+        String nome = jComboBoxCliente.getSelectedItem().toString();
+        
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
         
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
                 + "                                                                                               " + data 
                 +"\n AutoSystem"
                 +"\n------------------------------------------------------------------------------------------------------------------------------"
-                +"\nCliente : " + busca ;
+                +"\nCliente : " + nome 
+                +"\nCPF:"
+                +"\nCNPJ"
+                +"\nEndereço:"
+                +"\n------------------------------------------------------------------------------------------------------------------------------";
     }
 }

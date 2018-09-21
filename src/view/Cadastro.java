@@ -476,17 +476,17 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-            gerarJLabel("Descricção deve ser preenchida", jLabelDescricao);
+            gerarJLabel("Descricção deve ser preenchida", jTextFieldDescricao);
         } else {
             try {
                 if (jTextFieldDescricao.getText().length() <= 2) {
-                    gerarJLabel("Descricao deve conter mais de tres caracteres", jLabelDescricao);
+                    gerarJLabel("Descricao deve conter mais de tres caracteres", jTextFieldDescricao);
                 }
             } catch (Exception e) {
-                    gerarJLabel("Descricao não pode conter numeros", jLabelDescricao);
+                    gerarJLabel("Descricao não pode conter numeros", jTextFieldDescricao);
             }
         }
-
+/*
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
@@ -610,7 +610,7 @@ public class Cadastro implements BaseInterfaceJava {
             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
         }
-
+*/
     }
 
     private void trocaTabEnter() {
@@ -619,12 +619,12 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JLabel  jLabel ) {
+    private void gerarJLabel(String texto, JTextField jTextFieldDescricao) {
         JLabel jLabelE = new JLabel();
         jLabelE.setText(texto);
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jLabel.getX() + 5, jLabel.getY() + jLabel.getHeight() + 10);
-        jLabelE.setSize(jLabel.getWidth(), 10);
+        jLabelE.setLocation(jTextFieldDescricao.getX() + 5, jTextFieldDescricao.getY() + jTextFieldDescricao.getHeight() + 10);
+        jLabelE.setSize(jTextFieldDescricao.getWidth(), 10);
         jFrameCadastro.add(jLabelE);
         jLabels.add(jLabelE);
 

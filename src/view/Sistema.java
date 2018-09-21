@@ -44,6 +44,7 @@ public class Sistema implements BaseInterfaceJava {
         acaoBotaoEstoque();
         acaoBotaoVenda();
         acaoBotaoSair();
+        adicionaIconeButton();
         acaoBotaoCadastroFuncionario();
         acaoBotaoCadastroCliente();
         jFrameSistema.setVisible(true);
@@ -92,14 +93,27 @@ public class Sistema implements BaseInterfaceJava {
         jButtonCadastroCliente.setSize(100, 50);
 
     }
+    private void adicionaIconeButton(){
+        jButtonVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cart.png")));
+        jButtonCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/ruby.png")));
+        jButtonEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/box.png")));
+        jButtonCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/team.png")));
+        jButtonCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/user_female.png")));
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
+    }
 
     //troca o icone padrao
 
       private void trocaIcone() {
         URL url = this.getClass().getResource("/icones/Air-filter.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+<<<<<<< HEAD
+        jFrameSistema.setIconImage(imagemTitulo);                
+=======
         jFrameSistema.setIconImage(imagemTitulo);
-        // jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
+        //jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
+        // jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));        
+>>>>>>> 37aa1b0a32687baf0fdf16a2ffb2880638ca2eb1
     }
 
     private void acaoBotaoCadastro() {

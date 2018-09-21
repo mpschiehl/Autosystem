@@ -8,9 +8,12 @@ package view;
 import Interface.BaseInterfaceJava;
 import bean.ProdutoBean;
 import dao.ProdutoDao;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.util.HashSet;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -22,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -60,6 +64,7 @@ public class Cadastro implements BaseInterfaceJava {
         acaoSair();
         configurarJScrollPane();
         adicionarComboBoxUnidadeDeMedida();
+          trocaTabEnter();
 //        salvarBanco();
         jFrameCadastro.setVisible(true);
 
@@ -589,5 +594,11 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         } 
 
+    }
+
+    private void trocaTabEnter() {
+        HashSet conj = new HashSet(jFrameCadastro.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+        jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 }

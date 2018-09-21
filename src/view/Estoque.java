@@ -8,12 +8,16 @@ package view;
 
 import bean.ProdutoBean;
 import dao.ProdutoDao;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +32,7 @@ public class Estoque extends javax.swing.JFrame {
      */
     public Estoque() {
         initComponents();
+        trocaTabEnter();
     }
 
     /**
@@ -271,6 +276,11 @@ public class Estoque extends javax.swing.JFrame {
       dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void trocaTabEnter(){
+        HashSet conj = new HashSet(jFrame1.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+        jFrame1.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+    }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
          List<ProdutoBean> produtos = new ProdutoDao().obterProdutos();
         DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();

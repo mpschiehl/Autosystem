@@ -38,10 +38,10 @@ cidade   Varchar(50),
 numero   INT,
 email    varchar(50)
 );
-  insert into clientes(nome,telefone,cpf_cnpj,cep,bairro,endereco,cidade,numero,email)values
-('Consumidor','','','','','','',0,''),
-('Guilherme','30303-3232','123.456.825-10','12345-123','Fortaleza','Rua da Goiaba','Blumenau',85,'gui@gmail.com'),
-('Francico','13131-1313','123.123.123-12','12345-123','Escola Agricola','Rua do mamão','Blumenau',69,'fracisco@gmail.com');
+  insert into clientes(nome,telefone,cpf,cnpj,cep,bairro,endereco,cidade,numero,email)values
+('Consumidor','','','','','','','',0,''),
+('Guilherme','30303-3232','123.456.825-10','','12345-123','Fortaleza','Rua da Goiaba','Blumenau',85,'gui@gmail.com'),
+('Francico','13131-1313','123.123.123-12','','12345-123','Escola Agricola','Rua do mamão','Blumenau',69,'fracisco@gmail.com');
 
 CREATE table funcionarios(
 nome VARCHAR(50),

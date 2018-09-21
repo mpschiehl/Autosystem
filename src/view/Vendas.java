@@ -12,6 +12,7 @@ import dao.ClienteDao;
 import dao.ProdutoDao;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -38,6 +40,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 
@@ -58,7 +61,7 @@ public class Vendas implements BaseInterfaceJava {
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
     private JComboBox jComboBoxCategoriaC, jComboBoxCliente;
-    String pedido = "", busca = "", impressora = "";
+    String clienteNome = "", busca = "", impressora = "";
     int contador = 0;
     int quantidade = 0;
 
@@ -89,6 +92,7 @@ public class Vendas implements BaseInterfaceJava {
         acaoAddCliente();
         acaoBotaoLimpar();
         acaoImprimir();
+        trocaTabEnter();
         jFrameVendas.setVisible(true);
 
     }
@@ -268,6 +272,7 @@ public class Vendas implements BaseInterfaceJava {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //new CadastroCliente().setVisible(true);
+                busca = jComboBoxCliente.getSelectedItem().toString();
                 JOptionPane.showMessageDialog(null, impressora);
             }
         });
@@ -379,9 +384,11 @@ public class Vendas implements BaseInterfaceJava {
                         produto.getValorUnitario()
                     });
                 }
+                
 
             }
         });
+        
     }
 
     private void acaoBotaoFinaly() {
@@ -445,6 +452,11 @@ public class Vendas implements BaseInterfaceJava {
         dtmp.addColumn("Valor Total");
         jTablePedido.setModel(dtmp);
     }
+    private void trocaTabEnter(){
+        HashSet conj = new HashSet(jFrameVendas.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+        jFrameVendas.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+    }
 
     private void acaoComboBoxCategoria() {
 
@@ -487,6 +499,7 @@ public class Vendas implements BaseInterfaceJava {
         for (ClienteBean clienteBean : cliente) {
             defaultComboBox.addElement(clienteBean);
         }
+                
 
     }
 
@@ -538,13 +551,13 @@ public class Vendas implements BaseInterfaceJava {
     private void acaoVender() {
         //contador++;
         for (int i = 0; i < contador; i++) {
-            pedido = jTablePedido.getModel().getValueAt(i, 1).toString();
+            clienteNome = jTablePedido.getModel().getValueAt(i, 1).toString();
             quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 2).toString());
-            new ProdutoDao().vender(quantidade, pedido);
+            new ProdutoDao().vender(quantidade, clienteNome);
             
         }
         contador = 0;
-        pedido = "";
+        clienteNome = "";
         acaoPopularTabelaCampoVazio();
     }
 
@@ -615,13 +628,12 @@ public class Vendas implements BaseInterfaceJava {
     }
 
     private void acaoImprimir() {
-
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
         
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
                 + "                                                                                               " + data 
                 +"\n AutoSystem"
                 +"\n------------------------------------------------------------------------------------------------------------------------------"
-                +"\nCliente : " ;
+                +"\nCliente : " + busca ;
     }
 }

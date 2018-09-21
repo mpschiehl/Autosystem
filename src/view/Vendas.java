@@ -634,6 +634,13 @@ public class Vendas implements BaseInterfaceJava {
         
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
         List<ClienteBean> clientes = new ClienteDao().obterClienteNome(nomeDeBusca);
+        for (ClienteBean cliente : clientes) {
+                       cliente.getNome();
+                       cliente.getCep();
+                       cliente.getCnpj();
+                       cliente.getCpf();
+                       cliente.getEndereco();
+         }               
         
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
                 + "                                                                                               " + data 

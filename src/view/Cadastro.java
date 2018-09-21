@@ -476,14 +476,14 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-            gerarJLabel("Descricção deve ser preenchida", jTextFieldDescricao);
+            gerarJLabel("Descricção deve ser preenchida", jLabelDescricao);
         } else {
             try {
                 if (jTextFieldDescricao.getText().length() <= 2) {
-                    gerarJLabel("Descricao deve conter mais de tres caracteres", jTextFieldDescricao);
+                    gerarJLabel("Descricao deve conter mais de tres caracteres", jLabelDescricao);
                 }
             } catch (Exception e) {
-                    gerarJLabel("Descricao não pode conter numeros", jTextFieldDescricao);
+                    gerarJLabel("Descricao não pode conter numeros", jLabelDescricao);
             }
         }
 
@@ -619,14 +619,14 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JTextField jTextFieldDescricao) {
-        JLabel jLabel = new JLabel();
-        jLabel.setText(texto);
-        jLabel.setForeground(Color.red);
-        jLabel.setLocation(jTextField.getX() + 5, jTextField.getY() + jTextField.getHeight() + 10);
-        jLabel.setSize(jTextField.getWidth(), 10);
-        jFrameCadastro.add(jLabel);
-        jLabels.add(jLabel);
+    private void gerarJLabel(String texto, JLabel  jLabelDescricao) {
+        JLabel jLabelE = new JLabel();
+        jLabelE.setText(texto);
+        jLabelE.setForeground(Color.red);
+        jLabelE.setLocation(jLabelDescricao.getX() + 5, jLabelDescricao.getY() + jLabelDescricao.getHeight() + 10);
+        jLabelE.setSize(jLabelDescricao.getWidth(), 10);
+        jFrameCadastro.add(jLabelE);
+        jLabels.add(jLabelE);
 
     }
 

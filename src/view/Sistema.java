@@ -99,7 +99,7 @@ public class Sistema implements BaseInterfaceJava {
         URL url = this.getClass().getResource("/icones/Air-filter.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         jFrameSistema.setIconImage(imagemTitulo);
-        // jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
+        //jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
     }
 
     private void acaoBotaoCadastro() {

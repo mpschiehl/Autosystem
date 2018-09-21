@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -28,6 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.border.Border;
 
 /**
  *
@@ -470,23 +472,9 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
-        //Descriçãom
-        if (jTextFieldDescricao.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "A descricao deve ser prrenchida", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            jLabelDescricao.setForeground(Color.decode("#a82c1e"));
-            return;
-            
-        } else if (jTextFieldDescricao.getText().length() <= 2) {
-            JOptionPane.showMessageDialog(null,
-                    "A descricao deve conter no mínimo três caracteres", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            jLabelDescricao.setForeground(Color.decode("#a82c1e"));
-            return;
-        }
+        //Descrição
+        
+       
 
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
@@ -622,4 +610,20 @@ public class Cadastro implements BaseInterfaceJava {
         conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
+   private void gerarJLabel(String texto,JTextField jTextFieldDescricao ){ 
+  JLabel jLabelErro = new JLabel();
+  jLabelErro.setText(texto);
+  jLabelErro.setForeground(Color.red);
+  jLabelErro.setLocation(jTextFieldDescricao.getX()+5, jTextFieldDescricao.getY()+jTextFieldDescricao.getHeight() + 10 );
+  jLabelErro.setSize(jTextFieldDescricao.getWidth(),10);
+ 
+  
+  
+  
+  
+   
+   }
+ private void apagarComponentes(){
+  
+ }
 }

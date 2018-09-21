@@ -49,10 +49,36 @@ public class ClienteDao {
             
        
     }
-    public void obterClientes(){
-        List<ClienteBean>clietes = new ArrayList<>();
+    public List<ClienteBean> obterClienteNome(String nome){
+        List<ClienteBean>clientes = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
-        
+        if (conexao != null) {
+            String sql = "SELECT * FROM clientes WHERE nome = '" + nome +"';";
+            try {
+                Statement statement = conexao.createStatement();
+                statement.execute(sql);
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    ClienteBean cliente = new ClienteBean();
+                    cliente.setNome(resultSet.getString("nome"));
+                    cliente.setTelefone(resultSet.getString("telefone"));
+                    cliente.setCpf(resultSet.getString("cpf"));
+                    cliente.setCnpj(resultSet.getString("cnpj"));
+                    cliente.setCep(resultSet.getString("cep"));
+                    cliente.setBairro(resultSet.getString("bairro"));
+                    cliente.setEndereco(resultSet.getString("endereco"));
+                    cliente.setCidade(resultSet.getString("cidade"));
+                    cliente.setNumero(resultSet.getInt("numero"));
+                    cliente.setEmail(resultSet.getString("email"));
+                    clientes.add(cliente);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                Conexao.fecharConexao();
+            }
+        }
+        return clientes;
    }
      /*                 
     public int inserir(ProdutoBean cliente){

@@ -56,12 +56,12 @@ public class Vendas implements BaseInterfaceJava {
     private JTextField jTextFieldId, jTextFieldDescricao;//jTextFieldQuantidade;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private ButtonGroup jradioButtonGroup;
-    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar;
+    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar,jButtonSair;
     private DefaultTableModel dtm, dtmp;
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
     private JComboBox jComboBoxCategoriaC, jComboBoxCliente;
-    String clienteNome = "", busca = "", impressora = "";
+    String clienteNome = "", busca = "", impressora = "", nomeDeBusca = "";
     int contador = 0;
     int quantidade = 0;
 
@@ -73,7 +73,7 @@ public class Vendas implements BaseInterfaceJava {
         gerarLocalizacoes();
         gerarDimensoes();
         radionGroup();
-        //acaobotaoSair();
+        acaobotaoSair();
         configuarJTableBusca();
         configurarJTablePedido();
         comboBoxConfigura();
@@ -125,7 +125,7 @@ public class Vendas implements BaseInterfaceJava {
         jFrameVendas.add(jRadioButtonNovo);
         jFrameVendas.add(jRadioButtonSemiNovo);
         //JButton's
-        //jFrameVendas.add(jButtonSair);
+        jFrameVendas.add(jButtonSair);
         jFrameVendas.add(jButtonIncuir);
         jFrameVendas.add(jButtonFinalizar);
         jFrameVendas.add(jButtonLimpar);
@@ -158,10 +158,10 @@ public class Vendas implements BaseInterfaceJava {
         jRadioButtonSemiNovo.setLocation(160, 10);
         jRadioButtonNovo.setLocation(160, 40);
         //JButton's
-        //jButtonSair.setLocation(680, 530);
+        jButtonSair.setLocation(680, 530);
         jButtonCancelar.setLocation(372, 207);
         jButtonIncuir.setLocation(372, 137);
-        jButtonFinalizar.setLocation(680, 530);
+        jButtonFinalizar.setLocation(680, 480);
         jButtonLimpar.setLocation(680, 32);
         jButtonCancelarItem.setLocation(372, 172);
         jButtonAddCliente.setLocation(745, 80);
@@ -192,7 +192,7 @@ public class Vendas implements BaseInterfaceJava {
         jRadioButtonNovo.setSize(20, 20);
         jRadioButtonSemiNovo.setSize(20, 20);
 
-        //jButtonSair.setSize(100, 35);
+        jButtonSair.setSize(100, 35);
         jButtonIncuir.setSize(45, 35);
         jButtonFinalizar.setSize(100, 35);
         jButtonLimpar.setSize(100, 35);
@@ -227,7 +227,7 @@ public class Vendas implements BaseInterfaceJava {
         jRadioButtonNovo = new JRadioButton();
         jRadioButtonSemiNovo = new JRadioButton();
 
-        //jButtonSair = new JButton("Sair");
+        jButtonSair = new JButton("Sair");
         jButtonIncuir = new JButton();
         jButtonIncuir.setToolTipText("Incluir");
         jButtonFinalizar = new JButton("Finalizar");
@@ -327,7 +327,7 @@ public class Vendas implements BaseInterfaceJava {
         //  jLabelQuantidade.setForeground(Color.black);
     }
 
-    /*private void acaobotaoSair() {
+    private void acaobotaoSair() {
         jButtonSair.addActionListener(new ActionListener() {
 
             @Override
@@ -335,7 +335,7 @@ public class Vendas implements BaseInterfaceJava {
                 jFrameVendas.dispose();
             }
         });
-    }*/
+    }
     private void acaoJtextFieldDescricao() {
         jTextFieldDescricao.addKeyListener(new KeyListener() {
             @Override
@@ -545,7 +545,7 @@ public class Vendas implements BaseInterfaceJava {
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cross.png")));
         jButtonAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png")));
         jButtonFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/basket.png")));
-
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
     }
 
     private void acaoVender() {
@@ -628,19 +628,23 @@ public class Vendas implements BaseInterfaceJava {
     }
 
     private void acaoImprimir() {
+        
         impressora = "";
-        String nome = jComboBoxCliente.getSelectedItem().toString();
+         nomeDeBusca = jComboBoxCliente.getSelectedItem().toString();
         
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
+        List<ClienteBean> clientes = new ClienteDao().obterClienteNome(nomeDeBusca);
         
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
                 + "                                                                                               " + data 
                 +"\n AutoSystem"
                 +"\n------------------------------------------------------------------------------------------------------------------------------"
-                +"\nCliente : " + nome 
+                +"\nCliente : " + nomeDeBusca 
                 +"\nCPF:"
                 +"\nCNPJ"
                 +"\nEndereço:"
                 +"\n------------------------------------------------------------------------------------------------------------------------------";
+        
+        nomeDeBusca ="";
     }
 }

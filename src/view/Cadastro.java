@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -44,7 +45,7 @@ public class Cadastro implements BaseInterfaceJava {
     private JLabel jLabelQuantidade, jLabelValor, jLabelDescricao, jLabelAplicacao,
             jLabelUnidadeDeMedida, jLabelLocalizacao, jLabelStatusPeca, jLabelPeso,
             jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo;
-    private JTextField jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
+    private JTextField jTextField, jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
             jTextFieldPeso;
     private JButton jButtonSair, jButtonLimpar, jButtonAdicionar;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
@@ -52,6 +53,7 @@ public class Cadastro implements BaseInterfaceJava {
     private JTextArea jTextAreaAplicacao;
     private JScrollPane jScrollPaneAplicacao;
     private ButtonGroup buttonGroup;
+    private ArrayList<JLabel> jLabels = new ArrayList<>();
 
     public Cadastro() {
         instanciarComponentes();
@@ -67,7 +69,7 @@ public class Cadastro implements BaseInterfaceJava {
         acaoSair();
         configurarJScrollPane();
         adicionarComboBoxUnidadeDeMedida();
-          trocaTabEnter();
+        trocaTabEnter();
 //        salvarBanco();
         jFrameCadastro.setVisible(true);
 
@@ -331,9 +333,9 @@ public class Cadastro implements BaseInterfaceJava {
         } else if (jRadioButtonSemiNovo.isSelected()) {
             produto.setStatusPecas("semi Novo");
         }
-        
+
         produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim()));
-        
+
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 0) {
             produto.setUnidadeDeMedida("Kit");
         } else if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 1) {
@@ -473,8 +475,17 @@ public class Cadastro implements BaseInterfaceJava {
 
     private void validacao() {
         //Descrição
-        
-       
+        if (jTextFieldDescricao.getText().equals("")) {
+            gerarJLabel("Descricção deve ser preenchida", jTextFieldDescricao);
+        } else {
+            try {
+                if (jTextFieldDescricao.getText().length() <= 2) {
+                    gerarJLabel("Descricao deve conter mais de tres caracteres", jTextFieldDescricao);
+                }
+            } catch (Exception e) {
+                    gerarJLabel("Descricao não pode conter numeros", jTextFieldDescricao);
+            }
+        }
 
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
@@ -523,7 +534,7 @@ public class Cadastro implements BaseInterfaceJava {
                     "O Peso deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
-             jLabelPeso.setForeground(Color.decode("#a82c1e"));
+            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldPeso.getText()) < -1) {
             JOptionPane.showMessageDialog(null,
@@ -563,26 +574,23 @@ public class Cadastro implements BaseInterfaceJava {
                     "Valor não podera ser zero.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
-             jLabelValor.setForeground(Color.decode("#a82c1e"));
+            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
-        } else if (Float.parseFloat(jTextFieldValor.getText()) <=-1) {
-             JOptionPane.showMessageDialog(null,
+        } else if (Float.parseFloat(jTextFieldValor.getText()) <= -1) {
+            JOptionPane.showMessageDialog(null,
                     "Valor não podera ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
-             jLabelValor.setForeground(Color.decode("#a82c1e"));
+            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
-  
-
-       
         if (jComboBoxCategoria.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "A Categoria deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxCategoria.requestFocus();
-             jLabelCategoria.setForeground(Color.decode("#a82c1e"));
+            jLabelCategoria.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -592,38 +600,37 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Aplicacao deve ser preenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
-             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
+            jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
-        }else if (jTextAreaAplicacao.getText().length()<=2) {
-             JOptionPane.showMessageDialog(null,
+        } else if (jTextAreaAplicacao.getText().length() <= 2) {
+            JOptionPane.showMessageDialog(null,
                     "A Aplicacao deve conter no minimo três ca", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldDescricao.requestFocus();
-             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
+            jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
-        } 
+        }
 
     }
 
     private void trocaTabEnter() {
-        HashSet conj = new HashSet(jFrameCadastro.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
-        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+        HashSet conj = new HashSet(jFrameCadastro.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
-   private void gerarJLabel(String texto,JTextField jTextFieldDescricao ){ 
-  JLabel jLabelErro = new JLabel();
-  jLabelErro.setText(texto);
-  jLabelErro.setForeground(Color.red);
-  jLabelErro.setLocation(jTextFieldDescricao.getX()+5, jTextFieldDescricao.getY()+jTextFieldDescricao.getHeight() + 10 );
-  jLabelErro.setSize(jTextFieldDescricao.getWidth(),10);
- 
-  
-  
-  
-  
-   
-   }
- private void apagarComponentes(){
-  
- }
+
+    private void gerarJLabel(String texto, JTextField jTextFieldDescricao) {
+        JLabel jLabel = new JLabel();
+        jLabel.setText(texto);
+        jLabel.setForeground(Color.red);
+        jLabel.setLocation(jTextField.getX() + 5, jTextField.getY() + jTextField.getHeight() + 10);
+        jLabel.setSize(jTextField.getWidth(), 10);
+        jFrameCadastro.add(jLabel);
+        jLabels.add(jLabel);
+
+    }
+
+    private void apagarComponentes() {
+
+    }
 }

@@ -94,7 +94,12 @@ public class Sistema implements BaseInterfaceJava {
 
     }
     private void adicionaIconeButton(){
-        jButtonVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/arrow_right.png")));
+        jButtonVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cart.png")));
+        jButtonCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/ruby.png")));
+        jButtonEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/box.png")));
+        jButtonCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/team.png")));
+        jButtonCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/user_female.png")));
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
     }
 
     //troca o icone padrao
@@ -102,6 +107,8 @@ public class Sistema implements BaseInterfaceJava {
       private void trocaIcone() {
         URL url = this.getClass().getResource("/icones/Air-filter.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+
+        jFrameSistema.setIconImage(imagemTitulo);                
         jFrameSistema.setIconImage(imagemTitulo);
         //jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));
         // jButtonCadastro.setIcon(new ImageIcon("/icones/add_item.png"));        

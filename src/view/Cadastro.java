@@ -44,9 +44,9 @@ public class Cadastro implements BaseInterfaceJava {
     private JFrame jFrameCadastro;
     private JLabel jLabelQuantidade, jLabelValor, jLabelDescricao, jLabelAplicacao,
             jLabelUnidadeDeMedida, jLabelLocalizacao, jLabelStatusPeca, jLabelPeso,
-            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo;
+            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo, jLabelCodigo;
     private JTextField jTextField, jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
-            jTextFieldPeso;
+            jTextFieldPeso, jTextFiedCodigo;
     private JButton jButtonSair, jButtonLimpar, jButtonAdicionar;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private JComboBox jComboBoxLocalizacao, jComboBoxCategoria, jComboBoxUnidadeDeMedida;
@@ -96,7 +96,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jLabelAplicacao);
         jFrameCadastro.add(jLabelUnidadeDeMedida);
         jFrameCadastro.add(jLabelLocalizacao);
-
+//jFrameCadastro.add(jLabelCodigo);
         jFrameCadastro.add(jLabelStatusPeca);
         jFrameCadastro.add(jLabelPeso);
         jFrameCadastro.add(jLabelCategoria);
@@ -108,7 +108,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jTextFieldQuantidade);
         jFrameCadastro.add(jTextFieldValor);
         jFrameCadastro.add(jTextFieldDescricao);
-
+//jFrameCadastro.add(jTextFiedCodigo);
         jFrameCadastro.add(jTextFieldPeso);
 
         //JButton's

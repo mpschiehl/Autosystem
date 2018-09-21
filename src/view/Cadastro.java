@@ -44,9 +44,9 @@ public class Cadastro implements BaseInterfaceJava {
     private JFrame jFrameCadastro;
     private JLabel jLabelQuantidade, jLabelValor, jLabelDescricao, jLabelAplicacao,
             jLabelUnidadeDeMedida, jLabelLocalizacao, jLabelStatusPeca, jLabelPeso,
-            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo;
+            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo, jLabelCodigo;
     private JTextField jTextField, jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
-            jTextFieldPeso;
+            jTextFieldPeso, jTextFiedCodigo;
     private JButton jButtonSair, jButtonLimpar, jButtonAdicionar;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private JComboBox jComboBoxLocalizacao, jComboBoxCategoria, jComboBoxUnidadeDeMedida;
@@ -96,7 +96,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jLabelAplicacao);
         jFrameCadastro.add(jLabelUnidadeDeMedida);
         jFrameCadastro.add(jLabelLocalizacao);
-
+//jFrameCadastro.add(jLabelCodigo);
         jFrameCadastro.add(jLabelStatusPeca);
         jFrameCadastro.add(jLabelPeso);
         jFrameCadastro.add(jLabelCategoria);
@@ -108,7 +108,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jTextFieldQuantidade);
         jFrameCadastro.add(jTextFieldValor);
         jFrameCadastro.add(jTextFieldDescricao);
-
+//jFrameCadastro.add(jTextFiedCodigo);
         jFrameCadastro.add(jTextFieldPeso);
 
         //JButton's
@@ -317,8 +317,8 @@ public class Cadastro implements BaseInterfaceJava {
             public void actionPerformed(ActionEvent e) {
                 validacao();
                 salvarBanco();
-            limparCampos();
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso ");
+                limparCampos();
+                JOptionPane.showMessageDialog(null, "Salvo com sucesso ");
             }
         });
 
@@ -486,7 +486,7 @@ public class Cadastro implements BaseInterfaceJava {
                     gerarJLabel("Descricao não pode conter numeros", jTextFieldDescricao);
             }
         }
-
+/*
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
@@ -610,7 +610,7 @@ public class Cadastro implements BaseInterfaceJava {
             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
         }
-
+*/
     }
 
     private void trocaTabEnter() {
@@ -620,13 +620,13 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void gerarJLabel(String texto, JTextField jTextFieldDescricao) {
-        JLabel jLabel = new JLabel();
-        jLabel.setText(texto);
-        jLabel.setForeground(Color.red);
-        jLabel.setLocation(jTextField.getX() + 5, jTextField.getY() + jTextField.getHeight() + 10);
-        jLabel.setSize(jTextField.getWidth(), 10);
-        jFrameCadastro.add(jLabel);
-        jLabels.add(jLabel);
+        JLabel jLabelE = new JLabel();
+        jLabelE.setText(texto);
+        jLabelE.setForeground(Color.red);
+        jLabelE.setLocation(jTextFieldDescricao.getX() + 5, jTextFieldDescricao.getY() + jTextFieldDescricao.getHeight() + 10);
+        jLabelE.setSize(jTextFieldDescricao.getWidth(), 10);
+        jFrameCadastro.add(jLabelE);
+        jLabels.add(jLabelE);
 
     }
 

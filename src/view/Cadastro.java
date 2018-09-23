@@ -486,7 +486,7 @@ public class Cadastro implements BaseInterfaceJava {
                     gerarJLabel("Descricao não pode conter numeros", jTextFieldDescricao);
             }
         }
-/*
+
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
@@ -610,7 +610,7 @@ public class Cadastro implements BaseInterfaceJava {
             jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
             return;
         }
-*/
+
     }
 
     private void trocaTabEnter() {

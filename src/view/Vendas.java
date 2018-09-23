@@ -20,6 +20,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -41,6 +43,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.KeyStroke;
+import servicePrint.Impressora;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 
@@ -61,9 +64,10 @@ public class Vendas implements BaseInterfaceJava {
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
     private JComboBox jComboBoxCategoriaC, jComboBoxCliente;
-    String clienteNome = "", busca = "", impressora = "", nomeDeBusca = "";
+    String descricao = "", busca = "", impressora = "", nomeDeBusca = "";
     int contador = 0;
     int quantidade = 0;
+    Float totalizador = 0f;
 
     public Vendas() {
         instanciarComponentes();
@@ -219,7 +223,7 @@ public class Vendas implements BaseInterfaceJava {
         jLabelCliente = new JLabel("Cliente");
 
         jTextFieldId = new JTextField();
-        jTextFieldId.setToolTipText("Digite o Codigo e presione a Tecla enter de seu teclado");
+        jTextFieldId.setToolTipText("Digite o Codigo e presione a Tecla F12 de seu teclado");
         jTextFieldDescricao = new JTextField();
         jTextFieldDescricao.setToolTipText("Informe o nome para pesquisa");
         //    jTextFieldQuantidade = new JTextField();
@@ -254,9 +258,13 @@ public class Vendas implements BaseInterfaceJava {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (jTablePedido.getSelectedRow() >= 0) {
+                    int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Cancelar a venda deste  Item?"
+                        + "\nSe você tem Certeza clique em 'Sim', caso contrario clique em 'Não'", "Aviso", JOptionPane.ERROR_MESSAGE);
+                if (resposta == 0) {
                     dtmp.removeRow(jTablePedido.getSelectedRow());
                     jTablePedido.setModel(dtmp);
                     contador = contador - 1;
+                }
                 } else {
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
                 }
@@ -371,7 +379,36 @@ public class Vendas implements BaseInterfaceJava {
     }
 
     private void acaoJtextFieldId() {
-        jTextFieldId.addActionListener(new ActionListener() {
+        jTextFieldId.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+               
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                switch (ke.getKeyCode()) {
+                    case KeyEvent.VK_F12:
+                    List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldId.getText().trim()));
+                DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
+                dtm.setRowCount(0);
+                for (ProdutoBean produto : produtos) {
+                    dtm.addRow(new Object[]{
+                        produto.getDescricao(),
+                        produto.getQuantidade(),
+                        produto.getValorUnitario()
+                    });
+                }
+                break;    
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent ke) {
+           
+            }
+        });
+        /*jTextFieldId.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldId.getText().trim()));
@@ -387,9 +424,8 @@ public class Vendas implements BaseInterfaceJava {
                 }
 
             }
-        });
-
-    }
+        });*/
+     }
 
     private void acaoBotaoFinaly() {
         jButtonFinalizar.addActionListener(new ActionListener() {
@@ -431,7 +467,7 @@ public class Vendas implements BaseInterfaceJava {
             return;
         }
         for (ProdutoBean produto : produtos) {
-            dtmp.addRow(new Object[]{contador,
+            dtmp.addRow(new Object[]{
                 produto.getDescricao(),
                 quantidade,
                 produto.getValorUnitario(),
@@ -445,7 +481,6 @@ public class Vendas implements BaseInterfaceJava {
 
     private void configurarJTablePedido() {
         dtmp = new DefaultTableModel();
-        dtmp.addColumn("Item");
         dtmp.addColumn("Descrição");
         dtmp.addColumn("Quantidade");
         dtmp.addColumn("Valor unitario");
@@ -457,6 +492,8 @@ public class Vendas implements BaseInterfaceJava {
         HashSet conj = new HashSet(jFrameVendas.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         jFrameVendas.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
+           
+       
     }
 
     private void acaoComboBoxCategoria() {
@@ -551,13 +588,13 @@ public class Vendas implements BaseInterfaceJava {
     private void acaoVender() {
         //contador++;
         for (int i = 0; i < contador; i++) {
-            clienteNome = jTablePedido.getModel().getValueAt(i, 1).toString();
-            quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 2).toString());
-            new ProdutoDao().vender(quantidade, clienteNome);
+            descricao = jTablePedido.getModel().getValueAt(i, 0).toString();
+            quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
+            new ProdutoDao().vender(quantidade, descricao);
 
         }
         contador = 0;
-        clienteNome = "";
+        descricao = "";
         acaoPopularTabelaCampoVazio();
     }
 
@@ -619,9 +656,18 @@ public class Vendas implements BaseInterfaceJava {
         jButtonCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+             if(contador==0){
+                 JOptionPane.showMessageDialog(null, "Não existe produtos para cancelar");
+              return;  
+            }
+                int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Cancelar?"
+                        + "\nSe você tem Certeza clique em 'Sim', caso contrario clique em 'Não'", "Aviso", JOptionPane.ERROR_MESSAGE);
+                if (resposta == 0) {
                 limparTabela();
                 dtm.setRowCount(0);
-                contador = 0;
+                contador = 0;    
+                }
+                
             }
         });
 
@@ -633,28 +679,49 @@ public class Vendas implements BaseInterfaceJava {
         nomeDeBusca = jComboBoxCliente.getSelectedItem().toString();
 
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
-    /*   // new ClienteDao().obterClienteNome(nomeDeBusca);
-        String cpf = ClienteDao().obterClienteNome(nomeDeBusca).get;
-        /*for (ClienteBean clienteBean : cliente) {
-            String cpf = clienteBean.getCpf();
-        }*/
-
-        /*cliente.getNome();
-                       cliente.getCep();
-                       cliente.getCnpj();
-                       cliente.getCpf();
-                       cliente.getEndereco();
-            clientes.add(cliente);*/
+        String cpf ="",cnpj="", endereco="";
+        List<ClienteBean> usuario =  new ClienteDao().obterClienteNome(nomeDeBusca);
+            for (ClienteBean clienteBean : usuario) {
+            cpf = clienteBean.getCpf();
+            cnpj= clienteBean.getCnpj();
+            endereco = clienteBean.getEndereco();
+        }
         impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
                 + "                                                                                               " + data
                 + "\n AutoSystem"
                 + "\n------------------------------------------------------------------------------------------------------------------------------"
                 + "\nCliente : " + nomeDeBusca
-                + "\nCPF: "
-                + "\nCNPJ"
-                + "\nEndereço:"
+                + "\nCPF: "+cpf
+                + "\nCNPJ"+cnpj
+                + "\nEndereço:"+endereco
                 + "\n------------------------------------------------------------------------------------------------------------------------------";
+                for (int i = 0; i < contador; i++) {
+            
+                quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
+                descricao = jTablePedido.getModel().getValueAt(i, 0).toString();
+                Float unitario = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 2).toString());
+                Float total = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
+                
+                impressora = impressora + "\n"+ quantidade + "  X  "+ unitario +"  " +descricao + "   R$ "  +total;
+                totalizador = totalizador+ total;
 
+        }
+                impressora = impressora + "\n------------------------------------------------------------------------------------------------------------------------------\n"
+                                        + "                                                                                     Total: R$ "+totalizador;
+                
         nomeDeBusca = "";
+        //new Impressora().imprimir(impressora);
+        FileOutputStream fos = null;
+        PrintStream ps = null;
+        try {
+            fos = new FileOutputStream("LPT1:");
+        } catch (Exception ex) {
+        }
+        try {
+            ps = new PrintStream(fos);
+        } catch (Exception exception) {
+        }
+        ps.print(impressora);
+
     }
 }

@@ -11,6 +11,7 @@ import bean.ProdutoBean;
 import dao.ClienteDao;
 import dao.ProdutoDao;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -20,9 +21,14 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -278,10 +284,9 @@ public class Vendas implements BaseInterfaceJava {
         jButtonAddCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //new CadastroCliente().setVisible(true);
-                acaoImprimir();
-                busca = jComboBoxCliente.getSelectedItem().toString();
-                JOptionPane.showMessageDialog(null, impressora);
+                new CadastroCliente().setVisible(true);
+                
+                
             }
         });
     }
@@ -434,10 +439,11 @@ public class Vendas implements BaseInterfaceJava {
                 if (contador == 0) {
                     JOptionPane.showMessageDialog(null, "Sem Items para realizar a Venda. ");
                 } else {
-
-                    acaoVender();
-                    JOptionPane.showMessageDialog(null, "venda realizada com sucesso. ");
-                    limparTabela();
+                        acaoImprimir();
+                        busca = jComboBoxCliente.getSelectedItem().toString();
+                       acaoVender();
+                        limparTabela();
+                    
                 }
             }
         });
@@ -686,15 +692,15 @@ public class Vendas implements BaseInterfaceJava {
             cnpj= clienteBean.getCnpj();
             endereco = clienteBean.getEndereco();
         }
-        impressora = impressora + "------------------------------------------------------------------------------------------------------------------------------\n"
+        impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\r\n"
                 + "                                                                                               " + data
-                + "\n AutoSystem"
-                + "\n------------------------------------------------------------------------------------------------------------------------------"
-                + "\nCliente : " + nomeDeBusca
-                + "\nCPF: "+cpf
-                + "\nCNPJ"+cnpj
-                + "\nEndereço:"+endereco
-                + "\n------------------------------------------------------------------------------------------------------------------------------";
+                + "\r\n AutoSystem"
+                + "\r\n------------------------------------------------------------------------------------------------------------------------------"
+                + "\r\nCliente : " + nomeDeBusca
+                + "\r\nCPF: "+cpf
+                + "\r\nCNPJ"+cnpj
+                + "\r\nEndereço:"+endereco
+                + "\r\n------------------------------------------------------------------------------------------------------------------------------";
                 for (int i = 0; i < contador; i++) {
             
                 quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
@@ -702,26 +708,30 @@ public class Vendas implements BaseInterfaceJava {
                 Float unitario = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 2).toString());
                 Float total = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
                 
-                impressora = impressora + "\n"+ quantidade + "  X  "+ unitario +"  " +descricao + "   R$ "  +total;
+                impressora = impressora + "\r\n"+ quantidade + "  X  "+ unitario +"  " +descricao + "   R$ "  +total;
                 totalizador = totalizador+ total;
 
         }
-                impressora = impressora + "\n------------------------------------------------------------------------------------------------------------------------------\n"
+                impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\n"
                                         + "                                                                                     Total: R$ "+totalizador;
                 
         nomeDeBusca = "";
-        //new Impressora().imprimir(impressora);
-        FileOutputStream fos = null;
-        PrintStream ps = null;
-        try {
-            fos = new FileOutputStream("LPT1:");
-        } catch (Exception ex) {
+        String caminhoArquivo ="C:/autosystem/data.txt";
+        Path caminho = Paths.get(caminhoArquivo);
+        byte[] textoEmByte = impressora.getBytes();
+        try{
+            Files.write(caminho, textoEmByte);
+        }catch(Exception e){
+            e.printStackTrace();
         }
-        try {
-            ps = new PrintStream(fos);
-        } catch (Exception exception) {
+        Desktop desktop = Desktop.getDesktop();
+        try{
+            File arquivoAImprimir = new File(caminhoArquivo);
+            desktop.print(arquivoAImprimir);
+        }catch(IOException e){
+            e.printStackTrace();
         }
-        ps.print(impressora);
+        
 
     }
 }

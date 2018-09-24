@@ -393,16 +393,16 @@ public class Vendas implements BaseInterfaceJava {
             public void keyPressed(KeyEvent ke) {
                 switch (ke.getKeyCode()) {
                     case KeyEvent.VK_F12:
-                List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldId.getText().trim()));
+                new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldId.getText().trim()));
                 DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
                 dtm.setRowCount(0);
-                for (ProdutoBean produto : produtos){
+                        ProdutoBean produto = new ProdutoBean();
                     dtm.addRow(new Object[]{
                         produto.getDescricao(),
                         produto.getQuantidade(),
                         produto.getValorUnitario()
                     });
-                }
+                
                 break;                
                 }
             }

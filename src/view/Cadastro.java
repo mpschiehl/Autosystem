@@ -478,10 +478,15 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Precisa ser preenchido");
+            JOptionPane.showMessageDialog(null, "Precisa ser preenchido");   
+            jTextFieldDescricao.requestFocus();
+            return;
             
         }else if(jTextFieldDescricao.getText().length()<=2){
             JOptionPane.showMessageDialog(null, "precisa conter ,ais de tres caracteres");
+            jTextFieldDescricao.requestFocus();
+            return;
+            
         }
         
 

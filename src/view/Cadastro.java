@@ -56,45 +56,6 @@ public class Cadastro implements BaseInterfaceJava {
     private ButtonGroup buttonGroup;
     private ArrayList<JLabel> jLabels = new ArrayList<>();
     
-    public Cadastro(int codigoRegistro) {
-        ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
-        
-        jLabelCodigo.setText(Integer.toString(codigoRegistro));
-       jTextFieldDescricao.setText(String.valueOf(produto.getDescricao()));
-       if(produto.getStatusPecas().equals("novo")){
-           jRadioButtonNovo.setSelected(true);
-       }
-       if(produto.getStatusPecas().equals("semi-novo")){
-           jRadioButtonSemiNovo.setSelected(true);
-       }
-       jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
-       for (int i = 0; i < jComboBoxUnidadeDeMedida.getItemCount(); i++) {
-            String tipo = jComboBoxUnidadeDeMedida.getItemAt(i).toString();
-            if (tipo.equals(produto.getUnidadeDeMedida())) {
-                jComboBoxUnidadeDeMedida.setSelectedIndex(i);
-                break;
-            }
-        }
-       jTextFieldPeso.setText(String.valueOf(produto.getPeso()));
-       for (int i = 0; i < jComboBoxLocalizacao.getItemCount(); i++) {
-            String tipo = jComboBoxLocalizacao.getItemAt(i).toString();
-            if (tipo.equals(produto.getLocalizacao())) {
-                jComboBoxLocalizacao.setSelectedIndex(i);
-                break;
-            }
-        }
-       jTextFieldValor.setText(String.valueOf(produto.getValorUnitario()));
-       for (int i = 0; i < jComboBoxCategoria.getItemCount(); i++) {
-            String tipo = jComboBoxCategoria.getItemAt(i).toString();
-            if (tipo.equals(produto.getCategoria())) {
-                jComboBoxCategoria.setSelectedIndex(i);
-                break;
-            }
-        }
-       jTextAreaAplicacao.setText(String.valueOf(produto.getAplicacao()));
-      
-    }
-    
     public Cadastro() {
              
         instanciarComponentes();
@@ -386,77 +347,77 @@ public class Cadastro implements BaseInterfaceJava {
         produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim()));
 
         switch (jComboBoxCategoria.getSelectedIndex()) {
-            case 1:
+            case 0:
                 produto.setCategoria("Acessórios e acabamento");
                 break;
-            case 2:
+            case 1:
                 produto.setCategoria("Injeção e carburador");
                 break;
-            case 3:
+            case 2:
                 produto.setCategoria("Motor");
                 break;
-            case 4:
+            case 3:
                 produto.setCategoria("Polias e tensores");
-            case 5:
+            case 4:
                 produto.setCategoria("Retentor e junta");
                 break;
-            case 6:
+            case 5:
                 produto.setCategoria("Supenção e freios");
                 break;
-            case 7:
+            case 6:
                 produto.setCategoria("Correas e corrente de comando");
                 break;
         }
         switch (jComboBoxLocalizacao.getSelectedIndex()) {
-            case 1:
+            case 0:
                 produto.setLocalizacao("Acessórios");
                 break;
-            case 2:
+            case 1:
                 produto.setLocalizacao("Acessorios do Motor");
                 break;
-            case 3:
+            case 2:
                 produto.setLocalizacao("Componentes eletricos");
                 break;
-            case 4:
+            case 3:
                 produto.setLocalizacao("Correias");
                 break;
-            case 5:
+            case 4:
                 produto.setLocalizacao("Correntes de CV");
                 break;
-            case 6:
+            case 5:
                 produto.setLocalizacao("Farois");
                 break;
-            case 7:
+            case 6:
                 produto.setLocalizacao("freio");
                 break;
-            case 8:
+            case 7:
                 produto.setLocalizacao("Kits de Junta");
                 break;
-            case 9:
+            case 8:
                 produto.setLocalizacao("motor");
                 break;
-            case 10:
+            case 9:
                 produto.setLocalizacao("Parachoques");
                 break;
-            case 11:
+            case 10:
                 produto.setLocalizacao("polias");
                 break;
-            case 12:
+            case 11:
                 produto.setLocalizacao("Portas e Carrroceria(recortes)");
                 break;
-            case 13:
+            case 12:
                 produto.setLocalizacao("retentores");
                 break;
-            case 14:
+            case 13:
                 produto.setLocalizacao("Rolamentos");
                 break;
-            case 15:
+            case 14:
                 produto.setLocalizacao("suspensão");
                 break;
-            case 16:
+            case 15:
                 produto.setLocalizacao("Tensores");
                 break;
-            case 17:
+            case 16:
                 produto.setLocalizacao("vidros");
                 break;
 

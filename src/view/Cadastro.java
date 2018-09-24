@@ -635,7 +635,7 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
-        //Aplicação
+        //Aplicaçãoa
         if (jTextAreaAplicacao.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "A Aplicacao deve ser preenchida", "Cadastro",

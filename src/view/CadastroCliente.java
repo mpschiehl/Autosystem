@@ -427,7 +427,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             MaskFormatter maskFormatter = new MaskFormatter("(##)####-####");
             maskFormatter.install(jFormattedTextFieldTelefone);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Chame o prog");
+            JOptionPane.showMessageDialog(null, "Telefone precisa ser preenchido");
         }
 
     }

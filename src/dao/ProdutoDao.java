@@ -112,7 +112,9 @@ public class ProdutoDao {
                     produto.setDescricao(resultSet.getString("descricao"));
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
+                    produto.setUnidadeDeMedida(resultSet.getString("unidade_de_medida"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
+                    
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

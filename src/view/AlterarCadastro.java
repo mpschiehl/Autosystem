@@ -20,54 +20,50 @@ public class AlterarCadastro extends javax.swing.JFrame {
     public AlterarCadastro(int codigoRegistro) {
         initComponents();
 
-      ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
-        
+        ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
 
-       
-        
         //dao
-
         jLabelCodigo.setText(Integer.toString(codigoRegistro));
-       jTextFielddescricao.setText(String.valueOf(produto.getDescricao()));
-       if(produto.getStatusPecas().equals("novo")){
-           jRadioButtonNovo.setSelected(true);
-       }
-       if(produto.getStatusPecas().equals("semi-novo")){
-           jRadioButtonSeminovo.setSelected(true);
-       }
-       jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
-       for (int i = 0; i < jComboBoxUnidadeMedida.getItemCount(); i++) {
-            String tipo = jComboBoxUnidadeMedida.getItemAt(i).toString();
-            if (tipo.equals(produto.getUnidadeDeMedida())) {
+        jTextFielddescricao.setText(String.valueOf(produto.getDescricao()));
+        if (produto.getStatusPecas().equals("novo")) {
+            jRadioButtonNovo.setSelected(true);
+        }
+        if (produto.getStatusPecas().equals("semi-novo")) {
+            jRadioButtonSeminovo.setSelected(true);
+        }
+        jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
+        for (int i = 0; i < jComboBoxUnidadeMedida.getItemCount(); i++) {
+            String tipo = jComboBoxUnidadeMedida.getItemAt(i);
+            if (tipo.equalsIgnoreCase(produto.getUnidadeDeMedida())) {
                 jComboBoxUnidadeMedida.setSelectedIndex(i);
-                return;
+                
             }
         }
-       jTextFieldPeso.setText(String.valueOf(produto.getPeso()));
-       for (int i = 0; i < jComboBoxLocalizacao.getItemCount(); i++) {
-            String tipo = jComboBoxLocalizacao.getItemAt(i).toString();
-            if (tipo.equals(produto.getLocalizacao())) {
+        jTextFieldPeso.setText(String.valueOf(produto.getPeso()));
+        //jTextFieldPeso.setText(Float.toString(produto.getPeso()));
+        
+        for (int i = 0; i < jComboBoxLocalizacao.getItemCount(); i++) {
+            String tipo = jComboBoxLocalizacao.getItemAt(i);
+            if (tipo.equalsIgnoreCase(produto.getLocalizacao())) {
                 jComboBoxLocalizacao.setSelectedIndex(i);
-                return;
+                
             }
         }
-       jTextFieldValor.setText(String.valueOf(produto.getValorUnitario()));
-       for (int i = 0; i < jComboBoxCategoria.getItemCount(); i++) {
-            String tipo = jComboBoxCategoria.getItemAt(i).toString();
-            if (tipo.equals(produto.getCategoria())) {
+        jTextFieldValor.setText(String.valueOf(produto.getValorUnitario()));
+        for (int i = 0; i < jComboBoxCategoria.getItemCount(); i++) {
+            String tipo = jComboBoxCategoria.getItemAt(i);
+            if (tipo.equalsIgnoreCase(produto.getCategoria())) {
                 jComboBoxCategoria.setSelectedIndex(i);
-                return;
+                
             }
         }
-       jTextAreaAplicacao.setText(String.valueOf(produto.getAplicacao()));
-      
+        jTextAreaAplicacao.setText(String.valueOf(produto.getAplicacao()));
+
     }
 
     public AlterarCadastro() {
         initComponents();
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,8 +122,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
 
         jButton3.setText("jButton3");
 
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acessórios e acabamento", "Injeção e carburador", "Motor", "Polias e tensores", "Retentor e junta", "Supenção e freios", "Correas e corrente de comando", "   ", " ", " ", " " }));
-        jComboBoxCategoria.setSelectedIndex(-1);
+        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acessórios e acabamento", "Injeção e carburador", "Motor", "Polias e tensores", "Retentor e junta", "Supenção e freios", "Correas e corrente de comando", "", "", "", "" }));
 
         jLabel1.setText("Produto");
 

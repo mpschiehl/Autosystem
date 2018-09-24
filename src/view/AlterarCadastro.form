@@ -250,13 +250,12 @@
             <StringItem index="4" value="Retentor e junta"/>
             <StringItem index="5" value="Supen&#xe7;&#xe3;o e freios"/>
             <StringItem index="6" value="Correas e corrente de comando"/>
-            <StringItem index="7" value="   "/>
-            <StringItem index="8" value=" "/>
-            <StringItem index="9" value=" "/>
-            <StringItem index="10" value=" "/>
+            <StringItem index="7" value=""/>
+            <StringItem index="8" value=""/>
+            <StringItem index="9" value=""/>
+            <StringItem index="10" value=""/>
           </StringArray>
         </Property>
-        <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

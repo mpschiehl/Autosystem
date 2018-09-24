@@ -711,7 +711,7 @@ public class Vendas implements BaseInterfaceJava {
                 totalizador = totalizador+ total;
 
         }
-                impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\n"
+                impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\r\n"
                                         + "                                                                                     Total: R$ "+totalizador;
                 
         nomeDeBusca = "";

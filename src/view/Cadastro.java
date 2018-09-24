@@ -55,9 +55,9 @@ public class Cadastro implements BaseInterfaceJava {
     private JScrollPane jScrollPaneAplicacao;
     private ButtonGroup buttonGroup;
     private ArrayList<JLabel> jLabels = new ArrayList<>();
-    
+
     public Cadastro() {
-             
+
         instanciarComponentes();
         gerarTela();
         adicionarComponentes();
@@ -478,25 +478,22 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-         JOptionPane.showMessageDialog(null, "Descricao deve ser preenchido");
+            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
         } else {
             try {
                 if (jTextFieldDescricao.getText().length() <= 2) {
-                     JOptionPane.showMessageDialog(null, "Descricao deveconter no mínimo tres caracteres");
-                     jTextFieldDescricao.requestFocus();
+                    gerarJLabel("Deve conter no mínimo tres caracters", jTextFieldDescricao);
                 }
             } catch (Exception e) {
-                     JOptionPane.showMessageDialog(null, "Descricao nao pode conter numeros");
-                     jTextFieldDescricao.requestFocus();
+                gerarJLabel("Não pode conter números", jTextFieldDescricao);
             }
-     return;        
         }
 
+        //RadioButton
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
-            jLabelStatusPeca.setForeground(Color.decode("#a82c1e"));
             return;
 
         }
@@ -506,21 +503,18 @@ public class Cadastro implements BaseInterfaceJava {
                     "Quantidade deve ser informada", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
-            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Integer.parseInt(jTextFieldQuantidade.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade não podera ser zero", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
-            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Integer.parseInt(jTextFieldQuantidade.getText()) < -1) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade não podera ser negativa", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldQuantidade.requestFocus();
-            jLabelQuantidade.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -529,31 +523,27 @@ public class Cadastro implements BaseInterfaceJava {
                     "Unidade de Medida deve ser Preenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxUnidadeDeMedida.requestFocus();
-            jLabelUnidadeDeMedida.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
-        //Pesoa
+        //Peso
         if (jTextFieldPeso.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "O Peso deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
-            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldPeso.getText()) < -1) {
             JOptionPane.showMessageDialog(null,
                     "O Peso não pode ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
-            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldPeso.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "O Peso não pode ser zero", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldPeso.requestFocus();
-            jLabelPeso.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -562,7 +552,6 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Localização deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxLocalizacao.requestFocus();
-            jLabelLocalizacao.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -572,21 +561,18 @@ public class Cadastro implements BaseInterfaceJava {
                     "Valor deve ser informado.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
-            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldValor.getText()) == 0) {
             JOptionPane.showMessageDialog(null,
                     "Valor não podera ser zero.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
-            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         } else if (Float.parseFloat(jTextFieldValor.getText()) <= -1) {
             JOptionPane.showMessageDialog(null,
                     "Valor não podera ser negativo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jTextFieldValor.requestFocus();
-            jLabelValor.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
@@ -595,25 +581,14 @@ public class Cadastro implements BaseInterfaceJava {
                     "A Categoria deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxCategoria.requestFocus();
-            jLabelCategoria.setForeground(Color.decode("#a82c1e"));
             return;
         }
 
         //Aplicaçãoa
-        if (jTextAreaAplicacao.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "A Aplicacao deve ser preenchida", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
-            return;
+        if (jTextAreaAplicacao.getText().isEmpty()) {
+            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
         } else if (jTextAreaAplicacao.getText().length() <= 2) {
-            JOptionPane.showMessageDialog(null,
-                    "A Aplicacao deve conter no minimo três ca", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
-            return;
+            gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
         }
 
     }
@@ -625,7 +600,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void gerarJLabel(String texto, JTextField jTextField) {
-     JLabel jLabelE = new JLabel();
+        JLabel jLabelE = new JLabel();
         jLabelE.setText(texto);
         jLabelE.setForeground(Color.red);
         jLabelE.setLocation(jTextField.getX() + 5, jTextField.getY() + jTextField.getHeight() + 10);
@@ -639,9 +614,4 @@ public class Cadastro implements BaseInterfaceJava {
 
     }
 
-   
-
- 
-
-    
 }

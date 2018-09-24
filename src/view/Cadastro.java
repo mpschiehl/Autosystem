@@ -478,9 +478,9 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-            gerarJLabel("Deve preencher", jTextFieldPeso);
+            gerarJLabel("Deve preencher", jTextFieldDescricao);
         } else if(jTextFieldDescricao.getText().length()<=2){
-               gerarJLabel("Deve preencher", jTextFieldPeso);
+               gerarJLabel("Deve preencher", jTextFieldDescricao);
         }
         
         
@@ -528,13 +528,9 @@ public class Cadastro implements BaseInterfaceJava {
         }
 
         
+      
         
         */
-         if (jTextFieldQuantidade.getText().equals("")) {
-            gerarJLabel("Deve preencher", jTextFieldQuantidade);
-        } else if(jTextFieldDescricao.getText().length()<=2){
-               gerarJLabel("Deve preencher", jTextFieldQuantidade);
-        }
         
          
          

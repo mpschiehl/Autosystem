@@ -16,6 +16,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -56,6 +57,7 @@ public class Cadastro implements BaseInterfaceJava {
     private ArrayList<JLabel> jLabels = new ArrayList<>();
 
     public Cadastro() {
+             
         instanciarComponentes();
         gerarTela();
         adicionarComponentes();
@@ -633,4 +635,10 @@ public class Cadastro implements BaseInterfaceJava {
     private void apagarComponentes() {
 
     }
+
+   
+
+ 
+
+    
 }

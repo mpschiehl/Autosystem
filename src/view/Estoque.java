@@ -265,7 +265,16 @@ public class Estoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       new Cadastro();
+      /* int linhaSelecionada = jTableEstoque.getSelectedRow();
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um registro");
+            return;
+        }
+
+        int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
+       
+       new Cadastro(codigoRegistro).cadastroAlterar(codigoRegistro);*/
+       
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
@@ -304,11 +313,14 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int linhaSelecionada = jTableEstoque.getSelectedRow();
+        /*int linhaSelecionada = jTableEstoque.getSelectedRow();
         if(linhaSelecionada == -1){
             JOptionPane.showMessageDialog(null, "Selecione um registro para Refatorar");
             return;
         }
+        int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
+        new Cadastro(codigoRegistro);*/
+        JOptionPane.showMessageDialog(null,"em construção");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton3StateChanged
@@ -329,12 +341,11 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-         List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
+         ProdutoBean produto = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
                 DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
                 dtm.setRowCount(0);
-
-                for (ProdutoBean produto : produtos) {
-                    dtm.addRow(new Object[]{
+                
+                dtm.addRow(new Object[]{
                         produto.getId(),
                         produto.getDescricao(),
                         produto.getCategoria(),
@@ -344,7 +355,7 @@ public class Estoque extends javax.swing.JFrame {
                         produto.getPeso(),
                         produto.getLocalizacao()
                     });
-                }
+                
     }//GEN-LAST:event_jTextFieldNumeroKeyPressed
 
     private void jRadioButtonNovoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonNovoItemStateChanged

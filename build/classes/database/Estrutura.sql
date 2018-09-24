@@ -20,7 +20,7 @@ CREATE TABLE produtos(
 insert into produtos(categoria, quantidade, valor, descricao, aplicacao, unidade_de_medida,
  localizacao, valor_unitario, status_peca, peso)values
 ('motor',2,2000,'motor para uno','motor para uno ano/2000','kit','Santa Catarina',2000,'novo',100),
-('parachoque',5,5000,'parachoque para fiesta','parachoque para fiesta/2005','kit','São Paulo',2000,'semi novo',600),
+('parachoque',5,5000,'parachoque para fiesta','parachoque para fiesta/2005','kit','São Paulo',2000,'semi-novo',600),
 ('Acessorios',8,12000,'rodas Unique','rodas originais do Nissan New Versa Unique','Peça','Santa Catarina',400,'semi-novo',5);
 
 

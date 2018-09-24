@@ -88,8 +88,40 @@ public class ProdutoDao {
         }
         return false;
     }
+    public ProdutoBean buscarPorId(int id) {
+        ProdutoBean produtos = null;
+        String sql = "SELECT * FROM produtos WHERE id = ?";
+        Connection conexao = Conexao.obterConexao();
+        if (conexao != null) {
+            try {
+                PreparedStatement colocador = conexao.prepareStatement(sql);
+                colocador.setInt(1, id);
+                colocador.execute();
+                ResultSet resultSet = colocador.getResultSet();
+                if (resultSet.next()) {
+                    ProdutoBean produto = new  ProdutoBean();
+                    produto.setId(resultSet.getInt("id"));
+                    produto.setCategoria(resultSet.getString("categoria"));
+                    produto.setStatusPecas(resultSet.getString("status_peca"));
+                    produto.setPeso(resultSet.getFloat("peso"));
+                    produto.setLocalizacao(resultSet.getString("localizacao"));
+                    produto.setAplicacao(resultSet.getString("aplicacao"));
+                    produto.setDescricao(resultSet.getString("descricao"));
+                    produto.setQuantidade(resultSet.getInt("quantidade"));
+                    produto.setValor(resultSet.getFloat("valor"));
+                    produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
+                     produtos.add(produto);
+                   }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                Conexao.fecharConexao();
+            }
+        }
+        return produtos;
+    }
 
-        public List<ProdutoBean> buscarPorId(int id) {
+        /*public List<ProdutoBean> buscarPorId(int id) {
        List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
@@ -121,7 +153,7 @@ public class ProdutoDao {
         }
 
        return produtos;
-    }
+    }*/
     
 
     public List<ProdutoBean> obterProdutoBusca(String nome){

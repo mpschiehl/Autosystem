@@ -88,7 +88,7 @@ public class ProdutoDao {
         }
         return false;
     }
-    public ProdutoBean buscarPorId(int id) {
+   public ProdutoBean buscarPorId2(int id) {
         ProdutoBean produtos = null;
         String sql = "SELECT * FROM produtos WHERE id = ?";
         Connection conexao = Conexao.obterConexao();
@@ -121,7 +121,7 @@ public class ProdutoDao {
         return produtos;
     }
 
-        /*public List<ProdutoBean> buscarPorId(int id) {
+       public List<ProdutoBean> buscarPorId(int id) {
        List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
@@ -153,7 +153,7 @@ public class ProdutoDao {
         }
 
        return produtos;
-    }*/
+    }
     
 
     public List<ProdutoBean> obterProdutoBusca(String nome){

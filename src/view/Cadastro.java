@@ -55,7 +55,46 @@ public class Cadastro implements BaseInterfaceJava {
     private JScrollPane jScrollPaneAplicacao;
     private ButtonGroup buttonGroup;
     private ArrayList<JLabel> jLabels = new ArrayList<>();
-
+    
+    public Cadastro(int codigoRegistro) {
+        ProdutoBean produto = new ProdutoDao().buscarPorId2(codigoRegistro);
+        
+        jLabelCodigo.setText(Integer.toString(codigoRegistro));
+       jTextFieldDescricao.setText(String.valueOf(produto.getDescricao()));
+       if(produto.getStatusPecas().equals("novo")){
+           jRadioButtonNovo.setSelected(true);
+       }
+       if(produto.getStatusPecas().equals("semi-novo")){
+           jRadioButtonSemiNovo.setSelected(true);
+       }
+       jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
+       for (int i = 0; i < jComboBoxUnidadeDeMedida.getItemCount(); i++) {
+            String tipo = jComboBoxUnidadeDeMedida.getItemAt(i).toString();
+            if (tipo.equals(produto.getUnidadeDeMedida())) {
+                jComboBoxUnidadeDeMedida.setSelectedIndex(i);
+                break;
+            }
+        }
+       jTextFieldPeso.setText(String.valueOf(produto.getPeso()));
+       for (int i = 0; i < jComboBoxLocalizacao.getItemCount(); i++) {
+            String tipo = jComboBoxLocalizacao.getItemAt(i).toString();
+            if (tipo.equals(produto.getLocalizacao())) {
+                jComboBoxLocalizacao.setSelectedIndex(i);
+                break;
+            }
+        }
+       jTextFieldValor.setText(String.valueOf(produto.getValorUnitario()));
+       for (int i = 0; i < jComboBoxCategoria.getItemCount(); i++) {
+            String tipo = jComboBoxCategoria.getItemAt(i).toString();
+            if (tipo.equals(produto.getCategoria())) {
+                jComboBoxCategoria.setSelectedIndex(i);
+                break;
+            }
+        }
+       jTextAreaAplicacao.setText(String.valueOf(produto.getAplicacao()));
+      
+    }
+    
     public Cadastro() {
              
         instanciarComponentes();

@@ -159,6 +159,7 @@ public class Estoque extends javax.swing.JFrame {
             jTableEstoque.getColumnModel().getColumn(7).setResizable(false);
         }
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png"))); // NOI18N
         jButton1.setText("Sair");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +167,7 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/clipboard.png"))); // NOI18N
         jButton2.setText("Refatorar");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -178,6 +180,7 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cancel.png"))); // NOI18N
         jButton3.setText("Excluir");
         jButton3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -313,14 +316,13 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*int linhaSelecionada = jTableEstoque.getSelectedRow();
+        int linhaSelecionada = jTableEstoque.getSelectedRow();
         if(linhaSelecionada == -1){
             JOptionPane.showMessageDialog(null, "Selecione um registro para Refatorar");
             return;
         }
         int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
-        new Cadastro(codigoRegistro);*/
-        JOptionPane.showMessageDialog(null,"em construção");
+        new AlterarCadastro(codigoRegistro);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton3StateChanged
@@ -341,11 +343,12 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-         ProdutoBean produto = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
+        List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
                 DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
                 dtm.setRowCount(0);
-                
-                dtm.addRow(new Object[]{
+
+                for (ProdutoBean produto : produtos) {
+                    dtm.addRow(new Object[]{
                         produto.getId(),
                         produto.getDescricao(),
                         produto.getCategoria(),
@@ -355,7 +358,8 @@ public class Estoque extends javax.swing.JFrame {
                         produto.getPeso(),
                         produto.getLocalizacao()
                     });
-                
+
+                }
     }//GEN-LAST:event_jTextFieldNumeroKeyPressed
 
     private void jRadioButtonNovoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonNovoItemStateChanged

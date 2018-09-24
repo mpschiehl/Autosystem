@@ -19,8 +19,14 @@ public class AlterarCadastro extends javax.swing.JFrame {
      */
     public AlterarCadastro(int codigoRegistro) {
         initComponents();
+
       ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
         
+
+       
+        
+        //dao
+
         jLabelCodigo.setText(Integer.toString(codigoRegistro));
        jTextFielddescricao.setText(String.valueOf(produto.getDescricao()));
        if(produto.getStatusPecas().equals("novo")){

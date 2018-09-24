@@ -517,15 +517,18 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-            gerarJLabel("Descricção deve ser preenchida", jTextField);
+         JOptionPane.showMessageDialog(null, "Descricao deve ser preenchido");
         } else {
             try {
                 if (jTextFieldDescricao.getText().length() <= 2) {
-                    gerarJLabel("Descricao deve conter mais de tres caracteres", jTextField);
+                     JOptionPane.showMessageDialog(null, "Descricao deveconter no mínimo tres caracteres");
+                     jTextFieldDescricao.requestFocus();
                 }
             } catch (Exception e) {
-                    gerarJLabel("Descricao não pode conter numeros", jTextField);
+                     JOptionPane.showMessageDialog(null, "Descricao nao pode conter numeros");
+                     jTextFieldDescricao.requestFocus();
             }
+     return;        
         }
 
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {

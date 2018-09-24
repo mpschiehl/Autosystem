@@ -31,6 +31,9 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 public class Sistema implements BaseInterfaceJava {
 
     //construtor da clase
+    private Estoque estoque;
+   // private Venda ;
+    //private Venda venda;
 
     public Sistema() {
         gerarTela();
@@ -93,7 +96,8 @@ public class Sistema implements BaseInterfaceJava {
         jButtonCadastroCliente.setSize(100, 50);
 
     }
-    private void adicionaIconeButton(){
+
+    private void adicionaIconeButton() {
         jButtonVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cart.png")));
         jButtonCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/ruby.png")));
         jButtonEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/box.png")));
@@ -103,13 +107,12 @@ public class Sistema implements BaseInterfaceJava {
     }
 
     //troca o icone padrao
-
-      private void trocaIcone() {
+    private void trocaIcone() {
         URL url = this.getClass().getResource("/icones/Air-filter.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 
-        jFrameSistema.setIconImage(imagemTitulo);                
-        
+        jFrameSistema.setIconImage(imagemTitulo);
+
     }
 
     private void acaoBotaoCadastro() {
@@ -127,7 +130,12 @@ public class Sistema implements BaseInterfaceJava {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Estoque().setVisible(true);
+                if (estoque == null) {
+                    estoque = new Estoque();
+                    estoque.setVisible(true);
+                }
+                estoque.setState(JFrame.NORMAL);
+
             }
         });
     }
@@ -135,10 +143,20 @@ public class Sistema implements BaseInterfaceJava {
     private void acaoBotaoVenda() {
         jButtonVenda.addActionListener(new ActionListener() {
 
+
             @Override
             public void actionPerformed(ActionEvent e) {
+             // if (venda == null){
+             //     venda = new Venda();
+              //     venda.setVisible(true);
+           //   }
+            //   venda.setState(JFrame.NORMAL);
+                /* if (venda == null) {
+                    venda = new Venda();
+                    venda.setVisible(true);
+                }
+                      venda.setState(JFrame.NORMAL);*/
                 new Vendas();
-
             }
         });
     }
@@ -168,7 +186,7 @@ public class Sistema implements BaseInterfaceJava {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               new CadastroFuncionario().setVisible(true);
+                new CadastroFuncionario().setVisible(true);
             }
         });
     }

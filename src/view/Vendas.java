@@ -57,7 +57,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Márcio Pedro Schiehl(mpschiehl@outlook.com)
  * @date 2018-08-27
  */
-public class Vendas implements BaseInterfaceJava {
+public class Vendas extends javax.swing.JFrame {
 
     private JFrame jFrameVendas;
     private JLabel jLabelID, jLabelStatus, jLabelCategoria, jLabelNovo, jLabelSemiNovo, jLabelDescricao, jLabelCliente;
@@ -105,7 +105,7 @@ public class Vendas implements BaseInterfaceJava {
 
     }
 
-    @Override
+    
     public void gerarTela() {
         jFrameVendas = new JFrame("Venda de Produtos");
         jFrameVendas.setSize(800, 600);
@@ -116,7 +116,6 @@ public class Vendas implements BaseInterfaceJava {
 
     }
 
-    @Override
     public void adicionarComponentes() {
         //JLabel's do Projeto
         jFrameVendas.add(jLabelID);
@@ -149,7 +148,6 @@ public class Vendas implements BaseInterfaceJava {
         jFrameVendas.add(jComboBoxCliente);
     }
 
-    @Override
     public void gerarLocalizacoes() {
         //Localização das JLabel's
         jLabelID.setLocation(10, 10);
@@ -183,7 +181,6 @@ public class Vendas implements BaseInterfaceJava {
         jComboBoxCliente.setLocation(550, 80);
     }
 
-    @Override
     public void gerarDimensoes() {
         jLabelID.setSize(50, 20);
         jLabelStatus.setSize(100, 20);
@@ -217,7 +214,6 @@ public class Vendas implements BaseInterfaceJava {
 
     }
 
-    @Override
     public void instanciarComponentes() {
         jLabelID = new JLabel("Numero");
         jLabelStatus = new JLabel("Status:");

@@ -572,7 +572,7 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
-        //Peso
+        //Pesoa
         if (jTextFieldPeso.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "O Peso deve ser Informado", "Cadastro",

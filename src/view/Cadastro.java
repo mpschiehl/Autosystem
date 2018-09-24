@@ -45,9 +45,9 @@ public class Cadastro implements BaseInterfaceJava {
     private JFrame jFrameCadastro;
     private JLabel jLabelQuantidade, jLabelValor, jLabelDescricao, jLabelAplicacao,
             jLabelUnidadeDeMedida, jLabelLocalizacao, jLabelStatusPeca, jLabelPeso,
-            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo, jLabelCodigo;
-    private JTextField jTextField, jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
-            jTextFieldPeso, jTextFiedCodigo;
+            jLabelCategoria, jLabelAutoSystems, jLabelRadioButtonNovo, jLabelRadioButtonSemiNovo;
+    private JTextField  jTextFieldQuantidade, jTextFieldValor, jTextFieldDescricao,
+            jTextFieldPeso;
     private JButton jButtonSair, jButtonLimpar, jButtonAdicionar;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private JComboBox jComboBoxLocalizacao, jComboBoxCategoria, jComboBoxUnidadeDeMedida;
@@ -98,7 +98,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jLabelAplicacao);
         jFrameCadastro.add(jLabelUnidadeDeMedida);
         jFrameCadastro.add(jLabelLocalizacao);
-//jFrameCadastro.add(jLabelCodigo);
+
         jFrameCadastro.add(jLabelStatusPeca);
         jFrameCadastro.add(jLabelPeso);
         jFrameCadastro.add(jLabelCategoria);
@@ -110,7 +110,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jTextFieldQuantidade);
         jFrameCadastro.add(jTextFieldValor);
         jFrameCadastro.add(jTextFieldDescricao);
-//jFrameCadastro.add(jTextFiedCodigo);
+
         jFrameCadastro.add(jTextFieldPeso);
 
         //JButton's
@@ -478,27 +478,36 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().equals("")) {
-            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
-        } else {
-            try {
-                if (jTextFieldDescricao.getText().length() <= 2) {
-                    gerarJLabel("Deve conter no mínimo tres caracters", jTextFieldDescricao);
-                }
-            } catch (Exception e) {
-                gerarJLabel("Não pode conter números", jTextFieldDescricao);
-            }
+            gerarJLabel("Deve preencher", jTextFieldPeso);
+        } else if(jTextFieldDescricao.getText().length()<=2){
+               gerarJLabel("Deve preencher", jTextFieldPeso);
         }
+        
+        
+        
+        /* if (jTextFieldDescricao.getText().equals("")) {
+          JOptionPane.showMessageDialog(null, "Deve ser preenchido");
+           jTextFieldDescricao.requestFocus();
+            return;
+        } else if (jTextFieldDescricao.getText().length() <= 2) {
+                  JOptionPane.showMessageDialog(null, "Deve ser preenchido");
+                   jTextFieldDescricao.requestFocus();
+            return;
+                }*/
+           
+        
 
         //RadioButton
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser selecionado se é novo ou semi novo", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
+              jRadioButtonNovo.requestFocus();
             return;
 
         }
         //Qantidade
-        if (jTextFieldQuantidade.getText().isEmpty()) {
+       /* if (jTextFieldQuantidade.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "Quantidade deve ser informada", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
@@ -518,6 +527,23 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
+        
+        
+        */
+         if (jTextFieldQuantidade.getText().equals("")) {
+            gerarJLabel("Deve preencher", jTextFieldQuantidade);
+        } else if(jTextFieldDescricao.getText().length()<=2){
+               gerarJLabel("Deve preencher", jTextFieldQuantidade);
+        }
+        
+         
+         
+         
+         
+         
+         
+         
+         
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "Unidade de Medida deve ser Preenchida", "Cadastro",
@@ -586,9 +612,9 @@ public class Cadastro implements BaseInterfaceJava {
 
         //Aplicaçãoa
         if (jTextAreaAplicacao.getText().isEmpty()) {
-            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
+            JOptionPane.showMessageDialog(null, "Aplicacao deve ser preenchida");
         } else if (jTextAreaAplicacao.getText().length() <= 2) {
-            gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
+            JOptionPane.showMessageDialog(null, "Aplicacao deve ser maior que três");
         }
 
     }

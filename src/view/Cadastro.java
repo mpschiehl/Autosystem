@@ -477,21 +477,18 @@ public class Cadastro implements BaseInterfaceJava {
 
     private void validacao() {
         //Descrição
-        if (jTextFieldDescricao.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Precisa ser preenchido");   
-            jTextFieldDescricao.requestFocus();
-            return;
-            
-        }else if(jTextFieldDescricao.getText().length()<=2){
-            JOptionPane.showMessageDialog(null, "precisa conter ,ais de tres caracteres");
-            jTextFieldDescricao.requestFocus();
-            return;
-            
+        if (jTextFieldDescricao.getText().equals("")) {
+            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
+        } else {
+            try {
+                if (jTextFieldDescricao.getText().length() <= 2) {
+                    gerarJLabel("Deve conter no mínimo tres caracters", jTextFieldDescricao);
+                }
+            } catch (Exception e) {
+                gerarJLabel("Não pode conter números", jTextFieldDescricao);
+            }
         }
-        
 
-        
-        
         //RadioButton
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
             JOptionPane.showMessageDialog(null,
@@ -529,7 +526,7 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
-        //Pesoa
+        //Peso
         if (jTextFieldPeso.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "O Peso deve ser Informado", "Cadastro",
@@ -588,19 +585,10 @@ public class Cadastro implements BaseInterfaceJava {
         }
 
         //Aplicaçãoa
-        if (jTextAreaAplicacao.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "A Aplicacao deve ser preenchida", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            return;
+        if (jTextAreaAplicacao.getText().isEmpty()) {
+            gerarJLabel("Deve ser preenchido", jTextFieldDescricao);
         } else if (jTextAreaAplicacao.getText().length() <= 2) {
-            JOptionPane.showMessageDialog(null,
-                    "A Aplicacao deve conter no minimo três ca", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldDescricao.requestFocus();
-            jLabelAplicacao.setForeground(Color.decode("#a82c1e"));
-            return;
+            gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
         }
 
     }

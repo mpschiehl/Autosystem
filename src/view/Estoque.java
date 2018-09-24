@@ -343,12 +343,11 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-        List<ProdutoBean> produtos = new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
+       new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
                 DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
                 dtm.setRowCount(0);
-
-                for (ProdutoBean produto : produtos) {
-                    dtm.addRow(new Object[]{
+                ProdutoBean produto = new ProdutoBean();
+               dtm.addRow(new Object[]{
                         produto.getId(),
                         produto.getDescricao(),
                         produto.getCategoria(),
@@ -359,7 +358,7 @@ public class Estoque extends javax.swing.JFrame {
                         produto.getLocalizacao()
                     });
 
-                }
+               
     }//GEN-LAST:event_jTextFieldNumeroKeyPressed
 
     private void jRadioButtonNovoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonNovoItemStateChanged

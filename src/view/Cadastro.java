@@ -57,7 +57,7 @@ public class Cadastro implements BaseInterfaceJava {
     private ArrayList<JLabel> jLabels = new ArrayList<>();
     
     public Cadastro(int codigoRegistro) {
-        ProdutoBean produto = new ProdutoDao().buscarPorId2(codigoRegistro);
+        ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
         
         jLabelCodigo.setText(Integer.toString(codigoRegistro));
        jTextFieldDescricao.setText(String.valueOf(produto.getDescricao()));

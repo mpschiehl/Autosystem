@@ -19,7 +19,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
      */
     public AlterarCadastro(int codigoRegistro) {
         initComponents();
-        ProdutoBean produto = new ProdutoDao().buscarPorId2(codigoRegistro);
+        ProdutoBean produto = new ProdutoDao().buscarPorId(codigoRegistro);
         
         jLabelCodigo.setText(Integer.toString(codigoRegistro));
        jTextFielddescricao.setText(String.valueOf(produto.getDescricao()));
@@ -34,7 +34,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
             String tipo = jComboBoxUnidadeMedida.getItemAt(i).toString();
             if (tipo.equals(produto.getUnidadeDeMedida())) {
                 jComboBoxUnidadeMedida.setSelectedIndex(i);
-                break;
+                return;
             }
         }
        jTextFieldPeso.setText(String.valueOf(produto.getPeso()));
@@ -42,7 +42,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
             String tipo = jComboBoxLocalizacao.getItemAt(i).toString();
             if (tipo.equals(produto.getLocalizacao())) {
                 jComboBoxLocalizacao.setSelectedIndex(i);
-                break;
+                return;
             }
         }
        jTextFieldValor.setText(String.valueOf(produto.getValorUnitario()));
@@ -50,7 +50,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
             String tipo = jComboBoxCategoria.getItemAt(i).toString();
             if (tipo.equals(produto.getCategoria())) {
                 jComboBoxCategoria.setSelectedIndex(i);
-                break;
+                return;
             }
         }
        jTextAreaAplicacao.setText(String.valueOf(produto.getAplicacao()));
@@ -96,7 +96,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabelCodigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 

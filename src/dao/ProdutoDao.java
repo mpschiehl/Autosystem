@@ -51,23 +51,25 @@ public class ProdutoDao {
         }
         return 0;
     }
-    public boolean  vender(int quantidade, String descricao){
+
+    public boolean vender(int quantidade, String descricao) {
         Connection conexao = Conexao.obterConexao();
         String sql = "UPDATE produtos SET quantidade = quantidade - ? WHERE descricao = ?;";
-        if (conexao !=null){
-            try{
+        if (conexao != null) {
+            try {
                 PreparedStatement ps = conexao.prepareStatement(sql);
                 ps.setInt(1, quantidade);
                 ps.setString(2, descricao);
                 return ps.executeUpdate() == 1;
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
-            }finally{
+            } finally {
                 Conexao.fecharConexao();
             }
         }
         return false;
     }
+
     public boolean alterar(ProdutoBean produto) {
         Connection conexao = Conexao.obterConexao();
         String sql = "UPDATE produtos SET quantidade = ?,"
@@ -88,8 +90,9 @@ public class ProdutoDao {
         }
         return false;
     }
-   public ProdutoBean buscarPorId2(int id) {
-        ProdutoBean produtos = null;
+
+    public ProdutoBean buscarPorId2(int id) {
+        ProdutoBean produto = null;
         String sql = "SELECT * FROM produtos WHERE id = ?";
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
@@ -99,7 +102,7 @@ public class ProdutoDao {
                 colocador.execute();
                 ResultSet resultSet = colocador.getResultSet();
                 if (resultSet.next()) {
-                    ProdutoBean produto = new  ProdutoBean();
+                    produto = new ProdutoBean();
                     produto.setId(resultSet.getInt("id"));
                     produto.setCategoria(resultSet.getString("categoria"));
                     produto.setStatusPecas(resultSet.getString("status_peca"));
@@ -110,57 +113,21 @@ public class ProdutoDao {
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                     produtos.add(produto);
-                   }
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
                 Conexao.fecharConexao();
             }
         }
-        return produtos;
+        return produto;
     }
 
-       public List<ProdutoBean> buscarPorId(int id) {
-       List<ProdutoBean> produtos = new ArrayList<>();
-        Connection conexao = Conexao.obterConexao();
-        if (conexao != null) {
-            String sql = "SELECT * FROM produtos WHERE id=" + id+";";
-            try {
-                Statement statement = conexao.createStatement();
-                statement.execute(sql);
-                ResultSet resultSet = statement.getResultSet();
-                while (resultSet.next()) {
-                    ProdutoBean produto = new ProdutoBean();
-                    produto.setId(resultSet.getInt("id"));
-                    produto.setCategoria(resultSet.getString("categoria"));
-                    produto.setStatusPecas(resultSet.getString("status_peca"));
-                    produto.setPeso(resultSet.getFloat("peso"));
-                    produto.setLocalizacao(resultSet.getString("localizacao"));
-                    produto.setAplicacao(resultSet.getString("aplicacao"));
-                    produto.setDescricao(resultSet.getString("descricao"));
-                    produto.setQuantidade(resultSet.getInt("quantidade"));
-                    produto.setValor(resultSet.getFloat("valor"));
-                    produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                    
-                    produtos.add(produto);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                Conexao.fecharConexao();
-            }
-        }
-
-       return produtos;
-    }
-    
-
-    public List<ProdutoBean> obterProdutoBusca(String nome){
+    public List<ProdutoBean> buscarPorId(int id) {
         List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
-            String sql = "SELECT * FROM produtos WHERE descricao LIKE '%" + nome +"%';";
+            String sql = "SELECT * FROM produtos WHERE id=" + id + ";";
             try {
                 Statement statement = conexao.createStatement();
                 statement.execute(sql);
@@ -177,7 +144,7 @@ public class ProdutoDao {
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                    
+
                     produtos.add(produto);
                 }
             } catch (Exception e) {
@@ -187,10 +154,42 @@ public class ProdutoDao {
             }
         }
 
-       return produtos;
+        return produtos;
     }
 
-    
+    public List<ProdutoBean> obterProdutoBusca(String nome) {
+        List<ProdutoBean> produtos = new ArrayList<>();
+        Connection conexao = Conexao.obterConexao();
+        if (conexao != null) {
+            String sql = "SELECT * FROM produtos WHERE descricao LIKE '%" + nome + "%';";
+            try {
+                Statement statement = conexao.createStatement();
+                statement.execute(sql);
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    ProdutoBean produto = new ProdutoBean();
+                    produto.setId(resultSet.getInt("id"));
+                    produto.setCategoria(resultSet.getString("categoria"));
+                    produto.setStatusPecas(resultSet.getString("status_peca"));
+                    produto.setPeso(resultSet.getFloat("peso"));
+                    produto.setLocalizacao(resultSet.getString("localizacao"));
+                    produto.setAplicacao(resultSet.getString("aplicacao"));
+                    produto.setDescricao(resultSet.getString("descricao"));
+                    produto.setQuantidade(resultSet.getInt("quantidade"));
+                    produto.setValor(resultSet.getFloat("valor"));
+                    produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
+
+                    produtos.add(produto);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                Conexao.fecharConexao();
+            }
+        }
+
+        return produtos;
+    }
 
     public List<ProdutoBean> obterProdutos() {
         List<ProdutoBean> produtos = new ArrayList<>();
@@ -213,7 +212,7 @@ public class ProdutoDao {
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                    
+
                     produtos.add(produto);
                 }
             } catch (Exception e) {
@@ -223,13 +222,14 @@ public class ProdutoDao {
             }
         }
 
-       return produtos;
+        return produtos;
     }
-    public List<ProdutoBean> obterProdutoStatus(String status){
+
+    public List<ProdutoBean> obterProdutoStatus(String status) {
         List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
-            String sql = "SELECT * FROM produtos WHERE status_peca = '" + status +"';";
+            String sql = "SELECT * FROM produtos WHERE status_peca = '" + status + "';";
             try {
                 Statement statement = conexao.createStatement();
                 statement.execute(sql);
@@ -246,7 +246,7 @@ public class ProdutoDao {
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                    
+
                     produtos.add(produto);
                 }
             } catch (Exception e) {
@@ -256,15 +256,15 @@ public class ProdutoDao {
             }
         }
 
-       return produtos;
-   
+        return produtos;
+
     }
 
-    public List<ProdutoBean> obterProdutoCategoria(String categoria){
+    public List<ProdutoBean> obterProdutoCategoria(String categoria) {
         List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
-            String sql = "SELECT * FROM produtos WHERE categoria = '" + categoria +"';";
+            String sql = "SELECT * FROM produtos WHERE categoria = '" + categoria + "';";
             try {
                 Statement statement = conexao.createStatement();
                 statement.execute(sql);
@@ -281,7 +281,7 @@ public class ProdutoDao {
                     produto.setQuantidade(resultSet.getInt("quantidade"));
                     produto.setValor(resultSet.getFloat("valor"));
                     produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
-                    
+
                     produtos.add(produto);
                 }
             } catch (Exception e) {
@@ -291,9 +291,10 @@ public class ProdutoDao {
             }
         }
 
-       return produtos;
-   
+        return produtos;
+
     }
+
     public int excluir(int id) {
         String sql = "DELETE FROM produtos WHERE id = ?";
         Connection conexao = Conexao.obterConexao();
@@ -308,5 +309,5 @@ public class ProdutoDao {
         }
         return 0;
     }
-    
+
 }

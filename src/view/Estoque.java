@@ -322,7 +322,7 @@ public class Estoque extends javax.swing.JFrame {
             return;
         }
         int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
-        new AlterarCadastro(codigoRegistro);
+        new AlterarCadastro(codigoRegistro).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton3StateChanged

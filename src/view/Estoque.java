@@ -304,7 +304,11 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        int linhaSelecionada = jTableEstoque.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um registro para Refatorar");
+            return;
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jButton3StateChanged
@@ -312,7 +316,16 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    
+        int linhaSelecionada = jTableEstoque.getSelectedRow();
+        if(linhaSelecionada == -1){
+            JOptionPane.showMessageDialog(null, "Selecione um registro para a exclusão");
+            return;
+        }
+        
+        int codigo = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
+        new ProdutoDao().excluir(codigo);
+        JOptionPane.showMessageDialog(null, "Produto excluído com sucesso");
+               
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed

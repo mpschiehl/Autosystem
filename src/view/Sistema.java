@@ -65,7 +65,7 @@ public class Sistema implements BaseInterfaceJava {
 
     @Override
     public void gerarTela() {
-        jFrameSistema = new JFrame("CGLM System");
+        jFrameSistema = new JFrame("AutoSystem");
         jFrameSistema.setSize(800, 600);
         jFrameSistema.setLocationRelativeTo(null);
         jFrameSistema.setLayout(null);
@@ -109,7 +109,7 @@ public class Sistema implements BaseInterfaceJava {
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
 
         jFrameSistema.setIconImage(imagemTitulo);                
-        jFrameSistema.setIconImage(imagemTitulo);       
+        
     }
 
     private void acaoBotaoCadastro() {

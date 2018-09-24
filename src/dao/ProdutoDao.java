@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class ProdutoDao {
 
-    //Está em desenvolvimento
     public int inserir(ProdutoBean produto) {
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
@@ -262,6 +261,20 @@ public class ProdutoDao {
 
        return produtos;
    
+    }
+    public int excluir(int id) {
+        String sql = "DELETE FROM produtos WHERE id = ?";
+        Connection conexao = Conexao.obterConexao();
+        try {
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexao.fecharConexao();
+        }
+        return 0;
     }
     
 }

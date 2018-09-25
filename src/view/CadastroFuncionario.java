@@ -24,7 +24,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         initComponents();
         configurarJFormattedTextField();
         adicionarMaskCep();
-        adicionarMakPis();
         adicionarMaskDataAdimissao();
         adicionarMaskTelefone();
         adicionarMaskSalario();
@@ -58,14 +57,12 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabelCargo = new javax.swing.JLabel();
         jLabelSalario = new javax.swing.JLabel();
         jTextFieldNumero = new javax.swing.JTextField();
-        jLabelPis = new javax.swing.JLabel();
         jLabelNumero = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jFormattedTextFieldCpf = new javax.swing.JFormattedTextField();
         jFormattedTextFieldSalario = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
         jFormattedTextFieldDataAdimissao = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldPis = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -113,8 +110,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabelPis.setText("PIS");
-
         jLabelNumero.setText("Número");
 
         jLabel1.setText("Data de Admissão");
@@ -155,8 +150,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                         .addComponent(jLabelCargo)
                                         .addGap(119, 119, 119)
                                         .addComponent(jLabelSalario)
-                                        .addGap(93, 93, 93)
-                                        .addComponent(jLabelPis)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
@@ -166,8 +159,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                 .addComponent(jTextFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jFormattedTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldPis, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(134, 134, 134)))
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(71, 71, 71)
@@ -262,16 +254,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jFormattedTextFieldDataAdimissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelCargo)
-                                .addComponent(jLabelSalario))
-                            .addComponent(jLabelPis))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelCargo)
+                            .addComponent(jLabelSalario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldPis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jFormattedTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSair)
@@ -287,7 +276,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNumeroActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
-        validacao();
+            validacao();
+            salvarBanco();
 
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
@@ -337,7 +327,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCep;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataAdimissao;
-    private javax.swing.JFormattedTextField jFormattedTextFieldPis;
     private javax.swing.JFormattedTextField jFormattedTextFieldSalario;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
@@ -350,7 +339,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
-    private javax.swing.JLabel jLabelPis;
     private javax.swing.JLabel jLabelSalario;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JTextField jTextFieldBairro;
@@ -430,7 +418,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             jTextFieldNumero.requestFocus();
             return;
         }
-        if (jTextFieldNumero.getText().length() >= 1) {
+        if (jTextFieldNumero.getText().length() <=0) {
             JOptionPane.showMessageDialog(null, "Informe o numero da residencia");
             jTextFieldNumero.requestFocus();
             return;
@@ -451,17 +439,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jFormattedTextFieldSalario.requestFocus();
         return;
         }
-        String pis = jFormattedTextFieldPis.getText();
-        if(pis.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Informe o pis","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
-            jFormattedTextFieldSalario.requestFocus();
-            return;
-        }else if(jFormattedTextFieldPis.getText().length()<11){
-            JOptionPane.showMessageDialog(null,"o numero do PIS deve conter 11 digitos","Funcionário Cadastro",JOptionPane.ERROR_MESSAGE);
-            jFormattedTextFieldPis.requestFocus();
-            return;
-        }
-
     }
 
     // mask cpf      
@@ -492,16 +469,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         }
     }
 
-    public void adicionarMakPis() {
-        try {
-            MaskFormatter maskFormatter = new MaskFormatter("###.######.##-##");
-            maskFormatter.install(jFormattedTextFieldPis);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public void adicionarMaskTelefone() {
         try {
             MaskFormatter maskFormatter = new MaskFormatter("(##)#####-####");
@@ -517,7 +484,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     public void limparCampos() {
         jFormattedTextFieldTelefone.setText("");
-        jFormattedTextFieldPis.setText("");
         jFormattedTextFieldDataAdimissao.setText("");
         jFormattedTextFieldCep.setText("");
         jTextFieldCargo.setText("");

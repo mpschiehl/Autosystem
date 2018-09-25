@@ -7,6 +7,7 @@ package view;
 
 import bean.ProdutoBean;
 import dao.ProdutoDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,9 +84,8 @@ public class AlterarCadastro extends javax.swing.JFrame {
         jComboBoxLocalizacao = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaAplicacao = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonConcluido = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
         jTextFieldValor = new javax.swing.JTextField();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -116,11 +116,21 @@ public class AlterarCadastro extends javax.swing.JFrame {
         jTextAreaAplicacao.setRows(5);
         jScrollPane1.setViewportView(jTextAreaAplicacao);
 
-        jButton1.setText("jButton1");
+        jButtonConcluido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/clipboard.png"))); // NOI18N
+        jButtonConcluido.setText("Concluido");
+        jButtonConcluido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConcluidoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cancel.png"))); // NOI18N
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acessórios e acabamento", "Injeção e carburador", "Motor", "Polias e tensores", "Retentor e junta", "Supenção e freios", "Correas e corrente de comando", "", "", "", "" }));
 
@@ -151,11 +161,9 @@ public class AlterarCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonConcluido)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton2)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton3))
+                        .addComponent(jButtonCancelar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -235,14 +243,22 @@ public class AlterarCadastro extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonConcluido)
+                    .addComponent(jButtonCancelar))
                 .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonConcluidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConcluidoActionPerformed
+        validar();
+        alterer();
+    }//GEN-LAST:event_jButtonConcluidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,9 +296,8 @@ public class AlterarCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonConcluido;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxLocalizacao;
     private javax.swing.JComboBox<String> jComboBoxUnidadeMedida;
@@ -304,4 +319,198 @@ public class AlterarCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JTextField jTextFielddescricao;
     // End of variables declaration//GEN-END:variables
+
+    private void alterer() {
+         ProdutoBean produto = new ProdutoBean();
+        produto.setDescricao(jTextFielddescricao.getText().trim());
+        if (jRadioButtonNovo.isSelected()) {
+            produto.setStatusPecas("novo");
+        } else if (jRadioButtonSeminovo.isSelected()) {
+            produto.setStatusPecas("semi Novo");
+        }
+
+        produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim()));
+
+        if (jComboBoxUnidadeMedida.getSelectedIndex() == 0) {
+            produto.setUnidadeDeMedida("Kit");
+        } else if (jComboBoxUnidadeMedida.getSelectedIndex() == 1) {
+            produto.setUnidadeDeMedida("Peça");
+        }
+        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim()));
+        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim()));
+
+        switch (jComboBoxCategoria.getSelectedIndex()) {
+            case 0:
+                produto.setCategoria("Acessórios e acabamento");
+                break;
+            case 1:
+                produto.setCategoria("Injeção e carburador");
+                break;
+            case 2:
+                produto.setCategoria("Motor");
+                break;
+            case 3:
+                produto.setCategoria("Polias e tensores");
+            case 4:
+                produto.setCategoria("Retentor e junta");
+                break;
+            case 5:
+                produto.setCategoria("Supenção e freios");
+                break;
+            case 6:
+                produto.setCategoria("Correas e corrente de comando");
+                break;
+        }
+        switch (jComboBoxLocalizacao.getSelectedIndex()) {
+            case 0:
+                produto.setLocalizacao("Acessórios");
+                break;
+            case 1:
+                produto.setLocalizacao("Acessorios do Motor");
+                break;
+            case 2:
+                produto.setLocalizacao("Componentes eletricos");
+                break;
+            case 3:
+                produto.setLocalizacao("Correias");
+                break;
+            case 4:
+                produto.setLocalizacao("Correntes de CV");
+                break;
+            case 5:
+                produto.setLocalizacao("Farois");
+                break;
+            case 6:
+                produto.setLocalizacao("freio");
+                break;
+            case 7:
+                produto.setLocalizacao("Kits de Junta");
+                break;
+            case 8:
+                produto.setLocalizacao("motor");
+                break;
+            case 9:
+                produto.setLocalizacao("Parachoques");
+                break;
+            case 10:
+                produto.setLocalizacao("polias");
+                break;
+            case 11:
+                produto.setLocalizacao("Portas e Carrroceria(recortes)");
+                break;
+            case 12:
+                produto.setLocalizacao("retentores");
+                break;
+            case 13:
+                produto.setLocalizacao("Rolamentos");
+                break;
+            case 14:
+                produto.setLocalizacao("suspensão");
+                break;
+            case 15:
+                produto.setLocalizacao("Tensores");
+                break;
+            case 16:
+                produto.setLocalizacao("vidros");
+                break;
+
+        }
+        produto.setAplicacao(jTextAreaAplicacao.getText().trim());
+        new ProdutoDao().alterar(produto);
+    }
+
+    private void validar() {
+if (jTextFielddescricao.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                    "Deve ser informado o Produto", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        } else if(jTextFielddescricao.getText().length()<=2){
+            JOptionPane.showMessageDialog(null,
+                    "Deve ser informado um nome com mais de carcteres.", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+               
+        }
+        if (!jRadioButtonNovo.isSelected() && !jRadioButtonSeminovo.isSelected()) {
+            JOptionPane.showMessageDialog(null,
+                    "Deve ser selecionado se é novo ou semi novo", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+              jRadioButtonNovo.requestFocus();
+            return;
+
+        } 
+        if (jComboBoxUnidadeMedida.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "Unidade de Medida deve ser Preenchida", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jComboBoxUnidadeMedida.requestFocus();
+            return;
+        }
+
+        //Peso
+        if (jTextFieldPeso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "O Peso deve ser Informado", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldPeso.requestFocus();
+            return;
+        } else if (Float.parseFloat(jTextFieldPeso.getText()) < -1) {
+            JOptionPane.showMessageDialog(null,
+                    "O Peso não pode ser negativo", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldPeso.requestFocus();
+            return;
+        } else if (Float.parseFloat(jTextFieldPeso.getText()) == 0) {
+            JOptionPane.showMessageDialog(null,
+                    "O Peso não pode ser zero", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldPeso.requestFocus();
+            return;
+        }
+
+        if (jComboBoxLocalizacao.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "A Localização deve ser Informado", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jComboBoxLocalizacao.requestFocus();
+            return;
+        }
+
+        //Valor
+        if (jTextFieldValor.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Valor deve ser informado.", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldValor.requestFocus();
+            return;
+        } else if (Float.parseFloat(jTextFieldValor.getText()) == 0) {
+            JOptionPane.showMessageDialog(null,
+                    "Valor não podera ser zero.", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldValor.requestFocus();
+            return;
+        } else if (Float.parseFloat(jTextFieldValor.getText()) <= -1) {
+            JOptionPane.showMessageDialog(null,
+                    "Valor não podera ser negativo", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldValor.requestFocus();
+            return;
+        }
+
+        if (jComboBoxCategoria.getSelectedIndex() == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "A Categoria deve ser Informado", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jComboBoxCategoria.requestFocus();
+            return;
+        }
+
+        //Aplicaçãoa
+        if (jTextAreaAplicacao.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Aplicacao deve ser preenchida");
+        } else if (jTextAreaAplicacao.getText().length() <= 2) {
+            JOptionPane.showMessageDialog(null, "Aplicacao deve ser maior que três");
+        }
+
+    }
 }

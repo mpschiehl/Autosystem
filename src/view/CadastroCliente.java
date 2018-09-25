@@ -95,7 +95,6 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jLabel13.setText("Número");
 
-        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,12 +102,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png"))); // NOI18N
         jButtonAdicionar.setText("Adicionar");
+    
 
         jLabel5.setText("Cnpj");
 
-        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pencil.png"))); // NOI18N
         jButtonLimpar.setText("Limpar");
         jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +136,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jButtonLimpar)))
@@ -232,19 +230,19 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonLimpar)
                             .addComponent(jLabel10))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-       
+        // TODO add your handling code here:
         limparCampos();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        
+        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
@@ -427,7 +425,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             MaskFormatter maskFormatter = new MaskFormatter("(##)####-####");
             maskFormatter.install(jFormattedTextFieldTelefone);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Telefone precisa ser preenchido");
+            JOptionPane.showMessageDialog(null, "Chame o prog");
         }
 
     }

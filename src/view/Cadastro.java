@@ -32,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.border.Border;
+import jdk.nashorn.internal.ir.ForNode;
 
 /**
  *
@@ -144,11 +145,11 @@ public class Cadastro implements BaseInterfaceJava {
 
         //Quantidade
         jLabelQuantidade.setLocation(20, 100);
-     jTextFieldQuantidade.setLocation(20, 125);
+        jTextFieldQuantidade.setLocation(20, 125);
 
         //Valor
         jLabelValor.setLocation(20, 165);
-       jTextFieldValor.setLocation(20, 185);
+       jTextFieldValor.setLocation(20, 190);
 
         //Aplicacao
       //  jLabelAplicacao.setLocation(20, 225);
@@ -481,11 +482,12 @@ public class Cadastro implements BaseInterfaceJava {
             gerarJLabel("É obrigatório preencher ", jTextFieldDescricao);
         } else if(jTextFieldDescricao.getText().length()<2) {
              gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
+        }else {
+            bordaSucesso(jTextFieldDescricao);
         }
         
         
         //Quantidade
-       
         if (jTextFieldQuantidade.getText().isEmpty()) {
             gerarJLabel("É obrigatório preencher ", jTextFieldQuantidade);
         } else {
@@ -499,7 +501,6 @@ public class Cadastro implements BaseInterfaceJava {
         }
         
        //Valor
-        
         if (jTextFieldValor.getText().isEmpty()) {
               gerarJLabel("É obrigatório preencher ", jTextFieldValor);
         } else if(Float.parseFloat(jTextFieldValor.getText())< 0){
@@ -525,19 +526,6 @@ public class Cadastro implements BaseInterfaceJava {
         }
      
 
-        
-      
-        
-   
-        
-         
-         
-         
-         
-         
-         
-         
-         
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "Unidade de Medida deve ser Preenchida", "Cadastro",
@@ -638,6 +626,21 @@ public class Cadastro implements BaseInterfaceJava {
 
     private void apagarComponentes() {
 
+       for (JLabel jLabelE : jLabels) {
+            jFrameCadastro.remove(jLabelE);
+        }
     }
 
+   
+    private void bordaSucesso(JTextField jTextField){
+        Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
+        jTextField.setBorder(borda);
+        
+    }
+  private void bordaErro(JTextField jTextField){
+         Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
+        jTextField.setBorder(borda);
+  }
 }
+   
+

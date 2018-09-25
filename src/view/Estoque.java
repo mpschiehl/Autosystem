@@ -330,7 +330,10 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3StateChanged
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int linhaSelecionada = jTableEstoque.getSelectedRow();
+        int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja realmente apagar o Registo?"
+                        + "\nSe Você tem Certeza Clique em Sim", "Aviso", JOptionPane.ERROR_MESSAGE);
+                if (resposta == 0) {
+                   int linhaSelecionada = jTableEstoque.getSelectedRow();
         if(linhaSelecionada == -1){
             JOptionPane.showMessageDialog(null, "Selecione um registro para a exclusão");
             return;
@@ -339,6 +342,9 @@ public class Estoque extends javax.swing.JFrame {
         int codigo = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
         new ProdutoDao().excluir(codigo);
         JOptionPane.showMessageDialog(null, "Produto excluído com sucesso");
+                    
+                }
+        
                
     }//GEN-LAST:event_jButton3ActionPerformed
 

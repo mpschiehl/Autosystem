@@ -29,7 +29,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
         if (produto.getStatusPecas().equals("novo")) {
             jRadioButtonNovo.setSelected(true);
         }
-        if (produto.getStatusPecas().equals("semi-novo")) {
+        if (produto.getStatusPecas().equals("semi Novo")) {
             jRadioButtonSeminovo.setSelected(true);
         }
         jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
@@ -415,8 +415,16 @@ public class AlterarCadastro extends javax.swing.JFrame {
                 break;
 
         }
+        int codigo = Integer.parseInt(jLabelCodigo.getText());
         produto.setAplicacao(jTextAreaAplicacao.getText().trim());
-        new ProdutoDao().alterar(produto);
+      int resposta = JOptionPane.showConfirmDialog(null, "Você Deseja realmete Alterar?"
+                        + "\nSe sim Clique em Sim", "Aviso", JOptionPane.ERROR_MESSAGE);
+                if (resposta == 0) {
+                    new ProdutoDao().alterar(produto,codigo);
+                    JOptionPane.showMessageDialog(null,"Salvo com sucesso","alteração de Cadastro",JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
+        dispose();
     }
 
     private void validar() {
@@ -424,12 +432,13 @@ if (jTextFielddescricao.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
                     "Deve ser informado o Produto", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
+            return;
             
         } else if(jTextFielddescricao.getText().length()<=2){
             JOptionPane.showMessageDialog(null,
                     "Deve ser informado um nome com mais de carcteres.", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
-               
+               return;
         }
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSeminovo.isSelected()) {
             JOptionPane.showMessageDialog(null,

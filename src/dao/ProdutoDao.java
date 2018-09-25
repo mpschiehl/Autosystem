@@ -70,23 +70,26 @@ public class ProdutoDao {
         return false;
     }
 
-    public boolean alterar(ProdutoBean produto) {
+    public boolean alterar(ProdutoBean produto, int codigo) {
         Connection conexao = Conexao.obterConexao();
         String sql = "UPDATE produtos SET quantidade = ?,"
-                + " valor = ?, descricao = ?,unidade_de_medida = ?, localizacao = ?, valor_unitario = ? ";
+                + " valor = ?, descricao = ?,unidade_de_medida = ?, localizacao = ?, valor_unitario = ? Where id =?;";
+        if(conexao !=null){
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, produto.getDescricao());
-            ps.setString(2, produto.getUnidadeDeMedida());
-            ps.setString(3, produto.getLocalizacao());
-            ps.setFloat(4, produto.getValorUnitario());
-            ps.setInt(5, produto.getQuantidade());
-            ps.setFloat(6, produto.getValor());
+            ps.setInt(1, produto.getQuantidade());
+            ps.setFloat(2, produto.getValor());
+            ps.setString(3, produto.getDescricao());
+            ps.setString(4, produto.getUnidadeDeMedida());
+            ps.setString(5, produto.getLocalizacao());
+            ps.setFloat(6, produto.getValorUnitario());
+            ps.setInt(7, codigo);
             return ps.executeUpdate() == 1;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             Conexao.fecharConexao();
+        }
         }
         return false;
     }

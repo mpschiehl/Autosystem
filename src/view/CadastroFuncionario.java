@@ -6,6 +6,7 @@
 package view;
 
 import bean.FuncionarioBean;
+import dao.FuncionariosDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFormattedTextField;
@@ -482,6 +483,18 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public void salvarBanco() {
         FuncionarioBean funcionario = new FuncionarioBean();
         funcionario.setNome(jTextFieldNome.getText().trim());
+        funcionario.setEndereco(jTextFieldEndereco.getText().trim().toUpperCase());
+        funcionario.setBairro(jTextFieldBairro.getText().trim().toUpperCase());
+        funcionario.setNumero(Integer.parseInt(jTextFieldNumero.getText().trim()));
+        funcionario.setCep(jFormattedTextFieldCep.getText().trim());
+        funcionario.setCargo(jTextFieldCargo.getText().trim());
+        funcionario.setSalario(Float.parseFloat(jFormattedTextFieldSalario.getText().trim().replace(".", "").replace(",", ".")));
+        funcionario.setEmail(jTextFieldEmail.getText().trim().toLowerCase());
+        funcionario.setDataAdmissao(jFormattedTextFieldDataAdimissao.getText().trim());
+        funcionario.setCidade(jTextFieldCidade.getText().trim().toUpperCase());
+        
+        new FuncionariosDao().inserir(funcionario);
+                
         
         
         

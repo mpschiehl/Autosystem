@@ -5,6 +5,7 @@
  */
 package view;
 
+import bean.FuncionarioBean;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFormattedTextField;
@@ -479,7 +480,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }
 
     public void salvarBanco() {
-
+        FuncionarioBean funcionario = new FuncionarioBean();
+        funcionario.setNome(jTextFieldNome.getText().trim());
+        
+        
+        
     }
 
     public void limparCampos() {

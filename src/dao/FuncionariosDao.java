@@ -20,7 +20,7 @@ public class FuncionariosDao {
     public int inserir(FuncionarioBean funcionario) {
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
-            String sql = "INSERT INTO funcionarios(nome,cpf,cep,bairro,endereco,cidade,numero,email,salario,data_admissao,cargo)values"
+            String sql = "INSERT INTO funcionarios(nome,cpf,cep,bairro,endereco,cidade,numero,email,salario,data_admissao,cargo)"
                     + "\nVALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             try {
                 PreparedStatement preparedStatement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);

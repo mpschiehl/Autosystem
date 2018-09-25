@@ -60,8 +60,6 @@
                                       <Component id="jLabelCargo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
                                       <Component id="jLabelSalario" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                                      <Component id="jLabelPis" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -75,8 +73,7 @@
                               <Component id="jTextFieldCargo" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jFormattedTextFieldSalario" min="-2" pref="95" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jFormattedTextFieldPis" min="-2" pref="128" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -202,18 +199,14 @@
                       <Component id="jFormattedTextFieldDataAdimissao" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelCargo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelSalario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabelPis" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelCargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSalario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTextFieldCargo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jFormattedTextFieldSalario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextFieldPis" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -317,11 +310,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNumeroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelPis">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="PIS"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabelNumero">
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
@@ -344,8 +332,6 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldCep">
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldDataAdimissao">
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldPis">
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldTelefone">
     </Component>

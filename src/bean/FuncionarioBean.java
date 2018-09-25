@@ -10,7 +10,43 @@ package bean;
  * @author Márcio Pedro Schiehl
  */
 public class FuncionarioBean {
-    private String nome,cpf,cep,bairro,endereco,cidade,email;
+    private String nome,cpf,cep,bairro,endereco,cidade,email,dataAdmissao,cargo;
+    private float salario;
+
+    public String getDataAdmissao() {
+        return dataAdmissao;
+    }
+
+    public void setDataAdmissao(String dataAdmissao) {
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    private int numero;
+
+   
 
     public String getNome() {
         return nome;

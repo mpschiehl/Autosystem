@@ -25,7 +25,6 @@ insert into produtos(categoria, quantidade, valor, descricao, aplicacao, unidade
 
 
 
-
 CREATE TABLE clientes(
 
 nome     VARCHAR(100),

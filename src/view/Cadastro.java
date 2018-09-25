@@ -477,7 +477,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
-        //Descrição
+        //Descriçãoa
         if (jTextFieldDescricao.getText().isEmpty()) {
             gerarJLabel("É obrigatório preencher ", jTextFieldDescricao);
         } else if(jTextFieldDescricao.getText().length()<2) {

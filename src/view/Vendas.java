@@ -687,15 +687,15 @@ public class Vendas extends javax.swing.JFrame {
             cnpj= clienteBean.getCnpj();
             endereco = clienteBean.getEndereco();
         }
-        impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\r\n"
-                + "                                                                                               " + data
+        impressora = impressora + "\r\n_______________________________________________________________________________\r\n"
+                + "                                                            " + data
                 + "\r\n AutoSystem"
-                + "\r\n------------------------------------------------------------------------------------------------------------------------------"
+                + "\r\n_______________________________________________________________________________\r\n"
                 + "\r\nCliente : " + nomeDeBusca
                 + "\r\nCPF: "+cpf
                 + "\r\nCNPJ"+cnpj
                 + "\r\nEndereço:"+endereco
-                + "\r\n------------------------------------------------------------------------------------------------------------------------------";
+                + "\r\n_____________________________________________________________________________\r\n";
                 for (int i = 0; i < contador; i++) {
             
                 quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
@@ -707,8 +707,8 @@ public class Vendas extends javax.swing.JFrame {
                 totalizador = totalizador+ total;
 
         }
-                impressora = impressora + "\r\n------------------------------------------------------------------------------------------------------------------------------\r\n"
-                                        + "                                                                                     Total: R$ "+totalizador;
+                impressora = impressora + "\r\n_______________________________________________________________________________\r\n"
+                                        + "                                                         Total: R$ "+totalizador;
                 
         nomeDeBusca = "";
         String caminhoArquivo ="C:/autosystem/data.txt";

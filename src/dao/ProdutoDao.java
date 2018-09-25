@@ -73,7 +73,7 @@ public class ProdutoDao {
     public boolean alterar(ProdutoBean produto, int codigo) {
         Connection conexao = Conexao.obterConexao();
         String sql = "UPDATE produtos SET quantidade = ?,"
-                + " valor = ?, descricao = ?,unidade_de_medida = ?, localizacao = ?, valor_unitario = ? Where id =?;";
+                + " valor = ?, descricao = ?,unidade_de_medida = ?, localizacao = ?, valor_unitario = ?, status_peca = ? Where id =?;";
         if(conexao !=null){
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -83,7 +83,8 @@ public class ProdutoDao {
             ps.setString(4, produto.getUnidadeDeMedida());
             ps.setString(5, produto.getLocalizacao());
             ps.setFloat(6, produto.getValorUnitario());
-            ps.setInt(7, codigo);
+            ps.setString(7, produto.getStatusPecas());
+            ps.setInt(8, codigo);
             return ps.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,7 +97,7 @@ public class ProdutoDao {
 
     public ProdutoBean buscarPorId(int id) {
         ProdutoBean produto = null;
-        String sql = "SELECT * FROM produtos WHERE id = ?";
+        String sql = "SELECT id,categoria,status_peca,peso,localizacao, aplicacao,descricao, quantidade,valor,unidade_de_medida, valor_unitario FROM produtos WHERE id = ?;";
         Connection conexao = Conexao.obterConexao();
         if (conexao != null) {
             try {

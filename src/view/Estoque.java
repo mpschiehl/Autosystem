@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  * @date 2018/08/31
  */
 public class Estoque extends javax.swing.JFrame {
-  
+
     /**
      * Creates new form NewJFrame
      */
@@ -60,6 +60,7 @@ public class Estoque extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButtonLimpar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -108,6 +109,7 @@ public class Estoque extends javax.swing.JFrame {
         });
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Acessorios e acabamento", "centrais e modulos", "injeção e carburador", "motor", "polias e tensores", "retentor e junta", "supenção e freio,", "correas e corrente de comando" }));
+        jComboBoxCategoria.setSelectedIndex(-1);
         jComboBoxCategoria.setMinimumSize(new java.awt.Dimension(300, 26));
         jComboBoxCategoria.setPreferredSize(new java.awt.Dimension(350, 20));
         jComboBoxCategoria.addItemListener(new java.awt.event.ItemListener() {
@@ -193,14 +195,22 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/eraser.png"))); // NOI18N
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel1)
                         .addGap(0, 83, Short.MAX_VALUE)
                         .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,19 +229,19 @@ public class Estoque extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPesquisa))
-                        .addGap(32, 32, 32))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(69, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldPesquisa)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -254,13 +264,13 @@ public class Estoque extends javax.swing.JFrame {
                     .addComponent(jRadioButtonSeminovo))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(79, 79, 79))
         );
 
         pack();
@@ -268,7 +278,7 @@ public class Estoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-      /* int linhaSelecionada = jTableEstoque.getSelectedRow();
+        /* int linhaSelecionada = jTableEstoque.getSelectedRow();
         if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um registro");
             return;
@@ -277,7 +287,7 @@ public class Estoque extends javax.swing.JFrame {
         int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
        
        new Cadastro(codigoRegistro).cadastroAlterar(codigoRegistro);*/
-       
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
@@ -285,39 +295,21 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      dispose();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void trocaTabEnter(){
-        HashSet conj = new HashSet(jFrame1.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));   
-        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));     
+    private void trocaTabEnter() {
+        HashSet conj = new HashSet(jFrame1.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+        conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         jFrame1.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-         List<ProdutoBean> produtos = new ProdutoDao().obterProdutos();
-        DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
-       
-        dtm.setRowCount(0);
-        
-        for (ProdutoBean produto : produtos) {
-            dtm.addRow(new Object[]{
-                produto.getId(),
-                produto.getDescricao(),
-                produto.getCategoria(),
-                produto.getQuantidade(),
-                produto.getValorUnitario(),
-                produto.getStatusPecas(),
-                produto.getPeso(),
-                produto.getLocalizacao()        
-               
-            });
-        }
-        
+        populaTabela();
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int linhaSelecionada = jTableEstoque.getSelectedRow();
-        if(linhaSelecionada == -1){
+        if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um registro para Refatorar");
             return;
         }
@@ -331,138 +323,146 @@ public class Estoque extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja realmente apagar o Registo?"
-                        + "\nSe Você tem Certeza Clique em Sim", "Aviso", JOptionPane.ERROR_MESSAGE);
-                if (resposta == 0) {
-                   int linhaSelecionada = jTableEstoque.getSelectedRow();
-        if(linhaSelecionada == -1){
-            JOptionPane.showMessageDialog(null, "Selecione um registro para a exclusão");
-            return;
+                + "\nSe Você tem Certeza Clique em Sim", "Aviso", JOptionPane.ERROR_MESSAGE);
+        if (resposta == 0) {
+            int linhaSelecionada = jTableEstoque.getSelectedRow();
+            if (linhaSelecionada == -1) {
+                JOptionPane.showMessageDialog(null, "Selecione um registro para a exclusão");
+                return;
+            }
+
+            int codigo = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
+            new ProdutoDao().excluir(codigo);
+            JOptionPane.showMessageDialog(null, "Produto excluído com sucesso");
+
         }
-        
-        int codigo = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
-        new ProdutoDao().excluir(codigo);
-        JOptionPane.showMessageDialog(null, "Produto excluído com sucesso");
-                    
-                }
-        
-               
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-       new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldNumero.getText().trim()));
-                DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
-                dtm.setRowCount(0);
-                ProdutoBean produto = new ProdutoBean();
-               dtm.addRow(new Object[]{
-                        produto.getId(),
-                        produto.getDescricao(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario(),
-                        produto.getStatusPecas(),
-                        produto.getPeso(),
-                        produto.getLocalizacao()
-                    });
+        if(jTextFieldNumero.getText().isEmpty()){
+            jTextFieldNumero.requestFocus();
+            JOptionPane.showMessageDialog(null, "E necessario haver um valor para pesquisar");
+            return;
+        }
+        int id = Integer.parseInt(jTextFieldNumero.getText());
+        DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+        dtm.setRowCount(0);
+        ProdutoBean produto = new ProdutoDao().buscarPorId(id);
+        dtm.addRow(new Object[]{
+            produto.getId(),
+            produto.getDescricao(),
+            produto.getCategoria(),
+            produto.getQuantidade(),
+            produto.getValorUnitario(),
+            produto.getStatusPecas(),
+            produto.getPeso(),
+            produto.getLocalizacao()
+        });
 
-               
+
     }//GEN-LAST:event_jTextFieldNumeroKeyPressed
 
     private void jRadioButtonNovoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonNovoItemStateChanged
-         if (evt.getStateChange() == ItemEvent.SELECTED) {
-                    List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("novo");
-                    DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("novo");
+            DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
 
-                    dtm.setRowCount(0);
+            dtm.setRowCount(0);
 
-                    for (ProdutoBean produto : produtos) {
-                        dtm.addRow(new Object[]{
-                            produto.getId(),
-                        produto.getDescricao(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario(),
-                        produto.getStatusPecas(),
-                        produto.getPeso(),
-                        produto.getLocalizacao()
-                        });
-                    }
+            for (ProdutoBean produto : produtos) {
+                dtm.addRow(new Object[]{
+                    produto.getId(),
+                    produto.getDescricao(),
+                    produto.getCategoria(),
+                    produto.getQuantidade(),
+                    produto.getValorUnitario(),
+                    produto.getStatusPecas(),
+                    produto.getPeso(),
+                    produto.getLocalizacao()
+                });
+            }
 
-         } 
+        }
     }//GEN-LAST:event_jRadioButtonNovoItemStateChanged
 
     private void jRadioButtonSeminovoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonSeminovoItemStateChanged
-       if (evt.getStateChange() == ItemEvent.SELECTED) {
-                    List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("semi-novo");
-                    DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("semi-novo");
+            DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
 
-                    dtm.setRowCount(0);
+            dtm.setRowCount(0);
 
-                    for (ProdutoBean produto : produtos) {
-                        dtm.addRow(new Object[]{produto.getId(),
-                        produto.getDescricao(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario(),
-                        produto.getStatusPecas(),
-                        produto.getPeso(),
-                        produto.getLocalizacao()
-                        });
-                    }
+            for (ProdutoBean produto : produtos) {
+                dtm.addRow(new Object[]{produto.getId(),
+                    produto.getDescricao(),
+                    produto.getCategoria(),
+                    produto.getQuantidade(),
+                    produto.getValorUnitario(),
+                    produto.getStatusPecas(),
+                    produto.getPeso(),
+                    produto.getLocalizacao()
+                });
+            }
 
-         } 
+        }
     }//GEN-LAST:event_jRadioButtonSeminovoItemStateChanged
 
     private void jTextFieldPesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPesquisaKeyTyped
         if (jTextFieldPesquisa.getText().length() > 3) {
-                    List<ProdutoBean> produtos = new ProdutoDao().obterProdutoBusca(jTextFieldPesquisa.getText().trim());
-                    DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+            List<ProdutoBean> produtos = new ProdutoDao().obterProdutoBusca(jTextFieldPesquisa.getText().trim());
+            DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
 
-                    dtm.setRowCount(0);
+            dtm.setRowCount(0);
 
-                    for (ProdutoBean produto : produtos) {
-                        dtm.addRow(new Object[]{produto.getId(),
-                        produto.getDescricao(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario(),
-                        produto.getStatusPecas(),
-                        produto.getPeso(),
-                        produto.getLocalizacao()
-                        });
-                    }
+            for (ProdutoBean produto : produtos) {
+                dtm.addRow(new Object[]{produto.getId(),
+                    produto.getDescricao(),
+                    produto.getCategoria(),
+                    produto.getQuantidade(),
+                    produto.getValorUnitario(),
+                    produto.getStatusPecas(),
+                    produto.getPeso(),
+                    produto.getLocalizacao()
+                });
+            }
 
-                }
+        }
     }//GEN-LAST:event_jTextFieldPesquisaKeyTyped
 
     private void jComboBoxCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaItemStateChanged
-        String busca="";
+        String busca = "";
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-                    //pegando o texto do item selecionado
-                    busca = evt.getItem().toString();
-                }
-                List<ProdutoBean> produtos = new ProdutoDao().obterProdutoCategoria(busca);
-                DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
-                dtm.setRowCount(0);
-                for (ProdutoBean produto : produtos) {
-                    dtm.addRow(new Object[]{produto.getId(),
-                        produto.getDescricao(),
-                        produto.getCategoria(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario(),
-                        produto.getStatusPecas(),
-                        produto.getPeso(),
-                        produto.getLocalizacao()
-                    });
-                }
+            //pegando o texto do item selecionado
+            busca = evt.getItem().toString();
+        }
+        List<ProdutoBean> produtos = new ProdutoDao().obterProdutoCategoria(busca);
+        DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+        dtm.setRowCount(0);
+        for (ProdutoBean produto : produtos) {
+            dtm.addRow(new Object[]{produto.getId(),
+                produto.getDescricao(),
+                produto.getCategoria(),
+                produto.getQuantidade(),
+                produto.getValorUnitario(),
+                produto.getStatusPecas(),
+                produto.getPeso(),
+                produto.getLocalizacao()
+            });
+        }
 
     }//GEN-LAST:event_jComboBoxCategoriaItemStateChanged
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        limpaFiltros();
+        populaTabela();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-    
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -494,15 +494,15 @@ public class Estoque extends javax.swing.JFrame {
                 new Estoque().setVisible(true);
             }
         });
-        
-    } 
-    
-   
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonLimpar;
     private javax.swing.JComboBox jComboBoxCategoria;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -517,4 +517,33 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNumero;
     private javax.swing.JTextField jTextFieldPesquisa;
     // End of variables declaration//GEN-END:variables
+
+    private void populaTabela() {
+        List<ProdutoBean> produtos = new ProdutoDao().obterProdutos();
+        DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
+
+        dtm.setRowCount(0);
+
+        for (ProdutoBean produto : produtos) {
+            dtm.addRow(new Object[]{
+                produto.getId(),
+                produto.getDescricao(),
+                produto.getCategoria(),
+                produto.getQuantidade(),
+                produto.getValorUnitario(),
+                produto.getStatusPecas(),
+                produto.getPeso(),
+                produto.getLocalizacao()
+
+            });
+        }
+
+    }
+
+    private void limpaFiltros() {
+        jTextFieldNumero.setText("");
+        jRbuttonGroup.clearSelection();
+        jComboBoxCategoria.setSelectedIndex(-1);
+        jTextFieldPesquisa.setText("");
+    }
 }

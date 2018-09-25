@@ -26,10 +26,10 @@ public class AlterarCadastro extends javax.swing.JFrame {
         //dao
         jLabelCodigo.setText(Integer.toString(codigoRegistro));
         jTextFielddescricao.setText(String.valueOf(produto.getDescricao()));
-        if (produto.getStatusPecas().equals("novo")) {
+        if (produto.getStatusPecas().equalsIgnoreCase("novo")) {
             jRadioButtonNovo.setSelected(true);
         }
-        if (produto.getStatusPecas().equals("semi Novo")) {
+        if (produto.getStatusPecas().equalsIgnoreCase("semi Novo")) {
             jRadioButtonSeminovo.setSelected(true);
         }
         jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
@@ -75,6 +75,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTextFielddescricao = new javax.swing.JTextField();
         jRadioButtonNovo = new javax.swing.JRadioButton();
         jRadioButtonSeminovo = new javax.swing.JRadioButton();
@@ -102,8 +103,10 @@ public class AlterarCadastro extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
+        buttonGroup1.add(jRadioButtonNovo);
         jRadioButtonNovo.setText("Novo");
 
+        buttonGroup1.add(jRadioButtonSeminovo);
         jRadioButtonSeminovo.setText("Semi-novo");
 
         jComboBoxUnidadeMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kit", "Peça" }));
@@ -296,6 +299,7 @@ public class AlterarCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonConcluido;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
@@ -325,7 +329,8 @@ public class AlterarCadastro extends javax.swing.JFrame {
         produto.setDescricao(jTextFielddescricao.getText().trim());
         if (jRadioButtonNovo.isSelected()) {
             produto.setStatusPecas("novo");
-        } else if (jRadioButtonSeminovo.isSelected()) {
+        }
+        if (jRadioButtonSeminovo.isSelected()) {
             produto.setStatusPecas("semi Novo");
         }
 

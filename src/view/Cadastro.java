@@ -109,7 +109,7 @@ public class Cadastro implements BaseInterfaceJava {
         //JTextField's
         jFrameCadastro.add(jTextFieldQuantidade);
         jFrameCadastro.add(jTextFieldValor);
-        //jFrameCadastro.add(jTextFieldDescricao);
+        jFrameCadastro.add(jTextFieldDescricao);
 
         jFrameCadastro.add(jTextFieldPeso);
 
@@ -478,40 +478,40 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().isEmpty()) {
-            gerarJLabel("*", jLabelDescricao);
+            gerarJLabel("É obrigatório preencher ", jTextFieldDescricao);
         } else if(jTextFieldDescricao.getText().length()<2) {
-             gerarJLabel("Deve conter no mínimo três caracteres", jLabelDescricao);
+             gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
         }
         
         
         //Quantidade
        
         if (jTextFieldQuantidade.getText().isEmpty()) {
-            gerarJLabel("É obrigatório preencher ", jLabelQuantidade);
+            gerarJLabel("É obrigatório preencher ", jTextFieldQuantidade);
         } else {
             try {
             if(Float.parseFloat(jTextFieldQuantidade.getText()) <=0){
-             gerarJLabel("Quantidade deve ser maior que zero", jLabelQuantidade);
+             gerarJLabel("Quantidade deve ser maior que zero", jTextFieldQuantidade);
             }
             } catch (Exception e) {
-                  gerarJLabel("Quantidade não podera conter letras", jLabelQuantidade);
+                  gerarJLabel("Quantidade não podera conter letras", jTextFieldQuantidade);
             }
         }
         
        //Valor
         
         if (jTextFieldValor.getText().isEmpty()) {
-              gerarJLabel("É obrigatório preencher ", jLabelValor);
+              gerarJLabel("É obrigatório preencher ", jTextFieldValor);
         } else if(Float.parseFloat(jTextFieldValor.getText())< 0){
-            gerarJLabel("Valor deve ser maior que zero", jLabelValor);
+            gerarJLabel("Valor deve ser maior que zero", jTextFieldValor);
         }
            
         
           //Peso
         if (jTextFieldPeso.getText().isEmpty()) {
-           gerarJLabel("É obrigatório preencher ", jLabelPeso);
+           gerarJLabel("É obrigatório preencher ", jTextFieldPeso);
         } else if(Float.parseFloat(jTextFieldPeso.getText())<=0){
-                 gerarJLabel("É obrigatório ser maior que 0 ", jLabelPeso);
+                 gerarJLabel("É obrigatório ser maior que 0 ", jTextFieldPeso);
         }
         
         //RadioButton
@@ -619,12 +619,12 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JLabel jLabel) {
+    private void gerarJLabel(String texto, JTextField jTextField) {
         JLabel jLabelE = new JLabel();
         jLabelE.setText(texto);
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jLabel.getX(), jLabel.getY() + jLabel.getHeight()+5);
-        jLabelE.setSize(jLabel.getWidth(),20);
+        jLabelE.setLocation(jTextField.getX(), jTextField.getY() + jTextField.getHeight()+5);
+        jLabelE.setSize(jTextField.getWidth(),20);
         jFrameCadastro.add(jLabelE);
         jLabels.add(jLabelE);
 

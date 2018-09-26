@@ -100,7 +100,7 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jLabelQuantidade);
         jFrameCadastro.add(jLabelValor);
         jFrameCadastro.add(jLabelDescricao);
-        // jFrameCadastro.add(jLabelAplicacao);
+         jFrameCadastro.add(jLabelAplicacao);
         jFrameCadastro.add(jLabelUnidadeDeMedida);
         //   jFrameCadastro.add(jLabelLocalizacao);
 
@@ -133,7 +133,8 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jComboBoxUnidadeDeMedida);
 
         //TextArea
-        //   jFrameCadastro.add(jTextAreaAplicacao);
+        //  jFrameCadastro.add(jTextAreaAplicacao);
+        
         //JScrollPane
         // jFrameCadastro.add(jScrollPaneAplicacao);
     }
@@ -154,11 +155,11 @@ public class Cadastro implements BaseInterfaceJava {
 
        jTextFieldValor.setLocation(20, 190);
 
-        jTextFieldValor.setLocation(20, 185);
+        
 
 
         //Aplicacao
-        //  jLabelAplicacao.setLocation(20, 225);
+          jLabelAplicacao.setLocation(20, 230);
         //  jTextAreaAplicacao.setLocation(20, 210);
         //UnidadeDeMedida
         jLabelUnidadeDeMedida.setLocation(190, 100);
@@ -617,7 +618,7 @@ public class Cadastro implements BaseInterfaceJava {
         JLabel jLabelE = new JLabel();
         jLabelE.setText(texto);
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jTextField.getX(), jTextField.getY() + jTextField.getHeight() + 5);
+        jLabelE.setLocation(jTextField.getX(), jTextField.getY() + jTextField.getHeight());
         jLabelE.setSize(jTextField.getWidth(), 20);
         jFrameCadastro.add(jLabelE);
         jLabels.add(jLabelE);

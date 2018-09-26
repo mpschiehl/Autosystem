@@ -389,11 +389,11 @@ public class Vendas extends javax.swing.JFrame {
             public void keyPressed(KeyEvent ke) {
                 switch (ke.getKeyCode()) {
                     case KeyEvent.VK_F12:
-                new ProdutoDao().buscarPorId(Integer.parseInt(jTextFieldId.getText().trim()));
+                int id = Integer.parseInt(jTextFieldId.getText());
                 DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
+                ProdutoBean produto = new ProdutoDao().buscarPorId(id);
                 dtm.setRowCount(0);
-                        ProdutoBean produto = new ProdutoBean();
-                    dtm.addRow(new Object[]{
+                        dtm.addRow(new Object[]{
                         produto.getDescricao(),
                         produto.getQuantidade(),
                         produto.getValorUnitario()

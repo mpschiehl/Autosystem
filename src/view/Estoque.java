@@ -84,6 +84,13 @@ public class Estoque extends javax.swing.JFrame {
         jLabel1.setText("Número: ");
 
         jTextFieldNumero.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextFieldNumero.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTextFieldNumeroInputMethodTextChanged(evt);
+            }
+        });
         jTextFieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldNumeroKeyPressed(evt);
@@ -341,12 +348,7 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-        if(jTextFieldNumero.getText().isEmpty()){
-            jTextFieldNumero.requestFocus();
-            JOptionPane.showMessageDialog(null, "E necessario haver um valor para pesquisar");
-            return;
-        }
-        int id = Integer.parseInt(jTextFieldNumero.getText());
+                int id = Integer.parseInt(jTextFieldNumero.getText());
         DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
         dtm.setRowCount(0);
         ProdutoBean produto = new ProdutoDao().buscarPorId(id);
@@ -458,6 +460,10 @@ public class Estoque extends javax.swing.JFrame {
         limpaFiltros();
         populaTabela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jTextFieldNumeroInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextFieldNumeroInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNumeroInputMethodTextChanged
 
     /**
      * @param args the command line arguments

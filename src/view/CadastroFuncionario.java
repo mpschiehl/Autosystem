@@ -434,13 +434,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Informe o Cargo do supoto funcionário", "Cadastro Funcionário", JOptionPane.ERROR_MESSAGE);
             jTextFieldCargo.requestFocus();
             return;
-        }
+        }/*
         String salario = jFormattedTextFieldSalario.getText();
         if(salario.isEmpty()){
             JOptionPane.showMessageDialog(null,"Informe o salário, nem relógio trabalha de graça","Cadastro Funcionário",JOptionPane.ERROR_MESSAGE);
         jFormattedTextFieldSalario.requestFocus();
         return;
-        }
+        }*/
     }
 
     // mask cpf      
@@ -488,7 +488,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         funcionario.setNumero(Integer.parseInt(jTextFieldNumero.getText().trim()));
         funcionario.setCep(jFormattedTextFieldCep.getText().trim());
         funcionario.setCargo(jTextFieldCargo.getText().trim());
-        funcionario.setSalario(Float.parseFloat(jFormattedTextFieldSalario.getText().trim().replace(".", "").replace(",", ".")));
+        //funcionario.setSalario(Float.parseFloat(jFormattedTextFieldSalario.getText().trim().replace(".", "").replace(",", ".")));
         funcionario.setEmail(jTextFieldEmail.getText().trim().toLowerCase());
         funcionario.setDataAdmissao(jFormattedTextFieldDataAdimissao.getText().trim());
         funcionario.setCidade(jTextFieldCidade.getText().trim().toUpperCase());

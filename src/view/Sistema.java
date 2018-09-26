@@ -69,7 +69,7 @@ public class Sistema implements BaseInterfaceJava {
     @Override
     public void gerarTela() {
         jFrameSistema = new JFrame("AutoSystem");
-        jFrameSistema.setSize(800, 600);
+        jFrameSistema.setSize(290, 600);
         jFrameSistema.setLocationRelativeTo(null);
         jFrameSistema.setLayout(null);
         jFrameSistema.setResizable(false);
@@ -78,22 +78,22 @@ public class Sistema implements BaseInterfaceJava {
 
     @Override
     public void gerarLocalizacoes() {
-        jButtonCadastro.setLocation(10, 10);
-        jButtonEstoque.setLocation(120, 10);
-        jButtonVenda.setLocation(240, 10);
-        jButtonSair.setLocation(600, 10);
-        jButtonCadastroCliente.setLocation(480, 10);
-        jButtonCadastroFuncionario.setLocation(360, 10);
+        jButtonCadastro.setLocation(25, 60);
+        jButtonEstoque.setLocation(25, 160);
+        jButtonVenda.setLocation(25, 260);
+        jButtonSair.setLocation(165, 60);
+        jButtonCadastroCliente.setLocation(165, 160);
+        jButtonCadastroFuncionario.setLocation(165, 260);
     }
 
     @Override
     public void gerarDimensoes() {
-        jButtonCadastro.setSize(100, 50);
-        jButtonEstoque.setSize(100, 50);
-        jButtonSair.setSize(100, 50);
-        jButtonVenda.setSize(100, 50);
-        jButtonCadastroFuncionario.setSize(100, 50);
-        jButtonCadastroCliente.setSize(100, 50);
+        jButtonCadastro.setSize(100, 80);
+        jButtonEstoque.setSize(100, 80);
+        jButtonSair.setSize(100, 80);
+        jButtonVenda.setSize(100, 80);
+        jButtonCadastroFuncionario.setSize(100, 80);
+        jButtonCadastroCliente.setSize(100, 80);
 
     }
 
@@ -175,10 +175,10 @@ public class Sistema implements BaseInterfaceJava {
     public void adicionarComponentes() {
         jFrameSistema.add(jButtonCadastro);
         jFrameSistema.add(jButtonEstoque);
-        jFrameSistema.add(jButtonVenda);
+       jFrameSistema.add(jButtonVenda);
         jFrameSistema.add(jButtonSair);
         jFrameSistema.add(jButtonCadastroCliente);
-        jFrameSistema.add(jButtonCadastroFuncionario);
+       jFrameSistema.add(jButtonCadastroFuncionario);
     }
 
     private void acaoBotaoCadastroFuncionario() {

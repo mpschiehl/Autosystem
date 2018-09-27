@@ -135,7 +135,7 @@ public class Sistema implements BaseInterfaceJava {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Estoque();
+                new Estoque().setVisible(true);
 
             }
         });

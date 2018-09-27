@@ -262,7 +262,7 @@
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSairActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonSairMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAdicionar">
@@ -293,9 +293,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimparActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

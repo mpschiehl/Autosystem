@@ -479,7 +479,11 @@ public class Cadastro implements BaseInterfaceJava {
     private void validacao() {
         //Descrição
         if (jTextFieldDescricao.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldDescricao);
+          JOptionPane.showMessageDialog(null, "Descrição Deve ser Preenchida", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+          jTextFieldDescricao.requestFocus();
+          return;
+            /*  gerarJLabel("Deve preencher.", jTextFieldDescricao);
             bordaErro(jTextFieldDescricao);
             jTextFieldDescricao.requestFocus();
         } else if (jTextFieldDescricao.getText().length() < 2) {
@@ -488,12 +492,16 @@ public class Cadastro implements BaseInterfaceJava {
             jTextFieldDescricao.requestFocus();
         } else {
             bordaSucesso(jTextFieldDescricao);
-
+*/
         }
 
         //Quantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldQuantidade);
+            JOptionPane.showMessageDialog(null, "Quantidade Deve ser Informada", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldQuantidade.requestFocus();
+            return;
+            /*gerarJLabel("Deve preencher.", jTextFieldQuantidade);
             bordaErro(jTextFieldQuantidade);
             jTextFieldQuantidade.requestFocus();
         } else {
@@ -507,12 +515,16 @@ public class Cadastro implements BaseInterfaceJava {
                 gerarJLabel("Quantidade inválida", jTextFieldQuantidade);
                 bordaErro(jTextFieldQuantidade);
             }
-            bordaSucesso(jTextFieldQuantidade);
+            bordaSucesso(jTextFieldQuantidade);*/
         }
 
         //Valor
         if (jTextFieldValor.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldValor);
+            JOptionPane.showMessageDialog(null, "Valor deve ser informado", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldValor.requestFocus();
+            return;
+            /*gerarJLabel("Deve preencher.", jTextFieldValor);
             bordaErro(jTextFieldValor);
             jTextFieldValor.requestFocus();
         } else {
@@ -527,12 +539,15 @@ public class Cadastro implements BaseInterfaceJava {
                 bordaErro(jTextFieldValor);
             }
             bordaSucesso(jTextFieldValor);
-
+*/
         }
 
         //Peso
         if (jTextFieldPeso.getText().isEmpty()) {
-            gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
+            JOptionPane.showMessageDialog(null, "O Peso deve ser Informado", "Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+  /*          gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
             bordaErro(jTextFieldPeso);
             jTextFieldPeso.requestFocus();
         } else {
@@ -547,7 +562,7 @@ public class Cadastro implements BaseInterfaceJava {
                 bordaErro(jTextFieldPeso);
             }
             bordaSucesso(jTextFieldPeso);
-
+            */
         }
 
         //RadioButton

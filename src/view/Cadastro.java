@@ -438,6 +438,7 @@ public class Cadastro implements BaseInterfaceJava {
         jComboBoxCategoria.setSelectedIndex(-1);
         buttonGroup.clearSelection();
         jTextFieldDescricao.requestFocus();
+        apagarComponentes();
     }
 
     private void acaoBotaoLimpar() {

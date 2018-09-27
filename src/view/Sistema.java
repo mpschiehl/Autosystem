@@ -32,9 +32,7 @@ public class Sistema implements BaseInterfaceJava {
 
     //construtor da clase
     private Estoque estoque;
-   // private Venda ;
-    //private Venda venda;
-
+   
     public Sistema() {
         gerarTela();
         ConfigurandoLookAndFeel();
@@ -55,6 +53,7 @@ public class Sistema implements BaseInterfaceJava {
 
     private JFrame jFrameSistema;
     private JButton jButtonCadastro, jButtonEstoque, jButtonVenda, jButtonSair, jButtonCadastroCliente, jButtonCadastroFuncionario;
+    private JLabel jLabelAutoSystem;
 
     @Override
     public void instanciarComponentes() {
@@ -64,12 +63,14 @@ public class Sistema implements BaseInterfaceJava {
         jButtonSair = new JButton("Sair");
         jButtonCadastroCliente = new JButton("Cliente");
         jButtonCadastroFuncionario = new JButton("Funcionario");
+        
+        jLabelAutoSystem = new JLabel("AutoSystem");
     }
 
     @Override
     public void gerarTela() {
         jFrameSistema = new JFrame("AutoSystem");
-        jFrameSistema.setSize(290, 600);
+        jFrameSistema.setSize(275, 360);
         jFrameSistema.setLocationRelativeTo(null);
         jFrameSistema.setLayout(null);
         jFrameSistema.setResizable(false);
@@ -78,12 +79,14 @@ public class Sistema implements BaseInterfaceJava {
 
     @Override
     public void gerarLocalizacoes() {
-        jButtonCadastro.setLocation(25, 60);
-        jButtonEstoque.setLocation(25, 160);
-        jButtonVenda.setLocation(25, 260);
-        jButtonSair.setLocation(165, 60);
-        jButtonCadastroCliente.setLocation(165, 160);
-        jButtonCadastroFuncionario.setLocation(165, 260);
+        jButtonCadastro.setLocation(25, 25);
+        jButtonEstoque.setLocation(145, 25);
+        jButtonVenda.setLocation(25,125 );
+        jButtonSair.setLocation(85, 225);
+        jButtonCadastroCliente.setLocation(145, 125);
+        jButtonCadastroFuncionario.setLocation(165, 25);
+        
+        jLabelAutoSystem.setLocation(25,20);
     }
 
     @Override
@@ -94,6 +97,8 @@ public class Sistema implements BaseInterfaceJava {
         jButtonVenda.setSize(100, 80);
         jButtonCadastroFuncionario.setSize(100, 80);
         jButtonCadastroCliente.setSize(100, 80);
+        
+        jLabelAutoSystem.setSize(200,35);
 
     }
 
@@ -130,11 +135,7 @@ public class Sistema implements BaseInterfaceJava {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (estoque == null) {
-                    estoque = new Estoque();
-                    estoque.setVisible(true);
-                }
-                estoque.setState(JFrame.NORMAL);
+                new Estoque();
 
             }
         });
@@ -146,16 +147,6 @@ public class Sistema implements BaseInterfaceJava {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-             // if (venda == null){
-             //     venda = new Venda();
-              //     venda.setVisible(true);
-           //   }
-            //   venda.setState(JFrame.NORMAL);
-                /* if (venda == null) {
-                    venda = new Venda();
-                    venda.setVisible(true);
-                }
-                      venda.setState(JFrame.NORMAL);*/
                 new Vendas();
             }
         });
@@ -178,7 +169,9 @@ public class Sistema implements BaseInterfaceJava {
        jFrameSistema.add(jButtonVenda);
         jFrameSistema.add(jButtonSair);
         jFrameSistema.add(jButtonCadastroCliente);
-       jFrameSistema.add(jButtonCadastroFuncionario);
+      // jFrameSistema.add(jButtonCadastroFuncionario);
+       
+  
     }
 
     private void acaoBotaoCadastroFuncionario() {

@@ -35,7 +35,6 @@ import javax.swing.border.Border;
 
 import jdk.nashorn.internal.ir.ForNode;
 
-import javax.swing.text.MaskFormatter;
 
 
 /**
@@ -60,6 +59,7 @@ public class Cadastro implements BaseInterfaceJava {
     private JScrollPane jScrollPaneAplicacao;
     private ButtonGroup buttonGroup;
     private ArrayList<JLabel> jLabels = new ArrayList<>();
+    
 
     public Cadastro() {
 
@@ -84,14 +84,12 @@ public class Cadastro implements BaseInterfaceJava {
     @Override
     public void gerarTela() {
         jFrameCadastro = new JFrame("Cadastro");
-        jFrameCadastro.setSize(650, 500);
+        jFrameCadastro.setSize(590, 470);
         jFrameCadastro.setLayout(null);
         jFrameCadastro.setLocationRelativeTo(null);
         jFrameCadastro.setResizable(false);
         jFrameCadastro.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        //Troca de cor
-        // jFrameCadastro.getContentPane().setBackground(Color.decode("#BEBEBE")); 
     }
 
     @Override
@@ -100,14 +98,14 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jLabelQuantidade);
         jFrameCadastro.add(jLabelValor);
         jFrameCadastro.add(jLabelDescricao);
-         jFrameCadastro.add(jLabelAplicacao);
+        jFrameCadastro.add(jLabelAplicacao);
         jFrameCadastro.add(jLabelUnidadeDeMedida);
-        //   jFrameCadastro.add(jLabelLocalizacao);
+        jFrameCadastro.add(jLabelLocalizacao);
 
         jFrameCadastro.add(jLabelStatusPeca);
         jFrameCadastro.add(jLabelPeso);
         jFrameCadastro.add(jLabelCategoria);
-        //   jFrameCadastro.add(jLabelAutoSystems);
+
         jFrameCadastro.add(jLabelRadioButtonNovo);
         jFrameCadastro.add(jLabelRadioButtonSemiNovo);
 
@@ -128,15 +126,14 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.add(jRadioButtonSemiNovo);
 
         //ComboBox
-        //    jFrameCadastro.add(jComboBoxLocalizacao);
+        jFrameCadastro.add(jComboBoxLocalizacao);
         jFrameCadastro.add(jComboBoxCategoria);
         jFrameCadastro.add(jComboBoxUnidadeDeMedida);
 
         //TextArea
-        //  jFrameCadastro.add(jTextAreaAplicacao);
-        
+        jFrameCadastro.add(jTextAreaAplicacao);
         //JScrollPane
-        // jFrameCadastro.add(jScrollPaneAplicacao);
+        jFrameCadastro.add(jScrollPaneAplicacao);
     }
 
     @Override
@@ -153,67 +150,63 @@ public class Cadastro implements BaseInterfaceJava {
         //Valor
         jLabelValor.setLocation(20, 165);
 
-       jTextFieldValor.setLocation(20, 190);
-
-        
-
+        jTextFieldValor.setLocation(20, 190);
 
         //Aplicacao
-          jLabelAplicacao.setLocation(20, 230);
-        //  jTextAreaAplicacao.setLocation(20, 210);
+        jLabelAplicacao.setLocation(20, 230);
+        jTextAreaAplicacao.setLocation(20, 255);
+
         //UnidadeDeMedida
-        jLabelUnidadeDeMedida.setLocation(190, 100);
-        jComboBoxUnidadeDeMedida.setLocation(190, 125);
+        jLabelUnidadeDeMedida.setLocation(410, 165);
+        jComboBoxUnidadeDeMedida.setLocation(410, 190);
 
         //Localizacao
-        jLabelLocalizacao.setLocation(420, 85);
-        jComboBoxLocalizacao.setLocation(420, 110);
+        jLabelLocalizacao.setLocation(190, 100);
+        jComboBoxLocalizacao.setLocation(190, 125);
 
         //StatusPeca
-        jLabelStatusPeca.setLocation(420, 35);
-        jRadioButtonNovo.setLocation(420, 60);
-        jRadioButtonSemiNovo.setLocation(500, 60);
-        jLabelRadioButtonNovo.setLocation(450, 60);
-        jLabelRadioButtonSemiNovo.setLocation(530, 60);
+        jLabelStatusPeca.setLocation(410, 35);
+        jRadioButtonNovo.setLocation(410, 60);
+        jRadioButtonSemiNovo.setLocation(470, 60);
+        jLabelRadioButtonNovo.setLocation(435, 60);
+        jLabelRadioButtonSemiNovo.setLocation(494, 60);
 
         //Peso
-        jLabelPeso.setLocation(300, 100);
-        jTextFieldPeso.setLocation(300, 125);
+        jLabelPeso.setLocation(410, 100);
+        jTextFieldPeso.setLocation(410, 125);
 
         //BotaoSair
-        jButtonSair.setLocation(320, 400);
+        jButtonSair.setLocation(460, 360);
 
         //BotaoLimpar
-        jButtonLimpar.setLocation(180, 400);
+        jButtonLimpar.setLocation(355, 360);
 
         //BotaoAdicionar
-        jButtonAdicionar.setLocation(40, 400);
+        jButtonAdicionar.setLocation(250, 360);
 
         //Categoria
         jLabelCategoria.setLocation(190, 165);
-        jComboBoxCategoria.setLocation(190, 185);
+        jComboBoxCategoria.setLocation(190, 190);
 
         jLabelAutoSystems.setLocation(10, 10);
 
         //SCrollPane
-        //jScrollPaneAplicacao.setLocation(20, 210);
+        jScrollPaneAplicacao.setLocation(20, 255);
     }
 
     @Override
     public void gerarDimensoes() {
 
         //JButton's
-        jButtonSair.setSize(100, 35);
-        jButtonLimpar.setSize(100, 35);
-        jButtonAdicionar.setSize(100, 35);
+        jButtonSair.setSize(100, 40);
+        jButtonLimpar.setSize(100, 40);
+        jButtonAdicionar.setSize(100, 40);
         //JTextField's
         jTextFieldQuantidade.setSize(150, 20);
         jTextFieldValor.setSize(150, 20);
         jTextFieldDescricao.setSize(350, 20);
 
-        jComboBoxUnidadeDeMedida.setSize(100, 20);
-
-        jTextFieldPeso.setSize(110, 20);
+        jTextFieldPeso.setSize(150, 20);
 
         //JLabel's
         jLabelQuantidade.setSize(100, 20);
@@ -224,7 +217,7 @@ public class Cadastro implements BaseInterfaceJava {
         jLabelLocalizacao.setSize(100, 20);
 
         jLabelStatusPeca.setSize(100, 20);
-        jLabelPeso.setSize(100, 20);
+        jLabelPeso.setSize(150, 20);
         jLabelCategoria.setSize(100, 20);
 
         jLabelRadioButtonNovo.setSize(50, 20);
@@ -232,17 +225,18 @@ public class Cadastro implements BaseInterfaceJava {
         //RadioButton
         jRadioButtonNovo.setSize(20, 20);
         jRadioButtonSemiNovo.setSize(20, 20);
-        //  jLabelAutoSystems.setSize(200, 200);
+        
 
         //ComboBox
         jComboBoxCategoria.setSize(200, 20);
         jComboBoxLocalizacao.setSize(200, 20);
+        jComboBoxUnidadeDeMedida.setSize(150, 20);
 
         //TextArea
-        jTextAreaAplicacao.setSize(600, 80);
+        jTextAreaAplicacao.setSize(540, 80);
 
         //ScrollPane
-        jScrollPaneAplicacao.setSize(600, 80);
+        jScrollPaneAplicacao.setSize(540, 80);
     }
 
     @Override
@@ -258,8 +252,8 @@ public class Cadastro implements BaseInterfaceJava {
         jLabelStatusPeca = new JLabel("Status da Peça: ");
         jLabelPeso = new JLabel("Peso: ");
         jLabelCategoria = new JLabel("Categoria: ");
-        jLabelRadioButtonNovo = new JLabel("Novo: ");
-        jLabelRadioButtonSemiNovo = new JLabel("Semi Novo: ");
+        jLabelRadioButtonNovo = new JLabel("Novo");
+        jLabelRadioButtonSemiNovo = new JLabel("Semi Novo");
 
         //JTextField's
         jTextFieldQuantidade = new JTextField("");
@@ -335,22 +329,22 @@ public class Cadastro implements BaseInterfaceJava {
     private void salvarBanco() {
 
         ProdutoBean produto = new ProdutoBean();
-        produto.setDescricao(jTextFieldDescricao.getText().trim());
+        produto.setDescricao(jTextFieldDescricao.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         if (jRadioButtonNovo.isSelected()) {
             produto.setStatusPecas("novo");
         } else if (jRadioButtonSemiNovo.isSelected()) {
             produto.setStatusPecas("semi Novo");
         }
 
-        produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim()));
+        produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
 
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 0) {
             produto.setUnidadeDeMedida("Kit");
         } else if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 1) {
             produto.setUnidadeDeMedida("Peça");
         }
-        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim()));
-        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim()));
+        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
+        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
 
         switch (jComboBoxCategoria.getSelectedIndex()) {
             case 0:
@@ -428,7 +422,7 @@ public class Cadastro implements BaseInterfaceJava {
                 break;
 
         }
-        produto.setAplicacao(jTextAreaAplicacao.getText().trim());
+        produto.setAplicacao(jTextAreaAplicacao.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         new ProdutoDao().inserir(produto);
     }
 
@@ -482,42 +476,77 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
-        //Descriçãoa
+        //Descrição
         if (jTextFieldDescricao.getText().isEmpty()) {
-            gerarJLabel("É obrigatório preencher ", jTextFieldDescricao);
-
-        } else if(jTextFieldDescricao.getText().length()<2) {
-             gerarJLabel("Deve conter no mínimo três caracteres", jTextFieldDescricao);
-        }else {
+            gerarJLabel("Deve preencher.", jTextFieldDescricao);
+            bordaErro(jTextFieldDescricao);
+            jTextFieldDescricao.requestFocus();
+        } else if (jTextFieldDescricao.getText().length() < 2) {
+            gerarJLabel("Descrição inválida", jTextFieldDescricao);
+            bordaErro(jTextFieldDescricao);
+            jTextFieldDescricao.requestFocus();
+        } else {
             bordaSucesso(jTextFieldDescricao);
 
-        } 
+        }
 
         //Quantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
-            gerarJLabel("É obrigatório preencher ", jTextFieldQuantidade);
+            gerarJLabel("Deve preencher.", jTextFieldQuantidade);
+            bordaErro(jTextFieldQuantidade);
+            jTextFieldQuantidade.requestFocus();
         } else {
             try {
-                if (Float.parseFloat(jTextFieldQuantidade.getText()) <= 0) {
-                    gerarJLabel("Quantidade deve ser maior que zero", jTextFieldQuantidade);
+                if (Float.parseFloat(jTextFieldQuantidade.getText()) < 0) {
+                    gerarJLabel("Quantidade inválida", jTextFieldQuantidade);
+                    bordaErro(jTextFieldQuantidade);
+                    jTextFieldQuantidade.requestFocus();
                 }
             } catch (Exception e) {
-                gerarJLabel("Quantidade não podera conter letras", jTextFieldQuantidade);
+                gerarJLabel("Quantidade inválida", jTextFieldQuantidade);
+                bordaErro(jTextFieldQuantidade);
             }
+            bordaSucesso(jTextFieldQuantidade);
         }
 
-       //Valor
+        //Valor
         if (jTextFieldValor.getText().isEmpty()) {
-            gerarJLabel("É obrigatório preencher ", jTextFieldValor);
-        } else if (Float.parseFloat(jTextFieldValor.getText()) < 0) {
-            gerarJLabel("Valor deve ser maior que zero", jTextFieldValor);
+            gerarJLabel("Deve preencher.", jTextFieldValor);
+            bordaErro(jTextFieldValor);
+            jTextFieldValor.requestFocus();
+        } else {
+            try {
+                if (Float.parseFloat(jTextFieldValor.getText()) < 0) {
+                    gerarJLabel("Valor inválido", jTextFieldValor);
+                    bordaErro(jTextFieldValor);
+                    jTextFieldValor.requestFocus();
+                }
+            } catch (Exception e) {
+                gerarJLabel("Valor inválido", jTextFieldValor);
+                bordaErro(jTextFieldValor);
+            }
+            bordaSucesso(jTextFieldValor);
+
         }
 
         //Peso
         if (jTextFieldPeso.getText().isEmpty()) {
-            gerarJLabel("É obrigatório preencher ", jTextFieldPeso);
-        } else if (Float.parseFloat(jTextFieldPeso.getText()) <= 0) {
-            gerarJLabel("É obrigatório ser maior que 0 ", jTextFieldPeso);
+            gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
+            bordaErro(jTextFieldPeso);
+            jTextFieldPeso.requestFocus();
+        } else {
+            try {
+                if (Float.parseFloat(jTextFieldPeso.getText()) < 0) {
+                    gerarJLabel("peso inválido", jTextFieldPeso);
+                    bordaErro(jTextFieldPeso);
+                    jTextFieldPeso.requestFocus();
+                }
+            } catch (Exception e) {
+                gerarJLabel("Peso inválido", jTextFieldPeso);
+                bordaErro(jTextFieldPeso);
+            }
+            bordaSucesso(jTextFieldPeso);
+
         }
 
         //RadioButton
@@ -530,35 +559,11 @@ public class Cadastro implements BaseInterfaceJava {
 
         }
 
-     
-
-
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "Unidade de Medida deve ser Preenchida", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             jComboBoxUnidadeDeMedida.requestFocus();
-            return;
-        }
-
-        //Peso
-        if (jTextFieldPeso.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "O Peso deve ser Informado", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldPeso.requestFocus();
-            return;
-        } else if (Float.parseFloat(jTextFieldPeso.getText()) < -1) {
-            JOptionPane.showMessageDialog(null,
-                    "O Peso não pode ser negativo", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldPeso.requestFocus();
-            return;
-        } else if (Float.parseFloat(jTextFieldPeso.getText()) == 0) {
-            JOptionPane.showMessageDialog(null,
-                    "O Peso não pode ser zero", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldPeso.requestFocus();
             return;
         }
 
@@ -570,27 +575,6 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
-        //Valor
-        if (jTextFieldValor.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null,
-                    "Valor deve ser informado.", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldValor.requestFocus();
-            return;
-        } else if (Float.parseFloat(jTextFieldValor.getText()) == 0) {
-            JOptionPane.showMessageDialog(null,
-                    "Valor não podera ser zero.", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldValor.requestFocus();
-            return;
-        } else if (Float.parseFloat(jTextFieldValor.getText()) <= -1) {
-            JOptionPane.showMessageDialog(null,
-                    "Valor não podera ser negativo", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldValor.requestFocus();
-            return;
-        }
-
         if (jComboBoxCategoria.getSelectedIndex() == -1) {
             JOptionPane.showMessageDialog(null,
                     "A Categoria deve ser Informado", "Cadastro",
@@ -599,7 +583,7 @@ public class Cadastro implements BaseInterfaceJava {
             return;
         }
 
-        //Aplicaçãoa
+        //Aplicação
         if (jTextAreaAplicacao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Aplicacao deve ser preenchida");
         } else if (jTextAreaAplicacao.getText().length() <= 2) {
@@ -633,21 +617,54 @@ public class Cadastro implements BaseInterfaceJava {
 
     private void apagarComponentes() {
 
-       for (JLabel jLabelE : jLabels) {
+        for (JLabel jLabelE : jLabels) {
             jFrameCadastro.remove(jLabelE);
         }
     }
 
-   
-    private void bordaSucesso(JTextField jTextField){
+    private void bordaSucesso(JTextField jTextField) {
         Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
         jTextField.setBorder(borda);
-        
-    }
-  private void bordaErro(JTextField jTextField){
-         Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
-        jTextField.setBorder(borda);
-  }
-}
-   
 
+    }
+
+    private void bordaErro(JTextField jTextField) {
+
+        Border borda = BorderFactory.createLineBorder((Color.red), 1);
+        jTextField.setBorder(borda);
+    }
+
+
+
+
+
+
+
+
+
+    /*Márcio, aparentemente está certo, é pra gerar uma jLabel de erro na JLabel 
+      do RadioButton,mas n está criando já procurei na no stack e não encontrei uma solução,
+      Tem que criar uma Array lá em cima nos private, mas msm assim não adianta (mas acho que n precisa pq ja criei pra JLabel)*/
+      //Método pra Criar uma JLabel no radioButton
+       private void geraraJLabelRadioButton(String texto, JLabel jLabel) {
+        JLabel jLabelE = new JLabel();
+        jLabelE.setText(texto);
+        jLabelE.setForeground(Color.red);
+        jLabelE.setLocation(jLabel.getX(), jLabel.getY() + jLabel.getHeight());
+        jLabelE.setSize(jLabel.getWidth(), 20);
+        jFrameCadastro.add(jLabelE);
+        jLabels.add(jLabelE);
+    }
+
+       //Método pra criar JLabel no comboBox
+       private void gerarJLabelComboBox(String texto, JComboBox jComboBox){
+        JLabel jLabelE = new JLabel();
+        jLabelE.setText(texto);
+        jLabelE.setForeground(Color.red);
+        jLabelE.setLocation(jComboBox.getX(), jComboBox.getY() + jComboBox.getHeight());
+        jLabelE.setSize(jComboBox.getWidth(), 20);
+        jFrameCadastro.add(jLabelE);
+        jLabels.add(jLabelE);
+       
+       }
+}

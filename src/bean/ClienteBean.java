@@ -12,6 +12,15 @@ package bean;
 public class ClienteBean {
 
     private String nome, telefone, cpf, cep,cnpj, bairro, endereco, cidade, logradouro, email;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCnpj() {
         return cnpj;

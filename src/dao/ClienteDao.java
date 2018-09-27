@@ -9,6 +9,7 @@ import bean.ClienteBean;
 import bean.ProdutoBean;
 import database.Conexao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -80,14 +81,56 @@ public class ClienteDao {
         }
         return clientes;
    }
-     /*                 
-    public int inserir(ProdutoBean cliente){
-        
+                     
+    public int inserir(ClienteBean cliente){
+        Connection conexao = Conexao.obterConexao();
+        if (conexao != null) {
+            String sql = "INSERT INTO clientes"
+                    + "\n(nome,telefone,cpf,cnpj,cep,bairro,endereco,cidade,numero,email)"
+                    + "\nVALUES(?,?,?,?,?,?,?,?,?,?);";
+            try {
+                PreparedStatement preparedStatement = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+                preparedStatement.setString(1, cliente.getNome());
+                preparedStatement.setString(2, cliente.getTelefone());
+                preparedStatement.setString(3,cliente.getCpf());
+                preparedStatement.setString(4,cliente.getCnpj());
+                preparedStatement.setString(5,cliente.getCep());
+                preparedStatement.setString(6,cliente.getBairro());
+                preparedStatement.setString(7,cliente.getEndereco());
+                preparedStatement.setString(8,cliente.getCidade());
+                preparedStatement.setInt(9, cliente.getNumero());
+                preparedStatement.setString(10,cliente.getEmail());
+                preparedStatement.execute();
+
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                Conexao.fecharConexao();
+            }
+        }
+        return 0; 
     }
-    public int apagar(ProdutoBean cliente){
-        
+    public int apagar(int id){
+      String sql = "DELETE FROM clientes WHERE id = ?";
+        Connection conexao = Conexao.obterConexao();
+        try {
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            Conexao.fecharConexao();
+        }
+        return 0;  
     }
-*/
+
         /*
     public void Alterar(ProdutoBean cliente){
         

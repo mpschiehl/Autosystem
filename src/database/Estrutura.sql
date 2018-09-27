@@ -26,7 +26,7 @@ insert into produtos(categoria, quantidade, valor, descricao, aplicacao, unidade
 
 
 CREATE TABLE clientes(
-
+id int AUTO_INCREMENT PRIMARY KEY,
 nome     VARCHAR(100),
 telefone VARCHAR(15),
 cpf      VARCHAR(25),
@@ -44,6 +44,7 @@ email    varchar(50)
 ('Francico','13131-1313','123.123.123-12','','12345-123','Escola Agricola','Rua do mamão','Blumenau',69,'fracisco@gmail.com');
 
 CREATE table funcionarios(
+id int AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(50),
 cpf VARCHAR(50),
 cep VARCHAR(50),

@@ -427,7 +427,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cliente.setBairro(jTextFieldBairro.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         cliente.setCidade(jTextFieldCidade.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         cliente.setEmail(jTextFieldEmail.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
-  new ClienteDao().inserir(produto);
+  new ClienteDao().inserir(cliente);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -37,6 +37,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -101,11 +102,11 @@ public class Vendas extends javax.swing.JFrame {
         acaoAddCliente();
         acaoBotaoLimpar();
         trocaTabEnter();
+        janelaEmFocus();
         jFrameVendas.setVisible(true);
 
     }
 
-    
     public void gerarTela() {
         jFrameVendas = new JFrame("Venda de Produtos");
         jFrameVendas.setSize(800, 600);
@@ -260,12 +261,12 @@ public class Vendas extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (jTablePedido.getSelectedRow() >= 0) {
                     int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Cancelar a venda deste  Item?"
-                        + "\nSe você tem Certeza clique em 'Sim', caso contrario clique em 'Não'", "Aviso", JOptionPane.ERROR_MESSAGE);
-                if (resposta == 0) {
-                    dtmp.removeRow(jTablePedido.getSelectedRow());
-                    jTablePedido.setModel(dtmp);
-                    contador = contador - 1;
-                }
+                            + "\nSe você tem Certeza clique em 'Sim', caso contrario clique em 'Não'", "Aviso", JOptionPane.ERROR_MESSAGE);
+                    if (resposta == 0) {
+                        dtmp.removeRow(jTablePedido.getSelectedRow());
+                        jTablePedido.setModel(dtmp);
+                        contador = contador - 1;
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");
                 }
@@ -280,8 +281,7 @@ public class Vendas extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new CadastroCliente().setVisible(true);
-                
-                
+
             }
         });
     }
@@ -382,30 +382,30 @@ public class Vendas extends javax.swing.JFrame {
         jTextFieldId.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent ke) {
-               
+
             }
 
             @Override
             public void keyPressed(KeyEvent ke) {
                 switch (ke.getKeyCode()) {
                     case KeyEvent.VK_F12:
-                int id = Integer.parseInt(jTextFieldId.getText());
-                DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
-                ProdutoBean produto = new ProdutoDao().buscarPorId(id);
-                dtm.setRowCount(0);
+                        int id = Integer.parseInt(jTextFieldId.getText());
+                        DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
+                        ProdutoBean produto = new ProdutoDao().buscarPorId(id);
+                        dtm.setRowCount(0);
                         dtm.addRow(new Object[]{
-                        produto.getDescricao(),
-                        produto.getQuantidade(),
-                        produto.getValorUnitario()
-                    });
-                
-                break;                
+                            produto.getDescricao(),
+                            produto.getQuantidade(),
+                            produto.getValorUnitario()
+                        });
+
+                        break;
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent ke) {
-           
+
             }
         });
         /*jTextFieldId.addActionListener(new ActionListener() {
@@ -425,7 +425,7 @@ public class Vendas extends javax.swing.JFrame {
 
             }
         });*/
-     }
+    }
 
     private void acaoBotaoFinaly() {
         jButtonFinalizar.addActionListener(new ActionListener() {
@@ -434,11 +434,11 @@ public class Vendas extends javax.swing.JFrame {
                 if (contador == 0) {
                     JOptionPane.showMessageDialog(null, "Sem Items para realizar a Venda. ");
                 } else {
-                        acaoImprimir();
-                        busca = jComboBoxCliente.getSelectedItem().toString();
-                       acaoVender();
-                        limparTabela();
-                    
+                    acaoImprimir();
+                    busca = jComboBoxCliente.getSelectedItem().toString();
+                    acaoVender();
+                    limparTabela();
+
                 }
             }
         });
@@ -493,8 +493,7 @@ public class Vendas extends javax.swing.JFrame {
         HashSet conj = new HashSet(jFrameVendas.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
         conj.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         jFrameVendas.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
-           
-       
+
     }
 
     private void acaoComboBoxCategoria() {
@@ -524,7 +523,7 @@ public class Vendas extends javax.swing.JFrame {
     }
 
     private void comboBoxConfigura() {
-
+        jComboBoxCategoriaC.removeAllItems();
         jComboBoxCategoriaC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Acessorios e acabamento", "Centrais e modulos",
             "Injeção e carburador", "Motor", "Polias e Tensores", "Retentor e Junta",
             "Suspenção e Freio", "Correias e Corente de Comando"}));
@@ -532,6 +531,7 @@ public class Vendas extends javax.swing.JFrame {
         jComboBoxCategoriaC.setToolTipText("Escolha uma Opção");
 
         jComboBoxCliente.setToolTipText("Escolha uma Opção");
+        jComboBoxCliente.removeAllItems();
         List<ClienteBean> cliente = new ClienteDao().obterNome();
         DefaultComboBoxModel<ClienteBean> defaultComboBox = (DefaultComboBoxModel<ClienteBean>) jComboBoxCliente.getModel();
 
@@ -657,18 +657,18 @@ public class Vendas extends javax.swing.JFrame {
         jButtonCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-             if(contador==0){
-                 JOptionPane.showMessageDialog(null, "Não existe produtos para cancelar");
-              return;  
-            }
+                if (contador == 0) {
+                    JOptionPane.showMessageDialog(null, "Não existe produtos para cancelar");
+                    return;
+                }
                 int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja Cancelar?"
                         + "\nSe você tem Certeza clique em 'Sim', caso contrario clique em 'Não'", "Aviso", JOptionPane.ERROR_MESSAGE);
                 if (resposta == 0) {
-                limparTabela();
-                dtm.setRowCount(0);
-                contador = 0;    
+                    limparTabela();
+                    dtm.setRowCount(0);
+                    contador = 0;
                 }
-                
+
             }
         });
 
@@ -680,11 +680,11 @@ public class Vendas extends javax.swing.JFrame {
         nomeDeBusca = jComboBoxCliente.getSelectedItem().toString();
 
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"));
-        String cpf ="",cnpj="", endereco="";
-        List<ClienteBean> usuario =  new ClienteDao().obterClienteNome(nomeDeBusca);
-            for (ClienteBean clienteBean : usuario) {
+        String cpf = "", cnpj = "", endereco = "";
+        List<ClienteBean> usuario = new ClienteDao().obterClienteNome(nomeDeBusca);
+        for (ClienteBean clienteBean : usuario) {
             cpf = clienteBean.getCpf();
-            cnpj= clienteBean.getCnpj();
+            cnpj = clienteBean.getCnpj();
             endereco = clienteBean.getEndereco();
         }
         impressora = impressora + "\r\n_______________________________________________________________________________\r\n"
@@ -692,41 +692,54 @@ public class Vendas extends javax.swing.JFrame {
                 + "\r\n AutoSystem"
                 + "\r\n_______________________________________________________________________________\r\n"
                 + "\r\nCliente : " + nomeDeBusca
-                + "\r\nCPF: "+cpf
-                + "\r\nCNPJ"+cnpj
-                + "\r\nEndereço:"+endereco
-                + "\r\n_____________________________________________________________________________\r\n";
-                for (int i = 0; i < contador; i++) {
-            
-                quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
-                descricao = jTablePedido.getModel().getValueAt(i, 0).toString();
-                Float unitario = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 2).toString());
-                Float total = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
-                
-                impressora = impressora + "\r\n"+ quantidade + "  X  "+ unitario +"  " +descricao + "   R$ "  +total;
-                totalizador = totalizador+ total;
+                + "\r\nCPF: " + cpf
+                + "\r\nCNPJ" + cnpj
+                + "\r\nEndereço:" + endereco
+                + "\r\n_______________________________________________________________________________\r\n";
+        for (int i = 0; i < contador; i++) {
+
+            quantidade = Integer.parseInt(jTablePedido.getModel().getValueAt(i, 1).toString());
+            descricao = jTablePedido.getModel().getValueAt(i, 0).toString();
+            Float unitario = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 2).toString());
+            Float total = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
+
+            impressora = impressora + "\r\n" + quantidade + "  X  " + unitario + "  " + descricao + "   R$ " + total;
+            totalizador = totalizador + total;
 
         }
-                impressora = impressora + "\r\n_______________________________________________________________________________\r\n"
-                                        + "                                                         Total: R$ "+totalizador;
-                
+        impressora = impressora + "\r\n_______________________________________________________________________________\r\n"
+                + "                                                         Total: R$ " + totalizador;
+
+        Random gerador = new Random();
+        int codigoGerado = gerador.nextInt(99);
+
         nomeDeBusca = "";
-        String caminhoArquivo ="C:/autosystem/data.txt";
+        String caminhoArquivo = "C:/autosystem/" + codigoGerado +codigoGerado+nomeDeBusca+ ".txt";
         Path caminho = Paths.get(caminhoArquivo);
         byte[] textoEmByte = impressora.getBytes();
-        try{
+        try {
+            Files.createFile(caminho);
             Files.write(caminho, textoEmByte);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Desktop desktop = Desktop.getDesktop();
-        try{
+        try {
             File arquivoAImprimir = new File(caminhoArquivo);
             desktop.print(arquivoAImprimir);
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
+    }
+
+    private void janelaEmFocus() {
+        jFrameVendas.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                comboBoxConfigura();
+                acaoPopularTabelaCampoVazio();
+            }
+        });
 
     }
 }

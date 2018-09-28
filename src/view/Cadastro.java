@@ -457,7 +457,7 @@ public class Cadastro implements BaseInterfaceJava {
                 if (resposta == 0) {
                     jFrameCadastro.dispose();
                 }
-
+//m
             }
         });
     }

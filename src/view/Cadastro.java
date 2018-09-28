@@ -208,12 +208,12 @@ public class Cadastro implements BaseInterfaceJava {
         //JLabel's
         jLabelQuantidade.setSize(100, 20);
         jLabelValor.setSize(100, 20);
-        jLabelDescricao.setSize(150, 20);
+        jLabelDescricao.setSize(100, 20);
         jLabelAplicacao.setSize(100, 20);
         jLabelUnidadeDeMedida.setSize(100, 20);
         jLabelLocalizacao.setSize(100, 20);
 
-        jLabelStatusPeca.setSize(100, 20);
+        jLabelStatusPeca.setSize(150, 20);
         jLabelPeso.setSize(150, 20);
         jLabelCategoria.setSize(100, 20);
 
@@ -238,16 +238,16 @@ public class Cadastro implements BaseInterfaceJava {
     @Override
     public void instanciarComponentes() {
         //JLabel's 
-        jLabelQuantidade = new JLabel("Quantidade: ");
-        jLabelValor = new JLabel("Valor: ");
+        jLabelQuantidade = new JLabel("Quantidade:* ");
+        jLabelValor = new JLabel("Valor:* ");
         jLabelDescricao = new JLabel("Descrição do produto: ");
-        jLabelAplicacao = new JLabel("Aplicação: ");
-        jLabelUnidadeDeMedida = new JLabel("Und Medida: ");
-        jLabelLocalizacao = new JLabel("Localização: ");
+        jLabelAplicacao = new JLabel("Aplicação:* ");
+        jLabelUnidadeDeMedida = new JLabel("Und Medida:* ");
+        jLabelLocalizacao = new JLabel("Localização:* ");
 
-        jLabelStatusPeca = new JLabel("Status da Peça: ");
-        jLabelPeso = new JLabel("Peso: ");
-        jLabelCategoria = new JLabel("Categoria: ");
+        jLabelStatusPeca = new JLabel("Status da Peça:* ");
+        jLabelPeso = new JLabel("Peso:* ");
+        jLabelCategoria = new JLabel("Categoria:* ");
         jLabelRadioButtonNovo = new JLabel("Novo");
         jLabelRadioButtonSemiNovo = new JLabel("Semi Novo");
 
@@ -457,7 +457,7 @@ public class Cadastro implements BaseInterfaceJava {
                 if (resposta == 0) {
                     jFrameCadastro.dispose();
                 }
-//mczcv
+
             }
         });
     }
@@ -473,46 +473,52 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
+        
         //Descrição
       if (jTextFieldDescricao.getText().isEmpty()) {
-             jLabelDescricao.setForeground(Color.red);
+           //  jLabelDescricao.setForeground(Color.red);
              bordaErro(jTextFieldDescricao);
-             gerarJLabel(null, jTextFieldDescricao);
+             gerarJLabel("*", jLabelDescricao);
             return;
         } else  {
           try {
-              if (true) {
-                  
+              if (jTextFieldDescricao.getText().length()<=2) {
+                 jLabelQuantidade.setForeground(Color.red);
+                 bordaErro(jTextFieldDescricao);
+                 gerarJLabel("*", jLabelDescricao);
+                 return;
               }
           } catch (Exception e) {
                  jLabelQuantidade.setForeground(Color.red);
                  bordaErro(jTextFieldDescricao);
-                 gerarJLabel(null, jTextFieldQuantidade);
+                 gerarJLabel("*", jLabelDescricao);
                  return;
           }
-       bordaSucesso(jTextFieldDescricao);  
+       bordaSucesso(jTextFieldDescricao);
+     
       }
+     
         //Quantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
             jLabelQuantidade.setForeground(Color.red);
-            bordaErro(jTextFieldQuantidade);
-            gerarJLabel(null, jTextFieldQuantidade);
+          //  bordaErro(jTextFieldQuantidade);
+           // gerarJLabel(null, jTextFieldQuantidade);
             return;
         } else {
             try {
                 if (Float.parseFloat(jTextFieldQuantidade.getText()) < 0) {
                     jLabelQuantidade.setForeground(Color.red);
-                    bordaErro(jTextFieldQuantidade);
-                    gerarJLabel(null, jTextFieldQuantidade);
+                //    bordaErro(jTextFieldQuantidade);
+                //    gerarJLabel(null, jTextFieldQuantidade);
                     return;
                 }
             } catch (Exception e) {
                 jLabelQuantidade.setForeground(Color.red);
-                bordaErro(jTextFieldQuantidade);
-                gerarJLabel(null, jTextFieldQuantidade);
+              //  bordaErro(jTextFieldQuantidade);
+               // gerarJLabel(null, jTextFieldQuantidade);
                 return;
             }
-            bordaSucesso(jTextFieldQuantidade);
+          //  bordaSucesso(jTextFieldQuantidade);
         }
 
         //Valor
@@ -521,22 +527,7 @@ public class Cadastro implements BaseInterfaceJava {
             JOptionPane.showMessageDialog(null, "O Peso deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             return;
-            /*          gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
-             bordaErro(jTextFieldPeso);
-             jTextFieldPeso.requestFocus();
-             } else {
-             try {
-             if (Float.parseFloat(jTextFieldPeso.getText()) < 0) {
-             gerarJLabel("peso inválido", jTextFieldPeso);
-             bordaErro(jTextFieldPeso);
-             jTextFieldPeso.requestFocus();
-             }
-             } catch (Exception e) {
-             gerarJLabel("Peso inválido", jTextFieldPeso);
-             bordaErro(jTextFieldPeso);
-             }
-             bordaSucesso(jTextFieldPeso);
-             */
+          
         }
 
         //RadioButton
@@ -588,15 +579,16 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JTextField jTextField) {
+    private void gerarJLabel(String texto, JLabel jLabel) {
      
+        JLabel jLabelE = new JLabel();
+        jLabelE.setText("");
+        jLabelE.setForeground(Color.red);
+        jLabelE.setLocation(jLabel.getX()+160, jLabel.getY());
+        jLabelE.setSize(20, 20);
+        jFrameCadastro.add(jLabelE);
 
-        JLabel jLabelMensagem = new JLabel();
-        jLabelMensagem.setText("Campos não estão preenchidos corretamente");
-        jLabelMensagem.setForeground(Color.red);
-        jLabelMensagem.setLocation(20, 460);
-        jLabelMensagem.setSize(300, 20);
-        jFrameCadastro.add(jLabelMensagem);
+       
     }
 
     private void apagarComponentes() {

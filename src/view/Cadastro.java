@@ -35,8 +35,6 @@ import javax.swing.border.Border;
 
 import jdk.nashorn.internal.ir.ForNode;
 
-
-
 /**
  *
  *
@@ -59,7 +57,6 @@ public class Cadastro implements BaseInterfaceJava {
     private JScrollPane jScrollPaneAplicacao;
     private ButtonGroup buttonGroup;
     private ArrayList<JLabel> jLabels = new ArrayList<>();
-    
 
     public Cadastro() {
 
@@ -225,7 +222,6 @@ public class Cadastro implements BaseInterfaceJava {
         //RadioButton
         jRadioButtonNovo.setSize(20, 20);
         jRadioButtonSemiNovo.setSize(20, 20);
-        
 
         //ComboBox
         jComboBoxCategoria.setSize(200, 20);
@@ -478,91 +474,69 @@ public class Cadastro implements BaseInterfaceJava {
 
     private void validacao() {
         //Descrição
-        if (jTextFieldDescricao.getText().isEmpty()) {
-          JOptionPane.showMessageDialog(null, "Descrição Deve ser Preenchida", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-          jTextFieldDescricao.requestFocus();
-          return;
-            /*  gerarJLabel("Deve preencher.", jTextFieldDescricao);
-            bordaErro(jTextFieldDescricao);
-            jTextFieldDescricao.requestFocus();
-        } else if (jTextFieldDescricao.getText().length() < 2) {
-            gerarJLabel("Descrição inválida", jTextFieldDescricao);
-            bordaErro(jTextFieldDescricao);
-            jTextFieldDescricao.requestFocus();
-        } else {
-            bordaSucesso(jTextFieldDescricao);
-*/
-        }
-
+      if (jTextFieldDescricao.getText().isEmpty()) {
+             jLabelDescricao.setForeground(Color.red);
+             bordaErro(jTextFieldDescricao);
+             gerarJLabel(null, jTextFieldDescricao);
+            return;
+        } else  {
+          try {
+              if (true) {
+                  
+              }
+          } catch (Exception e) {
+                 jLabelQuantidade.setForeground(Color.red);
+                 bordaErro(jTextFieldDescricao);
+                 gerarJLabel(null, jTextFieldQuantidade);
+                 return;
+          }
+       bordaSucesso(jTextFieldDescricao);  
+      }
         //Quantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Quantidade Deve ser Informada", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldQuantidade.requestFocus();
-            return;
-            /*gerarJLabel("Deve preencher.", jTextFieldQuantidade);
+            jLabelQuantidade.setForeground(Color.red);
             bordaErro(jTextFieldQuantidade);
-            jTextFieldQuantidade.requestFocus();
+            gerarJLabel(null, jTextFieldQuantidade);
+            return;
         } else {
             try {
                 if (Float.parseFloat(jTextFieldQuantidade.getText()) < 0) {
-                    gerarJLabel("Quantidade inválida", jTextFieldQuantidade);
+                    jLabelQuantidade.setForeground(Color.red);
                     bordaErro(jTextFieldQuantidade);
-                    jTextFieldQuantidade.requestFocus();
+                    gerarJLabel(null, jTextFieldQuantidade);
+                    return;
                 }
             } catch (Exception e) {
-                gerarJLabel("Quantidade inválida", jTextFieldQuantidade);
+                jLabelQuantidade.setForeground(Color.red);
                 bordaErro(jTextFieldQuantidade);
+                gerarJLabel(null, jTextFieldQuantidade);
+                return;
             }
-            bordaSucesso(jTextFieldQuantidade);*/
+            bordaSucesso(jTextFieldQuantidade);
         }
 
         //Valor
-        if (jTextFieldValor.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Valor deve ser informado", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            jTextFieldValor.requestFocus();
-            return;
-            /*gerarJLabel("Deve preencher.", jTextFieldValor);
-            bordaErro(jTextFieldValor);
-            jTextFieldValor.requestFocus();
-        } else {
-            try {
-                if (Float.parseFloat(jTextFieldValor.getText()) < 0) {
-                    gerarJLabel("Valor inválido", jTextFieldValor);
-                    bordaErro(jTextFieldValor);
-                    jTextFieldValor.requestFocus();
-                }
-            } catch (Exception e) {
-                gerarJLabel("Valor inválido", jTextFieldValor);
-                bordaErro(jTextFieldValor);
-            }
-            bordaSucesso(jTextFieldValor);
-*/
-        }
-
         //Peso
         if (jTextFieldPeso.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O Peso deve ser Informado", "Cadastro",
                     JOptionPane.ERROR_MESSAGE);
             return;
-  /*          gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
-            bordaErro(jTextFieldPeso);
-            jTextFieldPeso.requestFocus();
-        } else {
-            try {
-                if (Float.parseFloat(jTextFieldPeso.getText()) < 0) {
-                    gerarJLabel("peso inválido", jTextFieldPeso);
-                    bordaErro(jTextFieldPeso);
-                    jTextFieldPeso.requestFocus();
-                }
-            } catch (Exception e) {
-                gerarJLabel("Peso inválido", jTextFieldPeso);
-                bordaErro(jTextFieldPeso);
-            }
-            bordaSucesso(jTextFieldPeso);
-            */
+            /*          gerarJLabel("Este campo deve ser preenchdo", jTextFieldPeso);
+             bordaErro(jTextFieldPeso);
+             jTextFieldPeso.requestFocus();
+             } else {
+             try {
+             if (Float.parseFloat(jTextFieldPeso.getText()) < 0) {
+             gerarJLabel("peso inválido", jTextFieldPeso);
+             bordaErro(jTextFieldPeso);
+             jTextFieldPeso.requestFocus();
+             }
+             } catch (Exception e) {
+             gerarJLabel("Peso inválido", jTextFieldPeso);
+             bordaErro(jTextFieldPeso);
+             }
+             bordaSucesso(jTextFieldPeso);
+             */
         }
 
         //RadioButton
@@ -615,27 +589,20 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void gerarJLabel(String texto, JTextField jTextField) {
-        JLabel jLabelE = new JLabel();
-        jLabelE.setText(texto);
-        jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jTextField.getX(), jTextField.getY() + jTextField.getHeight());
-        jLabelE.setSize(jTextField.getWidth(), 20);
-        jFrameCadastro.add(jLabelE);
-        jLabels.add(jLabelE);
+     
 
         JLabel jLabelMensagem = new JLabel();
         jLabelMensagem.setText("Campos não estão preenchidos corretamente");
         jLabelMensagem.setForeground(Color.red);
-        jLabelMensagem.setLocation(300, 450);
+        jLabelMensagem.setLocation(20, 460);
         jLabelMensagem.setSize(300, 20);
         jFrameCadastro.add(jLabelMensagem);
     }
 
     private void apagarComponentes() {
 
-        for (JLabel jLabelE : jLabels) {
-            jFrameCadastro.remove(jLabelE);
-        }
+        jLabelQuantidade.setForeground(Color.black);
+        
     }
 
     private void bordaSucesso(JTextField jTextField) {
@@ -649,38 +616,4 @@ public class Cadastro implements BaseInterfaceJava {
         Border borda = BorderFactory.createLineBorder((Color.red), 1);
         jTextField.setBorder(borda);
     }
-
-
-
-
-
-
-
-
-
-    /*Márcio, aparentemente está certo, é pra gerar uma jLabel de erro na JLabel 
-      do RadioButton,mas n está criando já procurei na no stack e não encontrei uma solução,
-      Tem que criar uma Array lá em cima nos private, mas msm assim não adianta (mas acho que n precisa pq ja criei pra JLabel)*/
-      //Método pra Criar uma JLabel no radioButton
-       private void geraraJLabelRadioButton(String texto, JLabel jLabel) {
-        JLabel jLabelE = new JLabel();
-        jLabelE.setText(texto);
-        jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jLabel.getX(), jLabel.getY() + jLabel.getHeight());
-        jLabelE.setSize(jLabel.getWidth(), 20);
-        jFrameCadastro.add(jLabelE);
-        jLabels.add(jLabelE);
-    }
-
-       //Método pra criar JLabel no comboBox
-       private void gerarJLabelComboBox(String texto, JComboBox jComboBox){
-        JLabel jLabelE = new JLabel();
-        jLabelE.setText(texto);
-        jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jComboBox.getX(), jComboBox.getY() + jComboBox.getHeight());
-        jLabelE.setSize(jComboBox.getWidth(), 20);
-        jFrameCadastro.add(jLabelE);
-        jLabels.add(jLabelE);
-       
-       }
 }

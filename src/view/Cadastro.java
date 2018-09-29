@@ -136,7 +136,7 @@ public class Cadastro implements BaseInterfaceJava {
     @Override
     public void gerarLocalizacoes() {
 
-        //Descricao
+        //Descricaoo
         jLabelDescricao.setLocation(20, 35);
         jTextFieldDescricao.setLocation(20, 60);
 

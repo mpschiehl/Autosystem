@@ -674,6 +674,7 @@ public class Vendas extends javax.swing.JFrame {
 
     }
 
+    
     private void acaoImprimir() {
 
         impressora = "";
@@ -711,7 +712,8 @@ public class Vendas extends javax.swing.JFrame {
                 + "                                                         Total: R$ " + totalizador;
 
         Random gerador = new Random();
-        int codigoGerado = gerador.nextInt(99);
+        int codigoGerado = gerador.nextInt(99)+ gerador.nextInt(45)-5;
+        
 
         nomeDeBusca = "";
         String caminhoArquivo = "C:/autosystem/" + codigoGerado +codigoGerado+nomeDeBusca+ ".txt";

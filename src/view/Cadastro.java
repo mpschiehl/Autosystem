@@ -9,6 +9,7 @@ import Interface.BaseInterfaceJava;
 import bean.ProdutoBean;
 import dao.ProdutoDao;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,6 +75,7 @@ public class Cadastro implements BaseInterfaceJava {
         configurarJScrollPane();
         adicionarComboBoxUnidadeDeMedida();
         trocaTabEnter();
+        configuraFont();
         jFrameCadastro.setVisible(true);
 
     }
@@ -675,6 +677,23 @@ public class Cadastro implements BaseInterfaceJava {
     private void bordaSucessoArea(JTextArea jTextArea) {
         Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
         jTextArea.setBorder(borda);
+    }
+
+    private void configuraFont() {
+        
+        jLabelQuantidade.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelValor.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelDescricao.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelAplicacao.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelUnidadeDeMedida.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelLocalizacao.setFont(new Font("Arial", Font.PLAIN, 14));
+
+        jLabelStatusPeca.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelPeso.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelCategoria.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelRadioButtonNovo.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelRadioButtonSemiNovo.setFont(new Font("Arial", Font.PLAIN, 14));
+
     }
 
 }

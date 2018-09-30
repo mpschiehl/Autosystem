@@ -90,22 +90,31 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Nome");
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Telefone");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Cpf");
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("CEP");
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("E mail");
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Bairro");
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Cidade");
 
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Endereço");
 
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("Número");
 
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,11 +123,14 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        jButtonAdicionar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png"))); // NOI18N
         jButtonAdicionar.setText("Adicionar");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Cnpj");
 
+        jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pencil.png"))); // NOI18N
         jButtonLimpar.setText("Limpar");
 
@@ -166,7 +178,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                                     .addComponent(jTextFieldCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .addComponent(jLabel13)
                                     .addComponent(jTextFieldNumero))))
-                        .addGap(18, 78, Short.MAX_VALUE)
+                        .addGap(18, 30, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -287,16 +299,22 @@ public class CadastroCliente extends javax.swing.JFrame {
     public void validacao() {
         //Nome
         if (jTextFieldNome.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldNome);
+            jLabelNome.setForeground(Color.red);
             bordaErro(jTextFieldNome);
+            gerarJLabel("1131", jTextFieldNome);
             jTextFieldNome.requestFocus();
         } else if (jTextFieldNome.getText().length() < 2) {
-            gerarJLabel("Nome inválido", jTextFieldNome);
+            jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldNome);
+          
+            jTextFieldNome.requestFocus();
+        } else if (jTextFieldNome.getText().length() >= 150) {
+            jLabelDescricao.setForeground(Color.red);
+            bordaErro(jTextFieldNome);
+          
             jTextFieldNome.requestFocus();
         } else {
             bordaSucesso(jTextFieldNome);
-
         }
 
         //Email
@@ -372,6 +390,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
             bordaSucesso(jTextFieldNumero);
         }
+    return;
     }
 
     public void mascaraCpf() {

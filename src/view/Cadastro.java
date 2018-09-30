@@ -485,7 +485,7 @@ public class Cadastro implements BaseInterfaceJava {
         if (jTextFieldDescricao.getText().isEmpty()) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-            gerarJLabel("1131", jTextFieldPeso);
+            gerarJLabel("1131", jTextFieldDescricao);
             jTextFieldDescricao.requestFocus();
         } else if (jTextFieldDescricao.getText().length() < 2) {
             jLabelDescricao.setForeground(Color.red);

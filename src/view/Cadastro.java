@@ -81,7 +81,7 @@ public class Cadastro implements BaseInterfaceJava {
     @Override
     public void gerarTela() {
         jFrameCadastro = new JFrame("Cadastro");
-        jFrameCadastro.setSize(590, 470);
+        jFrameCadastro.setSize(550, 470);
         jFrameCadastro.setLayout(null);
         jFrameCadastro.setLocationRelativeTo(null);
         jFrameCadastro.setResizable(false);
@@ -153,38 +153,38 @@ public class Cadastro implements BaseInterfaceJava {
         jTextAreaAplicacao.setLocation(20, 255);
 
         //UnidadeDeMedida
-        jLabelUnidadeDeMedida.setLocation(410, 165);
-        jComboBoxUnidadeDeMedida.setLocation(410, 190);
+        jLabelUnidadeDeMedida.setLocation(360, 165);
+        jComboBoxUnidadeDeMedida.setLocation(360, 190);
 
         //Localizacao
         jLabelLocalizacao.setLocation(140, 100);
         jComboBoxLocalizacao.setLocation(140, 125);
 
         //StatusPeca
-        jLabelStatusPeca.setLocation(410, 35);
-        jRadioButtonNovo.setLocation(410, 60);
-        jRadioButtonSemiNovo.setLocation(470, 60);
-        jLabelRadioButtonNovo.setLocation(435, 60);
-        jLabelRadioButtonSemiNovo.setLocation(494, 60);
+        jLabelStatusPeca.setLocation(360, 35);
+        jRadioButtonNovo.setLocation(360, 60);
+        jRadioButtonSemiNovo.setLocation(425, 60);
+        jLabelRadioButtonNovo.setLocation(385, 60);
+        jLabelRadioButtonSemiNovo.setLocation(445, 60);
 
         //Peso
-        jLabelPeso.setLocation(410, 100);
-        jTextFieldPeso.setLocation(410, 125);
+        jLabelPeso.setLocation(360, 100);
+        jTextFieldPeso.setLocation(360, 125);
 
         //BotaoSair
-        jButtonSair.setLocation(460, 360);
+        jButtonSair.setLocation(420, 360);
 
         //BotaoLimpar
-        jButtonLimpar.setLocation(355, 360);
+        jButtonLimpar.setLocation(295, 360);
 
         //BotaoAdicionar
-        jButtonAdicionar.setLocation(250, 360);
+        jButtonAdicionar.setLocation(170, 360);
 
         //Categoria
-        jLabelCategoria.setLocation(190, 165);
-        jComboBoxCategoria.setLocation(190, 190);
+        jLabelCategoria.setLocation(140, 165);
+        jComboBoxCategoria.setLocation(140, 190);
 
-        jLabelAutoSystems.setLocation(10, 10);
+        
 
         //SCrollPane
         jScrollPaneAplicacao.setLocation(20, 255);
@@ -228,10 +228,10 @@ public class Cadastro implements BaseInterfaceJava {
         jComboBoxUnidadeDeMedida.setSize(100, 20);
 
         //TextArea
-        jTextAreaAplicacao.setSize(540, 80);
+        jTextAreaAplicacao.setSize(500, 80);
 
         //ScrollPane
-        jScrollPaneAplicacao.setSize(540, 80);
+        jScrollPaneAplicacao.setSize(500, 80);
     }
 
     
@@ -485,17 +485,17 @@ public class Cadastro implements BaseInterfaceJava {
         if (jTextFieldDescricao.getText().isEmpty()) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-            gerarJLabel("Erro", jTextAreaAplicacao);
+            gerarJLabel("1131", jTextFieldPeso);
             jTextFieldDescricao.requestFocus();
         } else if (jTextFieldDescricao.getText().length() < 2) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-            gerarJLabel("Erro", jTextAreaAplicacao);
+          
             jTextFieldDescricao.requestFocus();
         } else if (jTextFieldDescricao.getText().length() >= 150) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-            gerarJLabel("Erro", jTextAreaAplicacao);
+          
             jTextFieldDescricao.requestFocus();
         } else {
             bordaSucesso(jTextFieldDescricao);
@@ -619,15 +619,16 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JTextArea jTextArea) {
+    private void gerarJLabel(String texto, JTextField jTextField) {
 
         JLabel jLabelE = new JLabel();
-        jLabelE.setText("Erro");
+        jLabelE.setText("");
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jTextArea.getX(), jTextArea.getY() + 10);
+        jLabelE.setLocation(jTextField.getX(), jTextField.getY() + 20);
         jLabelE.setSize(20, 20);
         jFrameCadastro.add(jLabelE);
 
+        
     }
 
     private void apagarComponentes() {

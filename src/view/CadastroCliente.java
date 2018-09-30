@@ -87,6 +87,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         setTitle("Cadastro Cliente");
         setResizable(false);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Nome");
 
         jLabel2.setText("Telefone");

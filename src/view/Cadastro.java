@@ -146,7 +146,6 @@ public class Cadastro implements BaseInterfaceJava {
 
         //Valor
         jLabelValor.setLocation(20, 165);
-
         jTextFieldValor.setLocation(20, 190);
 
         //Aplicacao
@@ -158,8 +157,8 @@ public class Cadastro implements BaseInterfaceJava {
         jComboBoxUnidadeDeMedida.setLocation(410, 190);
 
         //Localizacao
-        jLabelLocalizacao.setLocation(190, 100);
-        jComboBoxLocalizacao.setLocation(190, 125);
+        jLabelLocalizacao.setLocation(140, 100);
+        jComboBoxLocalizacao.setLocation(140, 125);
 
         //StatusPeca
         jLabelStatusPeca.setLocation(410, 35);
@@ -199,16 +198,16 @@ public class Cadastro implements BaseInterfaceJava {
         jButtonLimpar.setSize(100, 40);
         jButtonAdicionar.setSize(100, 40);
         //JTextField's
-        jTextFieldQuantidade.setSize(150, 20);
-        jTextFieldValor.setSize(150, 20);
-        jTextFieldDescricao.setSize(350, 20);
+        jTextFieldQuantidade.setSize(100, 20);
+        jTextFieldValor.setSize(100, 20);
+        jTextFieldDescricao.setSize(295, 20);
 
-        jTextFieldPeso.setSize(150, 20);
+        jTextFieldPeso.setSize(100, 20);
 
         //JLabel's
         jLabelQuantidade.setSize(100, 20);
         jLabelValor.setSize(100, 20);
-        jLabelDescricao.setSize(100, 20);
+        jLabelDescricao.setSize(150, 20);
         jLabelAplicacao.setSize(100, 20);
         jLabelUnidadeDeMedida.setSize(100, 20);
         jLabelLocalizacao.setSize(100, 20);
@@ -226,7 +225,7 @@ public class Cadastro implements BaseInterfaceJava {
         //ComboBox
         jComboBoxCategoria.setSize(200, 20);
         jComboBoxLocalizacao.setSize(200, 20);
-        jComboBoxUnidadeDeMedida.setSize(150, 20);
+        jComboBoxUnidadeDeMedida.setSize(100, 20);
 
         //TextArea
         jTextAreaAplicacao.setSize(540, 80);
@@ -235,19 +234,21 @@ public class Cadastro implements BaseInterfaceJava {
         jScrollPaneAplicacao.setSize(540, 80);
     }
 
+    
+
     @Override
     public void instanciarComponentes() {
         //JLabel's 
-        jLabelQuantidade = new JLabel("Quantidade:* ");
-        jLabelValor = new JLabel("Valor:* ");
+        jLabelQuantidade = new JLabel("Quantidade: ");
+        jLabelValor = new JLabel("Valor: ");
         jLabelDescricao = new JLabel("Descrição do produto: ");
-        jLabelAplicacao = new JLabel("Aplicação:* ");
-        jLabelUnidadeDeMedida = new JLabel("Und Medida:* ");
-        jLabelLocalizacao = new JLabel("Localização:* ");
+        jLabelAplicacao = new JLabel("Aplicação: ");
+        jLabelUnidadeDeMedida = new JLabel("Und Medida: ");
+        jLabelLocalizacao = new JLabel("Localização: ");
 
-        jLabelStatusPeca = new JLabel("Status da Peça:* ");
-        jLabelPeso = new JLabel("Peso:* ");
-        jLabelCategoria = new JLabel("Categoria:* ");
+        jLabelStatusPeca = new JLabel("Status da Peça: ");
+        jLabelPeso = new JLabel("Peso(kg): ");
+        jLabelCategoria = new JLabel("Categoria: ");
         jLabelRadioButtonNovo = new JLabel("Novo");
         jLabelRadioButtonSemiNovo = new JLabel("Semi Novo");
 
@@ -286,7 +287,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void adicionarComboBoxCategoria() {
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel(new Object[]{"Acessórios e acabamento", "Injeção e carburador",
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(new Object[]{"Centrais e Módulos","Acessórios e acabamento", "Injeção e carburador",
             "Motor", "Polias e tensores", "Retentor e junta", "Supenção e freios", "Correas e corrente de comando"
         });
         jComboBoxCategoria.setModel(modelo);
@@ -316,6 +317,7 @@ public class Cadastro implements BaseInterfaceJava {
                 validacao();
                 salvarBanco();
                 limparCampos();
+                apagarComponentes();
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso ");
             }
         });
@@ -344,25 +346,29 @@ public class Cadastro implements BaseInterfaceJava {
 
         switch (jComboBoxCategoria.getSelectedIndex()) {
             case 0:
-                produto.setCategoria("Acessórios e acabamento");
+                produto.setCategoria("Centrais e Módulos");
                 break;
             case 1:
-                produto.setCategoria("Injeção e carburador");
+                produto.setCategoria("Acessórios e acabamento");
                 break;
             case 2:
-                produto.setCategoria("Motor");
+                produto.setCategoria("Injeção e carburador");
                 break;
             case 3:
-                produto.setCategoria("Polias e tensores");
+                produto.setCategoria("Motor");
             case 4:
-                produto.setCategoria("Retentor e junta");
+                produto.setCategoria("Polias e tensores");
                 break;
             case 5:
-                produto.setCategoria("Supenção e freios");
+                produto.setCategoria("Retentor e junta");
                 break;
             case 6:
+                produto.setCategoria("Supenção e freios");
+                break;
+             case 7:
                 produto.setCategoria("Correas e corrente de comando");
                 break;
+                
         }
         switch (jComboBoxLocalizacao.getSelectedIndex()) {
             case 0:
@@ -443,6 +449,7 @@ public class Cadastro implements BaseInterfaceJava {
             @Override
             public void actionPerformed(ActionEvent e) {
                 limparCampos();
+                apagarComponentes();
             }
         });
     }
@@ -473,104 +480,137 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void validacao() {
-        
+
         //Descrição
-      if (jTextFieldDescricao.getText().isEmpty()) {
-           //  jLabelDescricao.setForeground(Color.red);
-             bordaErro(jTextFieldDescricao);
-             gerarJLabel("*", jLabelDescricao);
-            return;
-        } else  {
-          try {
-              if (jTextFieldDescricao.getText().length()<=2) {
-                 jLabelQuantidade.setForeground(Color.red);
-                 bordaErro(jTextFieldDescricao);
-                 gerarJLabel("*", jLabelDescricao);
-                 return;
-              }
-          } catch (Exception e) {
-                 jLabelQuantidade.setForeground(Color.red);
-                 bordaErro(jTextFieldDescricao);
-                 gerarJLabel("*", jLabelDescricao);
-                 return;
-          }
-       bordaSucesso(jTextFieldDescricao);
-     
-      }
-     
+        if (jTextFieldDescricao.getText().isEmpty()) {
+            jLabelDescricao.setForeground(Color.red);
+            bordaErro(jTextFieldDescricao);
+            gerarJLabel("Erro", jTextAreaAplicacao);
+            jTextFieldDescricao.requestFocus();
+        } else if (jTextFieldDescricao.getText().length() < 2) {
+            jLabelDescricao.setForeground(Color.red);
+            bordaErro(jTextFieldDescricao);
+            gerarJLabel("Erro", jTextAreaAplicacao);
+            jTextFieldDescricao.requestFocus();
+        } else if (jTextFieldDescricao.getText().length() >= 150) {
+            jLabelDescricao.setForeground(Color.red);
+            bordaErro(jTextFieldDescricao);
+            gerarJLabel("Erro", jTextAreaAplicacao);
+            jTextFieldDescricao.requestFocus();
+        } else {
+            bordaSucesso(jTextFieldDescricao);
+        }
+
         //Quantidade
         if (jTextFieldQuantidade.getText().isEmpty()) {
             jLabelQuantidade.setForeground(Color.red);
-          //  bordaErro(jTextFieldQuantidade);
-           // gerarJLabel(null, jTextFieldQuantidade);
-            return;
+            bordaErro(jTextFieldQuantidade);
+            jTextFieldQuantidade.requestFocus();
         } else {
             try {
                 if (Float.parseFloat(jTextFieldQuantidade.getText()) < 0) {
                     jLabelQuantidade.setForeground(Color.red);
-                //    bordaErro(jTextFieldQuantidade);
-                //    gerarJLabel(null, jTextFieldQuantidade);
-                    return;
+                    bordaErro(jTextFieldQuantidade);
+                    jTextFieldQuantidade.requestFocus();
                 }
             } catch (Exception e) {
                 jLabelQuantidade.setForeground(Color.red);
-              //  bordaErro(jTextFieldQuantidade);
-               // gerarJLabel(null, jTextFieldQuantidade);
-                return;
+                bordaErro(jTextFieldQuantidade);
+                jTextFieldQuantidade.requestFocus();
+
             }
-          //  bordaSucesso(jTextFieldQuantidade);
+            bordaSucesso(jTextFieldQuantidade);
         }
 
         //Valor
+        if (jTextFieldValor.getText().isEmpty()) {
+            jLabelValor.setForeground(Color.red);
+            bordaErro(jTextFieldValor);
+            jTextFieldValor.requestFocus();
+        } else {
+            try {
+                if (Float.parseFloat(jTextFieldValor.getText()) < 0) {
+                    jLabelValor.setForeground(Color.red);
+                    bordaErro(jTextFieldValor);
+                    jTextFieldValor.requestFocus();
+                }
+            } catch (Exception e) {
+                jLabelValor.setForeground(Color.red);
+                bordaErro(jTextFieldValor);
+                jTextFieldValor.requestFocus();
+
+            }
+            bordaSucesso(jTextFieldValor);
+        }
+
         //Peso
         if (jTextFieldPeso.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "O Peso deve ser Informado", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-          
+            jLabelPeso.setForeground(Color.red);
+            bordaErro(jTextFieldPeso);
+            jTextFieldPeso.requestFocus();
+        } else {
+            try {
+                if (Float.parseFloat(jTextFieldPeso.getText()) < 0) {
+                    jLabelPeso.setForeground(Color.red);
+                    bordaErro(jTextFieldPeso);
+                    jTextFieldPeso.requestFocus();
+                }
+            } catch (Exception e) {
+                jLabelPeso.setForeground(Color.red);
+                bordaErro(jTextFieldPeso);
+                jTextFieldPeso.requestFocus();
+
+            }
+            bordaSucesso(jTextFieldValor);
         }
 
         //RadioButton
         if (!jRadioButtonNovo.isSelected() && !jRadioButtonSemiNovo.isSelected()) {
-            JOptionPane.showMessageDialog(null,
-                    "Deve ser selecionado se é novo ou semi novo", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
+            jLabelStatusPeca.setForeground(Color.red);
             jRadioButtonNovo.requestFocus();
-            return;
 
         }
 
+        //Unidade de medida
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null,
-                    "Unidade de Medida deve ser Preenchida", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
+            jLabelUnidadeDeMedida.setForeground(Color.red);
+            
             jComboBoxUnidadeDeMedida.requestFocus();
-            return;
+
         }
 
+        //Localizacao
         if (jComboBoxLocalizacao.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null,
-                    "A Localização deve ser Informado", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
+            jLabelLocalizacao.setForeground(Color.red);
             jComboBoxLocalizacao.requestFocus();
-            return;
-        }
 
+        }
+        //Categoria
         if (jComboBoxCategoria.getSelectedIndex() == -1) {
-            JOptionPane.showMessageDialog(null,
-                    "A Categoria deve ser Informado", "Cadastro",
-                    JOptionPane.ERROR_MESSAGE);
+            jLabelCategoria.setForeground(Color.red);
+            
             jComboBoxCategoria.requestFocus();
-            return;
+
         }
 
         //Aplicação
         if (jTextAreaAplicacao.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Aplicacao deve ser preenchida");
-        } else if (jTextAreaAplicacao.getText().length() <= 2) {
-            JOptionPane.showMessageDialog(null, "Aplicacao deve ser maior que três");
+            jLabelAplicacao.setForeground(Color.red);
+            bordaErroArea(jTextAreaAplicacao);
+            jTextAreaAplicacao.requestFocus();
+        } else if (jTextAreaAplicacao.getText().length() < 2) {
+            jLabelDescricao.setForeground(Color.red);
+            bordaErroArea(jTextAreaAplicacao);
+            jTextAreaAplicacao.requestFocus();
+        } else if (jTextAreaAplicacao.getText().length() >= 300) {
+            jLabelAplicacao.setForeground(Color.red);
+            bordaErroArea(jTextAreaAplicacao);
+            jTextAreaAplicacao.requestFocus();
+        } else {
+            bordaSucessoArea(jTextAreaAplicacao);
         }
-
+       jTextFieldDescricao.requestFocus();
+        return;
     }
 
     private void trocaTabEnter() {
@@ -579,22 +619,39 @@ public class Cadastro implements BaseInterfaceJava {
         jFrameCadastro.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, conj);
     }
 
-    private void gerarJLabel(String texto, JLabel jLabel) {
-     
+    private void gerarJLabel(String texto, JTextArea jTextArea) {
+
         JLabel jLabelE = new JLabel();
-        jLabelE.setText("");
+        jLabelE.setText("Erro");
         jLabelE.setForeground(Color.red);
-        jLabelE.setLocation(jLabel.getX()+160, jLabel.getY());
+        jLabelE.setLocation(jTextArea.getX(), jTextArea.getY() + 10);
         jLabelE.setSize(20, 20);
         jFrameCadastro.add(jLabelE);
 
-       
     }
 
     private void apagarComponentes() {
 
+        //JLabel's
         jLabelQuantidade.setForeground(Color.black);
-        
+        jLabelCategoria.setForeground(Color.black);
+        jLabelDescricao.setForeground(Color.black);
+        jLabelValor.setForeground(Color.black);
+        jLabelAplicacao.setForeground(Color.black);
+        jLabelUnidadeDeMedida.setForeground(Color.black);
+        jLabelLocalizacao.setForeground(Color.black);
+        jLabelStatusPeca.setForeground(Color.black);
+        jLabelPeso.setForeground(Color.black);
+
+        //jTextField's
+        Border borda = BorderFactory.createLineBorder(Color.GRAY, 1);
+        jTextFieldQuantidade.setBorder(borda);
+        jTextFieldValor.setBorder(borda);
+        jTextFieldDescricao.setBorder(borda);
+        jTextFieldPeso.setBorder(borda);
+
+        //JTextArea
+        jTextAreaAplicacao.setBorder(borda);
     }
 
     private void bordaSucesso(JTextField jTextField) {
@@ -608,4 +665,15 @@ public class Cadastro implements BaseInterfaceJava {
         Border borda = BorderFactory.createLineBorder((Color.red), 1);
         jTextField.setBorder(borda);
     }
+
+    private void bordaErroArea(JTextArea jTextArea) {
+        Border borda = BorderFactory.createLineBorder((Color.red), 1);
+        jTextArea.setBorder(borda);
+    }
+
+    private void bordaSucessoArea(JTextArea jTextArea) {
+        Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
+        jTextArea.setBorder(borda);
+    }
+
 }

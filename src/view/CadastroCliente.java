@@ -52,25 +52,25 @@ public class CadastroCliente extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelTelefone = new javax.swing.JLabel();
+        jLabelCpf = new javax.swing.JLabel();
+        jLabelCep = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelBairro = new javax.swing.JLabel();
         jTextFieldBairro = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelCidade = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jLabelEndereco = new javax.swing.JLabel();
         jTextFieldCidade = new javax.swing.JTextField();
         jTextFieldEndereco = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        jLabelNumero = new javax.swing.JLabel();
         jTextFieldNumero = new javax.swing.JTextField();
         jButtonSair = new javax.swing.JButton();
         jButtonAdicionar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelCnpj = new javax.swing.JLabel();
         jFormattedTextFieldCpf = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCnpj = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
@@ -87,34 +87,34 @@ public class CadastroCliente extends javax.swing.JFrame {
         setTitle("Cadastro Cliente");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel1.setText("Nome");
+        jLabelNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNome.setText("Nome");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel2.setText("Telefone");
+        jLabelTelefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelTelefone.setText("Telefone");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel3.setText("Cpf");
+        jLabelCpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelCpf.setText("Cpf");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("CEP");
+        jLabelCep.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelCep.setText("CEP");
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel6.setText("E mail");
+        jLabelEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelEmail.setText("E mail");
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel8.setText("Bairro");
+        jLabelBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelBairro.setText("Bairro");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel9.setText("Cidade");
+        jLabelCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelCidade.setText("Cidade");
 
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel11.setText("Endereço");
+        jLabelEndereco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelEndereco.setText("Endereço");
 
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setText("Número");
+        jLabelNumero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelNumero.setText("Número");
 
-        jButtonSair.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png"))); // NOI18N
         jButtonSair.setText("Sair");
         jButtonSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,14 +123,14 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButtonAdicionar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonAdicionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png"))); // NOI18N
         jButtonAdicionar.setText("Adicionar");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("Cnpj");
+        jLabelCnpj.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabelCnpj.setText("Cnpj");
 
-        jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pencil.png"))); // NOI18N
         jButtonLimpar.setText("Limpar");
 
@@ -148,22 +148,22 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
+                                    .addComponent(jLabelCpf)
                                     .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)))
-                            .addComponent(jLabel1)
+                                    .addComponent(jLabelCnpj)))
+                            .addComponent(jLabelNome)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(133, 133, 133)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
+                                    .addComponent(jLabelBairro)
                                     .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel2)
+                            .addComponent(jLabelTelefone)
                             .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
+                            .addComponent(jLabelCep)
+                            .addComponent(jLabelEmail)
                             .addComponent(jTextFieldEmail)
                             .addComponent(jTextFieldNome)
                             .addGroup(layout.createSequentialGroup()
@@ -171,14 +171,14 @@ public class CadastroCliente extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                         .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jLabel11))
+                                    .addComponent(jLabelEndereco))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel9)
+                                    .addComponent(jLabelCidade)
                                     .addComponent(jTextFieldCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                    .addComponent(jLabel13)
+                                    .addComponent(jLabelNumero)
                                     .addComponent(jTextFieldNumero))))
-                        .addGap(18, 30, Short.MAX_VALUE)
+                        .addGap(18, 22, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,7 +199,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addComponent(jButtonSair)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -208,44 +208,44 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
+                                        .addComponent(jLabelCpf)
                                         .addGap(25, 25, 25))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(jLabelCnpj)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFormattedTextFieldCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(jLabelEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jLabelCep)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFormattedTextFieldCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                                .addComponent(jLabelCidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
+                                .addComponent(jLabelEndereco)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(jLabelTelefone)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
+                                        .addComponent(jLabelBairro)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(jLabelNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(19, 19, 19)
@@ -304,12 +304,12 @@ public class CadastroCliente extends javax.swing.JFrame {
             gerarJLabel("1131", jTextFieldNome);
             jTextFieldNome.requestFocus();
         } else if (jTextFieldNome.getText().length() < 2) {
-            jLabelDescricao.setForeground(Color.red);
+            jLabelNome.setForeground(Color.red);
             bordaErro(jTextFieldNome);
           
             jTextFieldNome.requestFocus();
-        } else if (jTextFieldNome.getText().length() >= 150) {
-            jLabelDescricao.setForeground(Color.red);
+        } else if (jTextFieldNome.getText().length() >= 50) {
+            jLabelNome.setForeground(Color.red);
             bordaErro(jTextFieldNome);
           
             jTextFieldNome.requestFocus();
@@ -319,44 +319,60 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         //Email
         if (jTextFieldEmail.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldEmail);
+            jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldEmail);
-            jTextFieldEmail.requestFocus();
-        } else if (jTextFieldEmail.getText().length() < 2) {
-            gerarJLabel("Email inválido", jTextFieldEmail);
+            gerarJLabel("1131", jTextFieldEmail);
+            jTextFieldNome.requestFocus();
+        } else if (jTextFieldEmail.getText().length() < 3) {
+            jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldEmail);
+          
+            jTextFieldNome.requestFocus();
+        } else if (jTextFieldEmail.getText().length() >= 50) {
+            jLabelEmail.setForeground(Color.red);
+            bordaErro(jTextFieldEmail);
+          
             jTextFieldEmail.requestFocus();
         } else {
             bordaSucesso(jTextFieldEmail);
-
         }
 
         //Bairro
-        if (jTextFieldBairro.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldBairro);
+         if (jTextFieldBairro.getText().isEmpty()) {
+            jLabelBairro.setForeground(Color.red);
+            bordaErro(jTextFieldEmail);
+            jTextFieldEmail.requestFocus();
+        } else if (jTextFieldBairro.getText().length() < 3) {
+            jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldBairro);
+          
             jTextFieldBairro.requestFocus();
-        } else if (jTextFieldBairro.getText().length() < 2) {
-            gerarJLabel("Bairro não existe", jTextFieldBairro);
+        } else if (jTextFieldBairro.getText().length() >= 50) {
+            jLabelBairro.setForeground(Color.red);
             bordaErro(jTextFieldBairro);
+          
             jTextFieldBairro.requestFocus();
         } else {
             bordaSucesso(jTextFieldBairro);
-
         }
 
         //Enderço
-        if (jTextFieldEndereco.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldEndereco);
-            bordaErro(jTextFieldEndereco);
-            jTextFieldEndereco.requestFocus();
-        } else if (jTextFieldEndereco.getText().length() < 2) {
-            gerarJLabel("Endereço não existe", jTextFieldEndereco);
-            bordaErro(jTextFieldEndereco);
-            jTextFieldEndereco.requestFocus();
+         if (jTextFieldEndereco.getText().isEmpty()) {
+            jLabelBairro.setForeground(Color.red);
+            bordaErro(jTextFieldEmail);
+            jTextFieldEmail.requestFocus();
+        } else if (jTextFieldBairro.getText().length() < 3) {
+            jLabelEmail.setForeground(Color.red);
+            bordaErro(jTextFieldBairro);
+          
+            jTextFieldBairro.requestFocus();
+        } else if (jTextFieldBairro.getText().length() >= 50) {
+            jLabelBairro.setForeground(Color.red);
+            bordaErro(jTextFieldBairro);
+          
+            jTextFieldBairro.requestFocus();
         } else {
-            bordaSucesso(jTextFieldEndereco);
-
+            bordaSucesso(jTextFieldBairro);
         }
 
         //Cidade
@@ -490,17 +506,17 @@ public class CadastroCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldCnpj;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelBairro;
+    private javax.swing.JLabel jLabelCep;
+    private javax.swing.JLabel jLabelCidade;
+    private javax.swing.JLabel jLabelCnpj;
+    private javax.swing.JLabel jLabelCpf;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelEndereco;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelNumero;
+    private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;

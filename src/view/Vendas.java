@@ -21,8 +21,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URL;
@@ -65,12 +69,12 @@ public class Vendas extends javax.swing.JFrame {
     private JTextField jTextFieldId, jTextFieldDescricao;//jTextFieldQuantidade;
     private JRadioButton jRadioButtonNovo, jRadioButtonSemiNovo;
     private ButtonGroup jradioButtonGroup;
-    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar, jButtonSair;
+    private JButton jButtonIncuir, jButtonFinalizar, jButtonCancelarItem, jButtonAddCliente, jButtonLimpar, jButtonCancelar, jButtonSair,jButtonUltimo;
     private DefaultTableModel dtm, dtmp;
     private JScrollPane jScrollPaneBuscador, jScrollPanePedido;
     private JTable jTableBusca, jTablePedido;
     private JComboBox jComboBoxCategoriaC, jComboBoxCliente;
-    String descricao = "", busca = "", impressora = "", nomeDeBusca = "";
+    String descricao = "", busca = "", impressora = "", nomeDeBusca = "",ultimoPedido="";
     int contador = 0;
     int quantidade = 0;
     Float totalizador = 0f;
@@ -103,6 +107,7 @@ public class Vendas extends javax.swing.JFrame {
         acaoBotaoLimpar();
         trocaTabEnter();
         janelaEmFocus();
+        acaoUltimo();
         jFrameVendas.setVisible(true);
 
     }
@@ -584,6 +589,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png")));
         jButtonFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/basket.png")));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
+        //jb
     }
 
     private void acaoVender() {
@@ -712,12 +718,12 @@ public class Vendas extends javax.swing.JFrame {
                 + "                                                         Total: R$ " + totalizador;
 
         Random gerador = new Random();
-        int codigoGerado = gerador.nextInt(99)+ gerador.nextInt(45)-5;
+       int codigoGerado = gerador.nextInt(99) + gerador.nextInt(45) - 5;
+        String blocoDeNotas =codigoGerado + codigoGerado + nomeDeBusca + ".txt";
         
-
         nomeDeBusca = "";
-        String caminhoArquivo = "C:/autosystem/" + codigoGerado +codigoGerado+nomeDeBusca+ ".txt";
-        Path caminho = Paths.get(caminhoArquivo);
+        String caminhoArquivo = "C:/autosystem/" + blocoDeNotas;
+         Path caminho = Paths.get(caminhoArquivo);
         byte[] textoEmByte = impressora.getBytes();
         try {
             Files.createFile(caminho);
@@ -732,6 +738,7 @@ public class Vendas extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        gerarArquivo(blocoDeNotas);   
 
     }
 
@@ -744,4 +751,95 @@ public class Vendas extends javax.swing.JFrame {
         });
 
     }
+
+    private void acaoUltimo() {
+        jButtonUltimo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                lerArquivoConfig();
+                lerUltimoPedido(ultimoPedido);
+                JOptionPane.showMessageDialog(null, impressora,"Ultima Venda",JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+    }
+
+    private void lerArquivoConfig() {
+        File arquivo = new File("/autosystem/config.txt");
+        try{
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            //enquanto houver mais linhas
+            while (br.ready()) {
+            //lê a proxima linha
+                String linha = br.readLine();
+                //faz algo com a linha
+                ultimoPedido = linha;
+            }
+            br.close();
+            fr.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        
+        
+        }
+    }
+
+    private void lerUltimoPedido(String pedidoUltimo ) {
+        File arquivo = new File("/autosystem/"+pedidoUltimo);
+        try{
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            //enquanto houver mais linhas
+            impressora ="";
+            while (br.ready()) {
+            //lê a proxima linha
+                String linha = br.readLine();
+            //faz algo com a linha
+                impressora = impressora + linha +"\n";
+            }
+            br.close();
+            fr.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        
+        
+        }
+    }
+    private void gerarArquivo(String texto) {
+        File arquivo = new File("/autosystem/config.txt");
+        try {
+            if (!arquivo.exists()) {
+                //cria um arquivo (vazio)
+                arquivo.createNewFile();
+            }
+            //caso seja um diretório, é possível listar seus arquivos e diretórios
+            File[] arquivos = arquivo.listFiles();
+            //escreve no arquivo
+            FileWriter fw = new FileWriter(arquivo, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(texto);
+            bw.newLine();
+            bw.close();
+            fw.close();
+            //faz a leitura do arquivo
+           /* FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            //enquanto houver mais linhas
+            while (br.ready()) {
+            //lê a proxima linha
+                //String linha = br.readLine();
+            //faz algo com a linha
+                //System.out.println(linha);
+            }
+            br.close();
+            fr.close();*/
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        
+        }
+        
+        
+    }
+    
 }
+

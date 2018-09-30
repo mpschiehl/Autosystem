@@ -1,0 +1,15 @@
+inclusoes
+
+filtros inteligentes;
+inclusao do ano;
+incluir cadastros;(cliente, funcionarios);
+vendas negativas;
+
+
+Cliente(nome, telefone, cpf ou cnpj, cep, localizacao, );
+
+funcionarios(nome, 
+
+look and feel java(interface)
+
+gui(interface

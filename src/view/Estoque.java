@@ -145,7 +145,7 @@ public class Estoque extends javax.swing.JFrame {
 
             },
             new String [] {
-                "número", "Produto", "Categoria", "Quantidade", "valor Unitário", "Status", "Peso", "Localização"
+                "Número", "Produto", "Categoria", "Quantidade", "Valor Unitário", "Status", "Peso", "Localização"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -464,6 +464,7 @@ public class Vendas extends javax.swing.JFrame {
         dtm.addColumn("Valor unitario");
         jTableBusca.setModel(dtm);
     }
+    
 
     private void populaPedido() {
         List<ProdutoBean> produtos = new ProdutoDao().obterProdutoBusca(dtm.getValueAt(jTableBusca.getSelectedRow(), 0).toString());

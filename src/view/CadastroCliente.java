@@ -306,12 +306,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         } else if (jTextFieldNome.getText().length() < 2) {
             jLabelNome.setForeground(Color.red);
             bordaErro(jTextFieldNome);
-          
+
             jTextFieldNome.requestFocus();
         } else if (jTextFieldNome.getText().length() >= 50) {
             jLabelNome.setForeground(Color.red);
             bordaErro(jTextFieldNome);
-          
+
             jTextFieldNome.requestFocus();
         } else {
             bordaSucesso(jTextFieldNome);
@@ -326,87 +326,94 @@ public class CadastroCliente extends javax.swing.JFrame {
         } else if (jTextFieldEmail.getText().length() < 3) {
             jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldEmail);
-          
+
             jTextFieldNome.requestFocus();
         } else if (jTextFieldEmail.getText().length() >= 50) {
             jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldEmail);
-          
+
             jTextFieldEmail.requestFocus();
         } else {
             bordaSucesso(jTextFieldEmail);
         }
 
         //Bairro
-         if (jTextFieldBairro.getText().isEmpty()) {
+        if (jTextFieldBairro.getText().isEmpty()) {
             jLabelBairro.setForeground(Color.red);
-            bordaErro(jTextFieldEmail);
-            jTextFieldEmail.requestFocus();
-        } else if (jTextFieldBairro.getText().length() < 3) {
-            jLabelEmail.setForeground(Color.red);
             bordaErro(jTextFieldBairro);
-          
+            jTextFieldBairro.requestFocus();
+        } else if (jTextFieldBairro.getText().length() < 3) {
+            jLabelBairro.setForeground(Color.red);
+            bordaErro(jTextFieldBairro);
+
             jTextFieldBairro.requestFocus();
         } else if (jTextFieldBairro.getText().length() >= 50) {
             jLabelBairro.setForeground(Color.red);
             bordaErro(jTextFieldBairro);
-          
+
             jTextFieldBairro.requestFocus();
         } else {
             bordaSucesso(jTextFieldBairro);
         }
 
         //Enderço
-         if (jTextFieldEndereco.getText().isEmpty()) {
-            jLabelBairro.setForeground(Color.red);
-            bordaErro(jTextFieldEmail);
-            jTextFieldEmail.requestFocus();
-        } else if (jTextFieldBairro.getText().length() < 3) {
-            jLabelEmail.setForeground(Color.red);
-            bordaErro(jTextFieldBairro);
-          
-            jTextFieldBairro.requestFocus();
-        } else if (jTextFieldBairro.getText().length() >= 50) {
-            jLabelBairro.setForeground(Color.red);
-            bordaErro(jTextFieldBairro);
-          
-            jTextFieldBairro.requestFocus();
+        if (jTextFieldEndereco.getText().isEmpty()) {
+            jLabelEndereco.setForeground(Color.red);
+            bordaErro(jTextFieldEndereco);
+            jTextFieldEndereco.requestFocus();
+        } else if (jTextFieldEndereco.getText().length() < 3) {
+            jLabelEndereco.setForeground(Color.red);
+            bordaErro(jTextFieldEndereco);
+
+            jTextFieldEndereco.requestFocus();
+        } else if (jTextFieldEndereco.getText().length() >= 50) {
+            jLabelEndereco.setForeground(Color.red);
+            bordaErro(jTextFieldEndereco);
+
+            jTextFieldEndereco.requestFocus();
         } else {
-            bordaSucesso(jTextFieldBairro);
+            bordaSucesso(jTextFieldEndereco);
         }
 
         //Cidade
         if (jTextFieldCidade.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldCidade);
+            jLabelCidade.setForeground(Color.red);
             bordaErro(jTextFieldCidade);
             jTextFieldCidade.requestFocus();
-        } else if (jTextFieldCidade.getText().length() < 2) {
-            gerarJLabel("Cidade não existe", jTextFieldCidade);
+        } else if (jTextFieldCidade.getText().length() < 3) {
+            jLabelCidade.setForeground(Color.red);
             bordaErro(jTextFieldCidade);
+
+            jTextFieldCidade.requestFocus();
+        } else if (jTextFieldCidade.getText().length() >= 50) {
+            jLabelCidade.setForeground(Color.red);
+            bordaErro(jTextFieldCidade);
+
             jTextFieldCidade.requestFocus();
         } else {
             bordaSucesso(jTextFieldCidade);
-
         }
         //Numero
         if (jTextFieldNumero.getText().isEmpty()) {
-            gerarJLabel("Deve preencher.", jTextFieldNumero);
+            jLabelNumero.setForeground(Color.red);
             bordaErro(jTextFieldNumero);
             jTextFieldNumero.requestFocus();
         } else {
             try {
                 if (Float.parseFloat(jTextFieldNumero.getText()) < 0) {
-                    gerarJLabel("Número inválido", jTextFieldNumero);
+                    jLabelNumero.setForeground(Color.red);
                     bordaErro(jTextFieldNumero);
                     jTextFieldNumero.requestFocus();
                 }
             } catch (Exception e) {
-                gerarJLabel("Não pode conter letras", jTextFieldNumero);
+                jLabelNumero.setForeground(Color.red);
                 bordaErro(jTextFieldNumero);
+                jTextFieldNumero.requestFocus();
+
             }
             bordaSucesso(jTextFieldNumero);
         }
-    return;
+        return;
     }
 
     public void mascaraCpf() {
@@ -415,11 +422,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             maskFormatter.install(jFormattedTextFieldCpf);
         } catch (Exception e) {
             if (jFormattedTextFieldCpf.getText().length() < 11) {
-                gerarJLabelMask("Cpf inválido", jFormattedTextFieldCpf);
-                
+                bordaErroMask(jFormattedTextFieldCpf);
+
                 jFormattedTextFieldCpf.requestFocus();
             } else {
-
+                bordaSucessoMask(jFormattedTextFieldCpf);
             }
         }
     }
@@ -429,7 +436,13 @@ public class CadastroCliente extends javax.swing.JFrame {
             MaskFormatter maskFormatter = new MaskFormatter("##.###./####-##");
             maskFormatter.install(jFormattedTextFieldCnpj);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Chame o prog");
+            if (jFormattedTextFieldCnpj.getText().length() < 11) {
+                bordaErroMask(jFormattedTextFieldCnpj);
+
+                jFormattedTextFieldCnpj.requestFocus();
+            } else {
+                bordaSucessoMask(jFormattedTextFieldCnpj);
+            }
         }
     }
 
@@ -438,7 +451,13 @@ public class CadastroCliente extends javax.swing.JFrame {
             MaskFormatter maskFormatter = new MaskFormatter("#####-###");
             maskFormatter.install(jFormattedTextFieldCep);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Chame o prog");
+            if (jFormattedTextFieldCep.getText().length() < 11) {
+                bordaErroMask(jFormattedTextFieldCep);
+
+                jFormattedTextFieldCep.requestFocus();
+            } else {
+                bordaSucessoMask(jFormattedTextFieldCep);
+            }
         }
     }
 
@@ -462,9 +481,15 @@ public class CadastroCliente extends javax.swing.JFrame {
             MaskFormatter maskFormatter = new MaskFormatter("(##)####-####");
             maskFormatter.install(jFormattedTextFieldTelefone);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Chame o prog");
-        }
+            if (jFormattedTextFieldTelefone.getText().length() < 11) {
+                bordaErroMask(jFormattedTextFieldTelefone);
 
+                jFormattedTextFieldTelefone.requestFocus();
+            } else {
+                bordaSucessoMask(jFormattedTextFieldTelefone);
+            }
+
+        }
     }
 
     public void limparCampos() {
@@ -494,7 +519,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         cliente.setBairro(jTextFieldBairro.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         cliente.setCidade(jTextFieldCidade.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         cliente.setEmail(jTextFieldEmail.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
-  new ClienteDao().inserir(cliente);
+        new ClienteDao().inserir(cliente);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -562,8 +587,14 @@ public class CadastroCliente extends javax.swing.JFrame {
         Border borda = BorderFactory.createLineBorder(Color.red, 1);
         JFormattedTextField.setBorder(borda);
     }
-private void bordaSucessoMask(JFormattedTextField JFormattedTextField){
-       Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
+
+    private void bordaSucessoMask(JFormattedTextField JFormattedTextField) {
+        Border borda = BorderFactory.createLineBorder(Color.decode("#09e83d"), 1);
         JFormattedTextField.setBorder(borda);
-}
+    }
+
+    private void apagarComponentes() {
+    
+    
+    }
 }

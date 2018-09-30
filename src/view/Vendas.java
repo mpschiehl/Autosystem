@@ -614,7 +614,7 @@ public class Vendas extends javax.swing.JFrame {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("novo");
+                   List<ProdutoBean> produtos = new ProdutoDao().obterProdutoStatus("novo");
                     DefaultTableModel dtm = (DefaultTableModel) jTableBusca.getModel();
 
                     dtm.setRowCount(0);

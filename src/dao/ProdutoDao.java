@@ -199,6 +199,40 @@ public class ProdutoDao {
         return produtos;
     }
 
+     public List<ProdutoBean> obterProdutosFiltros(String filtro) {
+        List<ProdutoBean> produtos = new ArrayList<>();
+        Connection conexao = Conexao.obterConexao();
+        if (conexao != null) {
+            String sql = "SELECT id,categoria,status_peca,peso,localizacao, aplicacao,descricao, quantidade,valor, valor_unitario FROM produtos Where "+filtro;
+            try {
+                Statement statement = conexao.createStatement();
+                statement.execute(sql);
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    ProdutoBean produto = new ProdutoBean();
+                    produto.setId(resultSet.getInt("id"));
+                    produto.setCategoria(resultSet.getString("categoria"));
+                    produto.setStatusPecas(resultSet.getString("status_peca"));
+                    produto.setPeso(resultSet.getFloat("peso"));
+                    produto.setLocalizacao(resultSet.getString("localizacao"));
+                    produto.setAplicacao(resultSet.getString("aplicacao"));
+                    produto.setDescricao(resultSet.getString("descricao"));
+                    produto.setQuantidade(resultSet.getInt("quantidade"));
+                    produto.setValor(resultSet.getFloat("valor"));
+                    produto.setValorUnitario(resultSet.getFloat("valor_unitario"));
+
+                    produtos.add(produto);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                Conexao.fecharConexao();
+            }
+        }
+
+        return produtos;
+    }
+
     public List<ProdutoBean> obterProdutoStatus(String status) {
         List<ProdutoBean> produtos = new ArrayList<>();
         Connection conexao = Conexao.obterConexao();

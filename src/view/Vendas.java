@@ -12,6 +12,7 @@ import dao.ClienteDao;
 import dao.ProdutoDao;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -108,6 +109,7 @@ public class Vendas extends javax.swing.JFrame {
         trocaTabEnter();
         janelaEmFocus();
         acaoUltimo();
+        configFont();
         jFrameVendas.setVisible(true);
 
     }
@@ -179,7 +181,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonLimpar.setLocation(680, 32);
         jButtonCancelarItem.setLocation(372, 172);
         jButtonAddCliente.setLocation(745, 80);
-        jButtonUltimo.setLocation(560,480);
+        jButtonUltimo.setLocation(530,480);
 
         //Jtable's
         jScrollPaneBuscador.setLocation(10, 110);
@@ -195,7 +197,7 @@ public class Vendas extends javax.swing.JFrame {
         jLabelCategoria.setSize(100, 20);
         jLabelNovo.setSize(100, 20);
         jLabelSemiNovo.setSize(100, 20);
-        jLabelDescricao.setSize(45, 20);
+        jLabelDescricao.setSize(60, 20);
         jLabelCliente.setSize(70, 20);
         //    jLabelQuantidade.setSize(70, 20);
 
@@ -213,7 +215,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonCancelar.setSize(45, 35);
         jButtonCancelarItem.setSize(45, 35);
         jButtonAddCliente.setSize(35, 20);
-        jButtonUltimo.setSize(100,35);
+        jButtonUltimo.setSize(130,35);
 
         jScrollPaneBuscador.setSize(360, 360);
         jScrollPanePedido.setSize(360, 360);
@@ -844,6 +846,17 @@ public class Vendas extends javax.swing.JFrame {
         }
         
         
+    }
+
+    private void configFont() {
+       jLabelID.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelStatus.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelCategoria.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelSemiNovo.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelNovo.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelDescricao.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelCliente.setFont(new Font("Arial", Font.PLAIN, 14));
+
     }
     
 }

@@ -146,6 +146,7 @@ public class Vendas extends javax.swing.JFrame {
         jFrameVendas.add(jButtonCancelar);
         jFrameVendas.add(jButtonCancelarItem);
         jFrameVendas.add(jButtonAddCliente);
+        jFrameVendas.add(jButtonUltimo);
         //adiciona a JTable's
         jFrameVendas.add(jScrollPaneBuscador);
         jFrameVendas.add(jScrollPanePedido);
@@ -178,6 +179,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonLimpar.setLocation(680, 32);
         jButtonCancelarItem.setLocation(372, 172);
         jButtonAddCliente.setLocation(745, 80);
+        jButtonUltimo.setLocation(560,480);
 
         //Jtable's
         jScrollPaneBuscador.setLocation(10, 110);
@@ -211,6 +213,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonCancelar.setSize(45, 35);
         jButtonCancelarItem.setSize(45, 35);
         jButtonAddCliente.setSize(35, 20);
+        jButtonUltimo.setSize(100,35);
 
         jScrollPaneBuscador.setSize(360, 360);
         jScrollPanePedido.setSize(360, 360);
@@ -249,6 +252,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonCancelarItem.setToolTipText("Cancelar item");
         jButtonLimpar.setToolTipText("Clique para Limpar os filtros de Busca");
         jButtonAddCliente = new JButton();
+        jButtonUltimo = new JButton("Ultimo Pedido");
 
         jTableBusca = new JTable();
         jTablePedido = new JTable();
@@ -589,7 +593,7 @@ public class Vendas extends javax.swing.JFrame {
         jButtonAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png")));
         jButtonFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/basket.png")));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
-        //jb
+        jButtonUltimo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/page_white_text.png")));
     }
 
     private void acaoVender() {

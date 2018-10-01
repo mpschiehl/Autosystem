@@ -563,7 +563,7 @@ public class Estoque extends javax.swing.JFrame {
         jTableEstoque.getColumnModel().getColumn(0).setPreferredWidth(5);
         jTableEstoque.getColumnModel().getColumn(1).setPreferredWidth(120);
         jTableEstoque.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableEstoque.getColumnModel().getColumn(3).setPreferredWidth(10);
+        jTableEstoque.getColumnModel().getColumn(3).setPreferredWidth(5);
         jTableEstoque.getColumnModel().getColumn(4).setPreferredWidth(40);
         jTableEstoque.getColumnModel().getColumn(5).setPreferredWidth(40);
         jTableEstoque.getColumnModel().getColumn(6).setPreferredWidth(10);

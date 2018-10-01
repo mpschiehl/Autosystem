@@ -462,7 +462,7 @@ public class Cadastro implements BaseInterfaceJava {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int resposta = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?"
-                        + "\nSe você não salvou, perderá todo o cadastro", "Aviso", JOptionPane.ERROR_MESSAGE);
+                        + "\nSe você não salvou perderá todo o cadastro.", "Aviso", JOptionPane.ERROR_MESSAGE);
                 if (resposta == 0) {
                     jFrameCadastro.dispose();
                 }

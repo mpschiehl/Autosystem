@@ -88,31 +88,31 @@ public class CadastroCliente extends javax.swing.JFrame {
         setResizable(false);
 
         jLabelNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelNome.setText("Nome");
+        jLabelNome.setText("Nome :");
 
         jLabelTelefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelTelefone.setText("Telefone");
+        jLabelTelefone.setText("Telefone :");
 
         jLabelCpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelCpf.setText("Cpf");
+        jLabelCpf.setText("Cpf :");
 
         jLabelCep.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelCep.setText("CEP");
+        jLabelCep.setText("Cep :");
 
         jLabelEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelEmail.setText("E mail");
+        jLabelEmail.setText("E mail :");
 
         jLabelBairro.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelBairro.setText("Bairro");
+        jLabelBairro.setText("Bairro :");
 
         jLabelCidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelCidade.setText("Cidade");
+        jLabelCidade.setText("Cidade :");
 
         jLabelEndereco.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelEndereco.setText("Endereço");
+        jLabelEndereco.setText("Endereço :");
 
         jLabelNumero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Número :");
 
         jButtonSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png"))); // NOI18N
@@ -128,7 +128,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jButtonAdicionar.setText("Adicionar");
 
         jLabelCnpj.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabelCnpj.setText("Cnpj");
+        jLabelCnpj.setText("Cnpj :");
 
         jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pencil.png"))); // NOI18N
@@ -161,12 +161,12 @@ public class CadastroCliente extends javax.swing.JFrame {
                                     .addComponent(jLabelCnpj)))
                             .addComponent(jLabelNome)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
+                                .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelBairro)
                                     .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabelTelefone)
-                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelCep)
                             .addComponent(jLabelEmail)
                             .addComponent(jTextFieldEmail)
@@ -243,12 +243,13 @@ public class CadastroCliente extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabelTelefone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(26, 26, 26))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabelBairro)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelNumero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

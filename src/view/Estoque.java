@@ -153,7 +153,7 @@ public class Estoque extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N°", "Produto", "Categoria", "Quantidade", "Valor Unitário", "Status", "Peso", "Localização"
+                "N°", "Produto", "Categoria", "Quantidade", "Valor", "Status", "Peso(Kg)", "Localização"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -237,7 +237,7 @@ public class Estoque extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -560,13 +560,13 @@ public class Estoque extends javax.swing.JFrame {
     }
 
     private void acaoConfigurarTabela() {
-        jTableEstoque.getColumnModel().getColumn(0).setPreferredWidth(5);
-        jTableEstoque.getColumnModel().getColumn(1).setPreferredWidth(120);
-        jTableEstoque.getColumnModel().getColumn(2).setPreferredWidth(60);
-        jTableEstoque.getColumnModel().getColumn(3).setPreferredWidth(5);
+        jTableEstoque.getColumnModel().getColumn(0).setPreferredWidth(3);
+        jTableEstoque.getColumnModel().getColumn(1).setPreferredWidth(150);
+        jTableEstoque.getColumnModel().getColumn(2).setPreferredWidth(150);
+        jTableEstoque.getColumnModel().getColumn(3).setPreferredWidth(45);
         jTableEstoque.getColumnModel().getColumn(4).setPreferredWidth(40);
         jTableEstoque.getColumnModel().getColumn(5).setPreferredWidth(40);
-        jTableEstoque.getColumnModel().getColumn(6).setPreferredWidth(10);
-        jTableEstoque.getColumnModel().getColumn(7).setPreferredWidth(60);
+        jTableEstoque.getColumnModel().getColumn(6).setPreferredWidth(45);
+        jTableEstoque.getColumnModel().getColumn(7).setPreferredWidth(80);
     }
 }

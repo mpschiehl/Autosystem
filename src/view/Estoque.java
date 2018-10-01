@@ -32,6 +32,7 @@ public class Estoque extends javax.swing.JFrame {
      */
     public Estoque() {
         initComponents();
+        acaoConfigurarTabela();
         trocaTabEnter();
     }
 
@@ -152,7 +153,7 @@ public class Estoque extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Número", "Produto", "Categoria", "Quantidade", "Valor Unitário", "Status", "Peso", "Localização"
+                "N°", "Produto", "Categoria", "Quantidade", "Valor Unitário", "Status", "Peso", "Localização"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -556,5 +557,16 @@ public class Estoque extends javax.swing.JFrame {
         jRbuttonGroup.clearSelection();
         jComboBoxCategoria.setSelectedIndex(-1);
         jTextFieldPesquisa.setText("");
+    }
+
+    private void acaoConfigurarTabela() {
+        jTableEstoque.getColumnModel().getColumn(0).setPreferredWidth(5);
+        jTableEstoque.getColumnModel().getColumn(1).setPreferredWidth(120);
+        jTableEstoque.getColumnModel().getColumn(2).setPreferredWidth(60);
+        jTableEstoque.getColumnModel().getColumn(3).setPreferredWidth(10);
+        jTableEstoque.getColumnModel().getColumn(4).setPreferredWidth(40);
+        jTableEstoque.getColumnModel().getColumn(5).setPreferredWidth(40);
+        jTableEstoque.getColumnModel().getColumn(6).setPreferredWidth(10);
+        jTableEstoque.getColumnModel().getColumn(7).setPreferredWidth(60);
     }
 }

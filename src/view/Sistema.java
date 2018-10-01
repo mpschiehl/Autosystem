@@ -64,7 +64,13 @@ public class Sistema implements BaseInterfaceJava {
         jButtonCadastroCliente = new JButton("Cliente");
         jButtonCadastroFuncionario = new JButton("Funcionario");
        
-        
+        jButtonCadastro.setToolTipText("Clique para cadastrar um Produto");
+        jButtonEstoque.setToolTipText("Clique para vizualizar o Estoque");
+        jButtonVenda.setToolTipText("Clique para para abrir Vendas");
+        jButtonCadastroCliente.setToolTipText("Clique para cadastrar um Cliente");
+        jButtonSair.setToolTipText("Sair");
+                      
+                      
         jLabelAutoSystem = new JLabel("AutoSystem");
     }
 

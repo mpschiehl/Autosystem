@@ -133,6 +133,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         jButtonLimpar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pencil.png"))); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,6 +264,12 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void jButtonSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSairMouseClicked
         dispose();
     }//GEN-LAST:event_jButtonSairMouseClicked
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+        apagarComponentes();
+        limparCampos();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,6 +480,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                 validacao();
                 salvarBanco();
                 limparCampos();
+                apagarComponentes();
                 JOptionPane.showMessageDialog(null, "Clinte cadastrado com sucesso");
 
             }
@@ -594,7 +606,28 @@ public class CadastroCliente extends javax.swing.JFrame {
     }
 
     private void apagarComponentes() {
-    
-    
+        Border borda = BorderFactory.createLineBorder(Color.GRAY, 1);
+
+//JLabel's'
+        jLabelBairro.setForeground(Color.black);
+        jLabelCep.setForeground(Color.black);
+        jLabelCidade.setForeground(Color.black);
+        jLabelCnpj.setForeground(Color.black);
+        jLabelCpf.setForeground(Color.black);
+        jLabelEmail.setForeground(Color.black);
+        jLabelEndereco.setForeground(Color.black);
+        jLabelNome.setForeground(Color.black);
+        jLabelNumero.setForeground(Color.black);
+        jLabelTelefone.setForeground(Color.black);
+
+        // jTextField's
+        jTextFieldBairro.setBorder(borda);
+        jTextFieldCidade.setBorder(borda);
+        jTextFieldEmail.setBorder(borda);
+        jTextFieldEndereco.setBorder(borda);
+        jTextFieldNome.setBorder(borda);
+        jTextFieldNumero.setBorder(borda);
+        
+        jTextFieldNome.requestFocus();
     }
 }

@@ -81,6 +81,7 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Número: ");
 
         jTextFieldNumero.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -97,9 +98,11 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Status: ");
 
         jRbuttonGroup.add(jRadioButtonNovo);
+        jRadioButtonNovo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jRadioButtonNovo.setText("Novo");
         jRadioButtonNovo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -108,6 +111,7 @@ public class Estoque extends javax.swing.JFrame {
         });
 
         jRbuttonGroup.add(jRadioButtonSeminovo);
+        jRadioButtonSeminovo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jRadioButtonSeminovo.setText("Semi novo");
         jRadioButtonSeminovo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -130,8 +134,10 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Categoria");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Pesquisa");
 
         jTextFieldPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -140,6 +146,7 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jTableEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTableEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,7 +156,7 @@ public class Estoque extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -160,6 +167,7 @@ public class Estoque extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableEstoque);
         if (jTableEstoque.getColumnModel().getColumnCount() > 0) {
             jTableEstoque.getColumnModel().getColumn(0).setResizable(false);
+            jTableEstoque.getColumnModel().getColumn(1).setResizable(false);
             jTableEstoque.getColumnModel().getColumn(2).setResizable(false);
             jTableEstoque.getColumnModel().getColumn(3).setResizable(false);
             jTableEstoque.getColumnModel().getColumn(4).setResizable(false);
@@ -219,26 +227,25 @@ public class Estoque extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel1)
-                        .addGap(0, 83, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonNovo)
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonSeminovo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonNovo)
+                            .addComponent(jRadioButtonSeminovo))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPesquisa)))
+                            .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(22, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,22 +261,20 @@ public class Estoque extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jRadioButtonNovo)
-                            .addComponent(jLabel4)))
-                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jRadioButtonNovo)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonSeminovo)
                     .addComponent(jLabel5)
-                    .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonSeminovo))
-                .addGap(15, 15, 15)
+                    .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

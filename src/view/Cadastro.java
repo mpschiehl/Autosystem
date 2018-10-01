@@ -186,8 +186,6 @@ public class Cadastro implements BaseInterfaceJava {
         jLabelCategoria.setLocation(140, 165);
         jComboBoxCategoria.setLocation(140, 190);
 
-        
-
         //SCrollPane
         jScrollPaneAplicacao.setLocation(20, 255);
     }
@@ -236,8 +234,6 @@ public class Cadastro implements BaseInterfaceJava {
         jScrollPaneAplicacao.setSize(500, 80);
     }
 
-    
-
     @Override
     public void instanciarComponentes() {
         //JLabel's 
@@ -258,8 +254,12 @@ public class Cadastro implements BaseInterfaceJava {
         jTextFieldQuantidade = new JTextField("");
         jTextFieldValor = new JTextField("");
         jTextFieldDescricao = new JTextField("");
-
         jTextFieldPeso = new JTextField("");
+
+        jTextFieldDescricao.setToolTipText("Adicione uma Descrição");
+        jTextFieldQuantidade.setToolTipText("Adicione uma Quantidade");
+        jTextFieldValor.setToolTipText("Adicione um Valor");
+        jTextFieldPeso.setToolTipText("Adicione um Peso");
 
         //JButton's
         jButtonSair = new JButton("Sair");
@@ -280,16 +280,21 @@ public class Cadastro implements BaseInterfaceJava {
         jComboBoxCategoria = new JComboBox();
         jComboBoxUnidadeDeMedida = new JComboBox();
 
+        jComboBoxLocalizacao.setToolTipText("Selecione a Localização no Estoque");
+        jComboBoxCategoria.setToolTipText("Selecione a Categoria da Peça Padastrada");
+        jComboBoxUnidadeDeMedida.setToolTipText("Selecione a Unidade de Medida");
+        
+
         jLabelAutoSystems = new JLabel("");
 
         jTextAreaAplicacao = new JTextArea();
-
+        jTextAreaAplicacao.setToolTipText("Adicione uma Aplicação");
         //SCrollPane
         jScrollPaneAplicacao = new JScrollPane();
     }
 
     private void adicionarComboBoxCategoria() {
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel(new Object[]{"Centrais e Módulos","Acessórios e acabamento", "Injeção e carburador",
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(new Object[]{"Centrais e Módulos", "Acessórios e acabamento", "Injeção e carburador",
             "Motor", "Polias e tensores", "Retentor e junta", "Supenção e freios", "Correas e corrente de comando"
         });
         jComboBoxCategoria.setModel(modelo);
@@ -367,10 +372,10 @@ public class Cadastro implements BaseInterfaceJava {
             case 6:
                 produto.setCategoria("Supenção e freios");
                 break;
-             case 7:
+            case 7:
                 produto.setCategoria("Correas e corrente de comando");
                 break;
-                
+
         }
         switch (jComboBoxLocalizacao.getSelectedIndex()) {
             case 0:
@@ -492,12 +497,12 @@ public class Cadastro implements BaseInterfaceJava {
         } else if (jTextFieldDescricao.getText().length() < 2) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-          
+
             jTextFieldDescricao.requestFocus();
         } else if (jTextFieldDescricao.getText().length() >= 150) {
             jLabelDescricao.setForeground(Color.red);
             bordaErro(jTextFieldDescricao);
-          
+
             jTextFieldDescricao.requestFocus();
         } else {
             bordaSucesso(jTextFieldDescricao);
@@ -576,7 +581,7 @@ public class Cadastro implements BaseInterfaceJava {
         //Unidade de medida
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == -1) {
             jLabelUnidadeDeMedida.setForeground(Color.red);
-            
+
             jComboBoxUnidadeDeMedida.requestFocus();
 
         }
@@ -590,7 +595,7 @@ public class Cadastro implements BaseInterfaceJava {
         //Categoria
         if (jComboBoxCategoria.getSelectedIndex() == -1) {
             jLabelCategoria.setForeground(Color.red);
-            
+
             jComboBoxCategoria.requestFocus();
 
         }
@@ -611,7 +616,7 @@ public class Cadastro implements BaseInterfaceJava {
         } else {
             bordaSucessoArea(jTextAreaAplicacao);
         }
-       jTextFieldDescricao.requestFocus();
+        jTextFieldDescricao.requestFocus();
         return;
     }
 
@@ -630,7 +635,6 @@ public class Cadastro implements BaseInterfaceJava {
         jLabelE.setSize(20, 20);
         jFrameCadastro.add(jLabelE);
 
-        
     }
 
     private void apagarComponentes() {
@@ -680,7 +684,7 @@ public class Cadastro implements BaseInterfaceJava {
     }
 
     private void configuraFont() {
-        
+
         jLabelQuantidade.setFont(new Font("Arial", Font.PLAIN, 14));
         jLabelValor.setFont(new Font("Arial", Font.PLAIN, 14));
         jLabelDescricao.setFont(new Font("Arial", Font.PLAIN, 14));

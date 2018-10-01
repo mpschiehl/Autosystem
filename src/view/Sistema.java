@@ -53,7 +53,7 @@ public class Sistema implements BaseInterfaceJava {
 
     private JFrame jFrameSistema;
     private JButton jButtonCadastro, jButtonEstoque, jButtonVenda, jButtonSair, jButtonCadastroCliente, jButtonCadastroFuncionario;
-    private JLabel jLabelAutoSystem;
+    private JLabel jLabelAutoSystem, jLabelLogo,jLabelNome;
 
     @Override
     public void instanciarComponentes() {
@@ -69,9 +69,9 @@ public class Sistema implements BaseInterfaceJava {
         jButtonVenda.setToolTipText("Clique para para abrir Vendas");
         jButtonCadastroCliente.setToolTipText("Clique para cadastrar um Cliente");
         jButtonSair.setToolTipText("Sair");
-                      
-                      
-        jLabelAutoSystem = new JLabel("AutoSystem");
+                jLabelNome = new JLabel("AutoSystem");   
+                 jLabelLogo = new JLabel();     
+        
     }
 
     @Override
@@ -92,8 +92,9 @@ public class Sistema implements BaseInterfaceJava {
         jButtonSair.setLocation(150, 130);
         jButtonCadastroCliente.setLocation(275, 25);
         jButtonCadastroFuncionario.setLocation(165, 25);
-        
-        jLabelAutoSystem.setLocation(25,20);
+         jLabelLogo.setLocation(275,118);
+        jLabelNome.setLocation(285,195);
+       
     }
 
     @Override
@@ -104,9 +105,9 @@ public class Sistema implements BaseInterfaceJava {
         jButtonVenda.setSize(100, 80);
         jButtonCadastroFuncionario.setSize(100, 80);
         jButtonCadastroCliente.setSize(100, 80);
-        
-        jLabelAutoSystem.setSize(200,35);
-
+        jLabelLogo.setSize(75,80);
+       
+jLabelNome.setSize(80,20);
     }
 
     private void adicionaIconeButton() {
@@ -116,6 +117,7 @@ public class Sistema implements BaseInterfaceJava {
         jButtonCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/team.png")));
         jButtonCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/user_female.png")));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/logo.png")));
         
         
     }
@@ -180,8 +182,9 @@ public class Sistema implements BaseInterfaceJava {
         jFrameSistema.add(jButtonSair);
         jFrameSistema.add(jButtonCadastroCliente);
       // jFrameSistema.add(jButtonCadastroFuncionario);
-       
-  
+       jFrameSistema.add(jLabelLogo);
+       jFrameSistema.add(jLabelNome);
+   
     }
 
     private void acaoBotaoCadastroFuncionario() {

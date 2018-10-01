@@ -568,14 +568,11 @@ public class Vendas extends javax.swing.JFrame {
     private void totaliza() {
             float numero = 0f;
         for (int i = 0; i < contador; i++) {
-<<<<<<< HEAD
             total =   Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
             
-=======
             total =Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
             total = total + numero;
             numero = total;
->>>>>>> cffa06332073a9fbb767ce9c9f9ae1239501607a
         }
     }
     

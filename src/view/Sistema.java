@@ -63,6 +63,7 @@ public class Sistema implements BaseInterfaceJava {
         jButtonSair = new JButton("Sair");
         jButtonCadastroCliente = new JButton("Cliente");
         jButtonCadastroFuncionario = new JButton("Funcionario");
+       
         
         jLabelAutoSystem = new JLabel("AutoSystem");
     }
@@ -70,7 +71,7 @@ public class Sistema implements BaseInterfaceJava {
     @Override
     public void gerarTela() {
         jFrameSistema = new JFrame("AutoSystem");
-        jFrameSistema.setSize(275, 360);
+        jFrameSistema.setSize(410, 270);
         jFrameSistema.setLocationRelativeTo(null);
         jFrameSistema.setLayout(null);
         jFrameSistema.setResizable(false);
@@ -80,10 +81,10 @@ public class Sistema implements BaseInterfaceJava {
     @Override
     public void gerarLocalizacoes() {
         jButtonCadastro.setLocation(25, 25);
-        jButtonEstoque.setLocation(145, 25);
-        jButtonVenda.setLocation(25,125 );
-        jButtonSair.setLocation(85, 225);
-        jButtonCadastroCliente.setLocation(145, 125);
+        jButtonEstoque.setLocation(150, 25);
+        jButtonVenda.setLocation(25,130 );
+        jButtonSair.setLocation(150, 130);
+        jButtonCadastroCliente.setLocation(275, 25);
         jButtonCadastroFuncionario.setLocation(165, 25);
         
         jLabelAutoSystem.setLocation(25,20);
@@ -109,6 +110,8 @@ public class Sistema implements BaseInterfaceJava {
         jButtonCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/team.png")));
         jButtonCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/user_female.png")));
         jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
+        
+        
     }
 
     //troca o icone padrao
@@ -118,6 +121,7 @@ public class Sistema implements BaseInterfaceJava {
 
         jFrameSistema.setIconImage(imagemTitulo);
 
+        
     }
 
     private void acaoBotaoCadastro() {
@@ -219,5 +223,7 @@ public class Sistema implements BaseInterfaceJava {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    }  
+    
+   
 }

@@ -442,7 +442,7 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         }
     }
-
+//teste
     public void mascaraCnpj() {
         try {
             MaskFormatter maskFormatter = new MaskFormatter("##.###./####-##");

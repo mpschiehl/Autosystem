@@ -8,13 +8,17 @@ package view;
 
 import bean.ProdutoBean;
 import dao.ProdutoDao;
+import java.awt.Image;
 import java.awt.KeyboardFocusManager;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
@@ -32,8 +36,11 @@ public class Estoque extends javax.swing.JFrame {
      */
     public Estoque() {
         initComponents();
+
+        jFrame1.setIconImage(new ImageIcon(getClass().getResource("/icones/box.png")).getImage());
         acaoConfigurarTabela();
         trocaTabEnter();
+        // trocarIcone();
     }
 
     /**
@@ -75,6 +82,7 @@ public class Estoque extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setName("JFrame"); // NOI18N
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -292,14 +300,14 @@ public class Estoque extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         /* int linhaSelecionada = jTableEstoque.getSelectedRow();
-        if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione um registro");
-            return;
-        }
+         if (linhaSelecionada == -1) {
+         JOptionPane.showMessageDialog(null, "Selecione um registro");
+         return;
+         }
 
-        int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
+         int codigoRegistro = Integer.parseInt(jTableEstoque.getValueAt(linhaSelecionada, 0).toString());
        
-       new Cadastro(codigoRegistro).cadastroAlterar(codigoRegistro);*/
+         new Cadastro(codigoRegistro).cadastroAlterar(codigoRegistro);*/
 
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -354,7 +362,7 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyPressed
-                int id = Integer.parseInt(jTextFieldNumero.getText());
+        int id = Integer.parseInt(jTextFieldNumero.getText());
         DefaultTableModel dtm = (DefaultTableModel) jTableEstoque.getModel();
         dtm.setRowCount(0);
         ProdutoBean produto = new ProdutoDao().buscarPorId(id);
@@ -568,5 +576,12 @@ public class Estoque extends javax.swing.JFrame {
         jTableEstoque.getColumnModel().getColumn(5).setPreferredWidth(40);
         jTableEstoque.getColumnModel().getColumn(6).setPreferredWidth(45);
         jTableEstoque.getColumnModel().getColumn(7).setPreferredWidth(80);
+    }
+
+    private void trocarIcone() {
+        /* URL url = this.getClass().getResource("/icones/box.png");
+         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+         jFrame1.setIconImage(imagemTitulo);*/
+        // jFrame1.setIconImage(new ImageIcon(getClass().getResource("/icones/box.png")).getImage());
     }
 }

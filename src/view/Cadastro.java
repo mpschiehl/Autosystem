@@ -329,22 +329,22 @@ public class Cadastro implements BaseInterfaceJava {
     private void salvarBanco() {
 
         ProdutoBean produto = new ProdutoBean();
-        produto.setDescricao(jTextFieldDescricao.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
+        produto.setDescricao(jTextFieldDescricao.getText().trim().replace(",", "").replace("/", "").replace("*", ""));
         if (jRadioButtonNovo.isSelected()) {
             produto.setStatusPecas("novo");
         } else if (jRadioButtonSemiNovo.isSelected()) {
             produto.setStatusPecas("semi Novo");
         }
 
-        produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
+        produto.setQuantidade(Integer.parseInt(jTextFieldQuantidade.getText().trim().replace(",", ".").replace("/", "").replace("*", "")));
 
         if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 0) {
             produto.setUnidadeDeMedida("Kit");
         } else if (jComboBoxUnidadeDeMedida.getSelectedIndex() == 1) {
             produto.setUnidadeDeMedida("Peça");
         }
-        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
-        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", "")));
+        produto.setPeso(Float.parseFloat(jTextFieldPeso.getText().trim().replace(",", ".").replace("/", "").replace("*", "")));
+        produto.setValorUnitario(Float.parseFloat(jTextFieldValor.getText().trim().replace(",", ".").replace("/", "").replace("*", "")));
 
         switch (jComboBoxCategoria.getSelectedIndex()) {
             case 0:
@@ -426,7 +426,7 @@ public class Cadastro implements BaseInterfaceJava {
                 break;
 
         }
-        produto.setAplicacao(jTextAreaAplicacao.getText().trim().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
+        produto.setAplicacao(jTextAreaAplicacao.getText().trim().replace(".", "").replace(",", "").replace("/", "").replace("*", ""));
         new ProdutoDao().inserir(produto);
     }
 

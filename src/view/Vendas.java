@@ -567,7 +567,7 @@ public class Vendas extends javax.swing.JFrame {
     
     private void totaliza() {
         for (int i = 0; i < contador; i++) {
-            total = Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
+            total =   Float.parseFloat(jTablePedido.getModel().getValueAt(i, 3).toString());
             
         }
     }

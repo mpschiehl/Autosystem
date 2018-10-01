@@ -10,11 +10,14 @@ import bean.ProdutoBean;
 import dao.ProdutoDao;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.KeyboardFocusManager;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -76,6 +79,7 @@ public class Cadastro implements BaseInterfaceJava {
         adicionarComboBoxUnidadeDeMedida();
         trocaTabEnter();
         configuraFont();
+        trocaIcone();
         jFrameCadastro.setVisible(true);
 
     }
@@ -283,7 +287,6 @@ public class Cadastro implements BaseInterfaceJava {
         jComboBoxLocalizacao.setToolTipText("Selecione a Localização no Estoque");
         jComboBoxCategoria.setToolTipText("Selecione a Categoria da Peça Padastrada");
         jComboBoxUnidadeDeMedida.setToolTipText("Selecione a Unidade de Medida");
-        
 
         jLabelAutoSystems = new JLabel("");
 
@@ -700,4 +703,14 @@ public class Cadastro implements BaseInterfaceJava {
 
     }
 
+    private void trocaIcone() {
+        URL url = this.getClass().getResource("/icones/clipboard2.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        jFrameCadastro.setIconImage(imagemTitulo);
+
+        jButtonAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/add.png")));
+        jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/eraser.png")));
+        jButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/door_in.png")));
+        
+    }
 }

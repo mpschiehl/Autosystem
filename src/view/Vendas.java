@@ -837,7 +837,7 @@ public class Vendas extends javax.swing.JFrame {
     }
     
     private void gerarArquivo(String texto) {
-        File arquivo = new File("/autosystem/config.txt");
+        File arquivo = new File("c:/autosystem/config.txt");
         try {
             if (!arquivo.exists()) {
                 //cria um arquivo (vazio)
